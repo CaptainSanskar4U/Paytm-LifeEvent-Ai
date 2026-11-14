@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState, use } from "react";
-import Link from "next/navigation";
 import NextLink from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { LivingJourneyLine } from "@/components/LivingJourneyLine";
+import { EvidenceModal } from "@/components/EvidenceModal";
 import { Language, translations } from "@/lib/translations";
 import { formatINR } from "@/lib/utils";
 import {
@@ -13,17 +13,19 @@ import {
   FileText,
   CreditCard,
   RefreshCw,
-  AlertTriangle,
   CheckCircle2,
   Clock,
   Building2,
-  User,
   HeartPulse,
   Info,
   ShieldCheck,
   Zap,
-  HelpCircle,
-  Trash2
+  Lock,
+  QrCode,
+  ChevronRight,
+  Trash2,
+  SlidersHorizontal,
+  FileCheck
 } from "lucide-react";
 
 interface JourneyData {
@@ -74,20 +76,19 @@ interface JourneyData {
     title: string;
     description: string;
     actor: string;
-    status: "done" | "in_progress" | "pending";
+    status: "completed" | "done" | "in_progress" | "pending";
   }>;
   current_stage: string;
   next_best_action: string;
   is_demo: boolean;
 }
 
-// Default fallback mock in case backend is offline
 const FALLBACK_JOURNEY: JourneyData = {
   id: "demo-journey-cardiac-01",
   intake: {
     patient_name: "Ramesh Kulkarni",
     hospital_name: "Sample City Hospital",
-    condition_description: "Acute chest pain, diagnosed with acute coronary syndrome, immediate angioplasty recommended.",
+    condition_description: "Acute chest pain, acute coronary syndrome, immediate angioplasty recommended.",
     urgency: "critical",
     estimated_amount: 420000,
     known_insurer: "Sample Health Insurance Co."
@@ -116,6 +117,18 @@ const FALLBACK_JOURNEY: JourneyData = {
       evidence_passage: "Treatment Plan: PTCA with Drug Eluting Stent. Total Estimated Cost: INR 4,20,000.",
       clause_ref: "Clinical Estimate 1.1",
       verified_against_source: true
+    },
+    {
+      category: "Non-Payable Hospital Consumables",
+      estimated_cost: 42000,
+      likely_covered: 0,
+      out_of_pocket: 42000,
+      confidence: "Medium",
+      evidence_doc: "Sample_Health_Policy_Document.pdf",
+      evidence_page: 7,
+      evidence_passage: "Expenses incurred on non-medical items such as gloves, syringes, and PPE kits are excluded per IRDAI list.",
+      clause_ref: "Exclusions 4.8",
+      verified_against_source: true
     }
   ],
   gap: {
@@ -128,9 +141,9 @@ const FALLBACK_JOURNEY: JourneyData = {
     room_rent_penalty: 14000,
     copay_amount: 0,
     assumptions: [
-      "Room rent capped at INR 5,000/day by policy Section 2.1; hospital ICU is INR 8,500/day causing proportionate deduction.",
-      "Non-payable consumables (gloves, PPE, syringes, administrative kits) estimated at 10% of total hospital bill per IRDAI master circular guidelines.",
-      "Zero co-pay assumed based on standard corporate group health insurance terms."
+      "Room rent capped at ₹5,000/day by policy Section 2.1; ICU billed at ₹8,500/day triggers proportionate deduction.",
+      "Non-payable consumables (gloves, PPE, syringes) estimated at 10% of total hospital bill per IRDAI master circular.",
+      "Zero co-pay assumed based on standard group health terms."
     ]
   },
   checklist: [
@@ -144,7 +157,7 @@ const FALLBACK_JOURNEY: JourneyData = {
     },
     {
       id: "task-1",
-      title: "Request Treating Physician to sign Pre-Authorization Request Form Part B",
+      title: "Request Treating Physician to sign Pre-Auth Form Part B",
       responsible_party: "Hospital TPA Desk",
       status: "in_progress",
       deadline_minutes: 60,
@@ -169,7 +182,7 @@ const FALLBACK_JOURNEY: JourneyData = {
       interest_rate_apr: 0.0,
       speed_minutes: 10,
       badge: "Demo Partner, illustrative terms, not a real offer",
-      action_label: "Instant Disbursal to Hospital Account"
+      action_label: "Instant Disbursal to Hospital Desk"
     }
   ],
   timeline_events: [
@@ -177,29 +190,29 @@ const FALLBACK_JOURNEY: JourneyData = {
       id: "evt-1",
       timestamp: "10:15 AM",
       title: "Patient Admitted to Emergency Triage",
-      description: "Patient registered at Sample City Hospital Casualty ward. Preliminary ECG indicated acute coronary syndrome.",
+      description: "Patient registered at Sample City Hospital. Preliminary ECG indicated acute coronary syndrome.",
       actor: "Hospital Casualty Desk",
-      status: "done"
+      status: "completed"
     },
     {
       id: "evt-2",
       timestamp: "10:30 AM",
       title: "Voice Situation Dictated & AI Journey Initialized",
-      description: "Intake recorded by family attendant. Multi-document evidence engine extracted room-rent limits and stent guidelines.",
+      description: "Intake recorded by family attendant. Multi-document evidence engine extracted room-rent limits.",
       actor: "LifeEvent AI Assistant",
-      status: "done"
+      status: "completed"
     },
     {
       id: "evt-3",
       timestamp: "10:45 AM",
       title: "Pre-Authorization Sent to Insurer TPA",
-      description: "Hospital desk submitted cashless query to Sample Health Insurance Co. Cashless response expected in 60-90 minutes.",
+      description: "Hospital desk submitted cashless query to Sample Health Insurance Co. Sanction expected in 60-90 mins.",
       actor: "Hospital TPA Desk",
       status: "in_progress"
     }
   ],
   current_stage: "preauth_pending",
-  next_best_action: "Submit Patient Aadhaar and Signed Form Part B to Hospital Insurance Desk (Counter #4)",
+  next_best_action: "Submit Patient Aadhaar & Doctor Signature to Hospital Counter #4 (TPA Desk)",
   is_demo: true
 };
 
@@ -211,31 +224,25 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
   const t = translations[lang] || translations.en;
 
   const [journey, setJourney] = useState<JourneyData>(FALLBACK_JOURNEY);
-  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<"journey" | "breakdown" | "funding">("journey");
   const [isReplanning, setIsReplanning] = useState(false);
   const [replanNotice, setReplanNotice] = useState<string | null>(null);
-  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [selectedClaim, setSelectedClaim] = useState<any | null>(null);
 
-  const fetchJourney = async () => {
-    try {
-      const res = await fetch(`http://127.0.0.1:8000/api/journey/${journeyId}`);
-      if (res.ok) {
-        const data = await res.json();
-        setJourney(data);
-      } else {
-        console.warn("Using fallback demo journey state");
-      }
-    } catch (e) {
-      console.warn("Backend unavailable, using client fallback", e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // Instant UPI Deposit Simulation
+  const [depositPaid, setDepositPaid] = useState(false);
 
   useEffect(() => {
-    fetchJourney();
+    fetch(`http://127.0.0.1:8000/api/journey/${journeyId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.gap) {
+          setJourney(data);
+        }
+      })
+      .catch(() => {
+        // Fallback already set
+      });
   }, [journeyId]);
 
   const handleSimulateReplan = async () => {
@@ -248,13 +255,13 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
       if (res.ok) {
         const updated = await res.json();
         setJourney(updated);
-        setReplanNotice("Simulated TPA Query Ingested! The Living Journey Line has dynamically adapted with urgent tasks.");
+        setReplanNotice("Simulated TPA Query Ingested! Your journey timeline has adapted with urgent tasks.");
       } else {
-        // Client-side simulation fallback
+        // Fallback simulation
         const updated = { ...journey };
         updated.checklist.unshift({
           id: "task-tpa-urgent",
-          title: "URGENT: Submit Casualty Admission ECG Strip to Insurance Desk",
+          title: "URGENT: Submit Casualty Admission ECG Strip to Counter #4",
           responsible_party: "Family Attendant",
           status: "pending",
           deadline_minutes: 15,
@@ -263,448 +270,407 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
         updated.timeline_events.push({
           id: "evt-tpa-query",
           timestamp: "11:15 AM",
-          title: "TPA Pre-Auth Query Received: Initial ECG Required",
-          description: "Insurer TPA requested clear Casualty Admission ECG strip before approving cashless angioplasty sanction.",
+          title: "TPA Query: Admission ECG Strip Required",
+          description: "Insurer TPA requested clear admission ECG strip before approving cashless sanction.",
           actor: "Insurer TPA Desk",
           status: "in_progress"
         });
         updated.next_best_action = "URGENT: Submit Casualty Admission ECG Strip to Insurance Desk (Counter #4)";
         setJourney(updated);
-        setReplanNotice("Simulated TPA Query Ingested! The Living Journey Line has dynamically adapted with urgent tasks.");
+        setReplanNotice("Simulated TPA Query Ingested! Your journey timeline has adapted with urgent tasks.");
       }
     } catch (e) {
-      console.error("Replan error:", e);
+      console.error(e);
     } finally {
       setIsReplanning(false);
     }
   };
 
-  const handleDeleteData = async () => {
-    setIsDeleting(true);
-    try {
-      await fetch(`http://127.0.0.1:8000/api/journey/${journeyId}`, {
-        method: "DELETE"
-      });
-      setIsDeleted(true);
-    } catch (e) {
-      setIsDeleted(true);
-    } finally {
-      setIsDeleting(false);
-    }
-  };
-
-  if (isDeleted) {
-    return (
-      <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col">
-        <Navbar currentLang={lang} onLanguageChange={setLang} />
-        <main className="max-w-2xl mx-auto px-4 py-16 text-center">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-red-600">
-            <Trash2 className="w-8 h-8" />
-          </div>
-          <h1 className="text-2xl font-bold text-paytm-navy mb-2">Journey Data Permanently Deleted</h1>
-          <p className="text-sm text-paytm-muted mb-6">
-            All records, documents, timeline states, and Aadhaar-redacted caches for journey <code className="bg-white px-2 py-0.5 rounded border border-paytm-border">{journeyId}</code> have been purged from database, storage, and in-memory stores.
-          </p>
-          <NextLink
-            href="/"
-            className="inline-flex items-center gap-2 bg-paytm-navy text-white px-5 py-2.5 rounded font-semibold text-sm hover:bg-opacity-95"
-          >
-            Return to Home
-          </NextLink>
-        </main>
-      </div>
-    );
-  }
-
   const gap = journey.gap || FALLBACK_JOURNEY.gap;
   const intake = journey.intake || FALLBACK_JOURNEY.intake;
+  const coveragePercent = Math.round((gap.likely_covered_total / (gap.estimated_total_cost || 1)) * 100);
 
   return (
-    <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
       <Navbar currentLang={lang} onLanguageChange={setLang} />
 
-      {/* Top Banner: Patient Context & Demo Badge */}
-      <div className="bg-white border-b border-paytm-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-1">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-bold bg-blue-100 text-paytm-navy uppercase tracking-wide">
-                <HeartPulse className="w-3.5 h-3.5 text-paytm-cyan" />
-                Emergency Active
-              </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-200">
-                <ShieldAlert className="w-3 h-3 text-amber-700" />
-                {t.demoBadge}
-              </span>
-            </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-paytm-navy">
-              {intake.patient_name} &bull; <span className="font-normal text-paytm-muted">{intake.hospital_name}</span>
-            </h1>
-            <p className="text-xs text-paytm-muted line-clamp-1 mt-0.5">
-              {intake.condition_description}
-            </p>
+      {/* Top Reassuring Breadcrumb & Context */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-slate-600">
+            <span className="font-semibold text-paytm-navy">{intake.patient_name}</span>
+            <span>&bull;</span>
+            <span className="text-slate-500">{intake.hospital_name}</span>
+            <span className="hidden sm:inline">&bull;</span>
+            <span className="hidden sm:inline text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-medium border border-amber-200">
+              Demo Cardiac Emergency
+            </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={handleSimulateReplan}
-              disabled={isReplanning}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded text-xs font-bold bg-amber-500 hover:bg-amber-600 text-paytm-navy shadow-sm transition-colors disabled:opacity-50"
-              title="Simulates insurer TPA raising a clarification query to re-plan the living timeline"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${isReplanning ? "animate-spin" : ""}`} />
-              <span>{isReplanning ? "Re-planning Journey..." : t.replanButton}</span>
-            </button>
-
-            <NextLink
-              href={`/journey/${journeyId}/coverage`}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded text-xs font-semibold bg-white border border-paytm-border text-paytm-navy hover:bg-gray-50 transition-colors"
-            >
-              <FileText className="w-3.5 h-3.5 text-paytm-cyan" />
-              <span>{t.viewCoverageEvidence}</span>
-            </NextLink>
-
-            <NextLink
-              href={`/journey/${journeyId}/funding`}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded text-xs font-semibold bg-white border border-paytm-border text-paytm-navy hover:bg-gray-50 transition-colors"
-            >
-              <CreditCard className="w-3.5 h-3.5 text-paytm-cyan" />
-              <span>{t.viewFundingOptions}</span>
-            </NextLink>
-          </div>
+          {/* Discreet Re-planning Simulator for Judges */}
+          <button
+            onClick={handleSimulateReplan}
+            disabled={isReplanning}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 hover:bg-amber-200 text-amber-900 transition-colors disabled:opacity-50"
+            title="Simulates insurer TPA raising a clarification query to re-plan the living timeline"
+          >
+            <RefreshCw className={`w-3 h-3 ${isReplanning ? "animate-spin" : ""}`} />
+            <span>{isReplanning ? "Re-planning..." : "Simulate TPA Query"}</span>
+          </button>
         </div>
       </div>
 
-      {/* Main Content Dashboard */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full flex-grow">
+      <main className="max-w-4xl mx-auto px-4 py-6 w-full flex-grow">
         {replanNotice && (
-          <div className="mb-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r shadow-sm flex items-start gap-3 animate-fade-in">
-            <Zap className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <div className="mb-6 bg-amber-50 border-l-4 border-amber-500 p-3.5 rounded-r text-xs flex items-center gap-2.5 shadow-sm animate-fadeIn">
+            <Zap className="w-4 h-4 text-amber-600 flex-shrink-0" />
+            <span className="font-semibold text-amber-900">{replanNotice}</span>
+          </div>
+        )}
+
+        {/* 1. Calm Financial Hero Card */}
+        <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <p className="text-xs font-bold text-amber-900 uppercase tracking-wider">Dynamic Adaptation Triggered</p>
-              <p className="text-sm text-amber-800">{replanNotice}</p>
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                Estimated Family Out-of-Pocket Liability
+              </span>
+              <div className="text-2xl sm:text-3xl font-extrabold text-paytm-navy mt-0.5 font-mono">
+                {formatINR(gap.gap_low)} &ndash; {formatINR(gap.gap_high)}
+              </div>
+            </div>
+            <div className="sm:text-right">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                Expected Gap
+              </span>
+              <span className="text-lg sm:text-xl font-bold text-amber-800">
+                ~{formatINR(gap.gap_expected)}
+              </span>
+            </div>
+          </div>
+
+          {/* Visual Split Bar */}
+          <div className="space-y-1.5 mb-4">
+            <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden flex">
+              <div
+                style={{ width: `${coveragePercent}%` }}
+                className="bg-emerald-500 transition-all duration-500"
+                title={`Likely Covered: ${formatINR(gap.likely_covered_total)}`}
+              />
+              <div
+                style={{ width: `${100 - coveragePercent}%` }}
+                className="bg-amber-400 transition-all duration-500"
+                title={`Family Out-of-Pocket: ${formatINR(gap.gap_expected)}`}
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                Insurance Covers: {formatINR(gap.likely_covered_total)} ({coveragePercent}%)
+              </span>
+              <span className="flex items-center gap-1.5 text-amber-900">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                Family Arranges: ~{formatINR(gap.gap_expected)}
+              </span>
+            </div>
+          </div>
+
+          {/* Why this range? (Compact Explainer Drawer) */}
+          <div className="bg-slate-50 rounded-lg p-3 text-xs text-slate-600 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Info className="w-4 h-4 text-paytm-cyan flex-shrink-0" />
+              <span>
+                Based on Room Rent cap (₹5,000/day) & 10% non-payable hospital consumables (gloves, syringes).
+              </span>
+            </div>
+            <button
+              onClick={() => setActiveTab("breakdown")}
+              className="text-paytm-navy font-bold hover:underline flex-shrink-0 flex items-center gap-1 text-[11px]"
+            >
+              <span>See Clause Details</span>
+              <ChevronRight className="w-3 h-3" />
+            </button>
+          </div>
+        </div>
+
+        {/* 2. Urgent Next Best Action (Single clear callout) */}
+        <div className="bg-paytm-navy text-white rounded-xl p-4 sm:p-5 shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-4 border-paytm-cyan">
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-paytm-cyan text-paytm-navy rounded-md flex-shrink-0 mt-0.5">
+              <Clock className="w-4 h-4 font-bold" />
+            </div>
+            <div>
+              <span className="text-[11px] font-bold text-paytm-cyan uppercase tracking-wider block">
+                Your Next Immediate Step
+              </span>
+              <h3 className="text-sm sm:text-base font-bold text-white mt-0.5">
+                {journey.next_best_action || FALLBACK_JOURNEY.next_best_action}
+              </h3>
+              <p className="text-[11px] text-slate-300 mt-0.5">
+                Takes ~15 mins &bull; Required to secure cashless pre-authorization sanction
+              </p>
+            </div>
+          </div>
+
+          <NextLink
+            href="/documents"
+            className="inline-flex items-center justify-center gap-1.5 bg-paytm-cyan text-paytm-navy px-3.5 py-2 rounded font-bold text-xs hover:brightness-105 transition-all flex-shrink-0 self-start sm:self-auto"
+          >
+            <span>View Required IDs</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </NextLink>
+        </div>
+
+        {/* 3. Three Focused Tabs: Journey, Breakdown, Funding */}
+        <div className="flex border-b border-slate-200 mb-6 bg-white rounded-t-lg px-2">
+          <button
+            onClick={() => setActiveTab("journey")}
+            className={`px-4 py-3 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
+              activeTab === "journey"
+                ? "border-paytm-navy text-paytm-navy"
+                : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            <Clock className="w-4 h-4 text-paytm-cyan" />
+            <span>Living Journey & Tasks</span>
+            <span className="text-[11px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-600">
+              {journey.checklist.filter(c => c.status === "done" || c.status === "completed").length}/{journey.checklist.length}
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("breakdown")}
+            className={`px-4 py-3 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
+              activeTab === "breakdown"
+                ? "border-paytm-navy text-paytm-navy"
+                : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            <FileText className="w-4 h-4 text-paytm-cyan" />
+            <span>Clause Evidence</span>
+            <span className="text-[11px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-600">
+              {journey.coverage_findings.length}
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("funding")}
+            className={`px-4 py-3 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
+              activeTab === "funding"
+                ? "border-paytm-navy text-paytm-navy"
+                : "border-transparent text-slate-500 hover:text-slate-800"
+            }`}
+          >
+            <CreditCard className="w-4 h-4 text-paytm-cyan" />
+            <span>Payment & Deposit</span>
+            <span className="text-[11px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">
+              ₹50k Caution
+            </span>
+          </button>
+        </div>
+
+        {/* Tab 1: Journey Timeline & Checklist */}
+        {activeTab === "journey" && (
+          <div className="space-y-6">
+            {/* The Living Journey Line */}
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+                <div>
+                  <h3 className="text-sm font-bold text-paytm-navy">Timeline of Events & Approvals</h3>
+                  <p className="text-[11px] text-slate-500">Live synchronization with hospital counter and TPA desk</p>
+                </div>
+                <span className="text-[11px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                  Live
+                </span>
+              </div>
+
+              <LivingJourneyLine
+                events={journey.timeline_events || FALLBACK_JOURNEY.timeline_events}
+                onReplan={handleSimulateReplan}
+                isReplanning={isReplanning}
+              />
+            </div>
+
+            {/* Checklist items */}
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+              <h3 className="text-sm font-bold text-paytm-navy mb-3">Family Admission Checklist</h3>
+              <div className="space-y-2.5">
+                {journey.checklist.map((item, idx) => (
+                  <div
+                    key={item.id || idx}
+                    className={`p-3 rounded-lg border text-xs flex items-start justify-between gap-3 ${
+                      item.title.includes("URGENT")
+                        ? "bg-amber-50 border-amber-300 ring-1 ring-amber-300"
+                        : "bg-slate-50 border-slate-200"
+                    }`}
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <input
+                        type="checkbox"
+                        checked={item.status === "done" || item.status === "completed"}
+                        readOnly
+                        className="mt-0.5 rounded text-paytm-cyan focus:ring-0"
+                      />
+                      <div>
+                        <p className={`font-bold ${item.title.includes("URGENT") ? "text-amber-900" : "text-slate-800"}`}>
+                          {item.title}
+                        </p>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          Responsible: <span className="font-semibold text-slate-700">{item.responsible_party}</span> &bull; Target: <span className="font-semibold text-slate-700">{item.deadline_minutes} mins</span>
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600 flex-shrink-0">
+                      {item.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
 
-        {/* Pinned Next Best Action Card */}
-        <div className="mb-8 bg-paytm-navy text-white rounded-lg p-5 sm:p-6 shadow-md border-l-8 border-paytm-cyan">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-start gap-3.5">
-              <div className="p-2.5 bg-paytm-cyan text-paytm-navy rounded-md flex-shrink-0 mt-0.5">
-                <Clock className="w-5 h-5 font-bold" />
-              </div>
-              <div>
-                <span className="text-xs font-bold text-paytm-cyan uppercase tracking-wider">
-                  {t.nextBestAction} &bull; Immediate Urgency
-                </span>
-                <h2 className="text-lg sm:text-xl font-bold mt-0.5 text-white">
-                  {journey.next_best_action || FALLBACK_JOURNEY.next_best_action}
-                </h2>
-                <p className="text-xs text-blue-200 mt-1">
-                  Assigned to: <span className="font-semibold text-white">Family Attendant</span> &bull; Estimated completion time: 15-20 mins
-                </p>
-              </div>
-            </div>
-
-            <NextLink
-              href="/documents"
-              className="inline-flex items-center justify-center gap-2 bg-paytm-cyan text-paytm-navy px-4 py-2.5 rounded font-bold text-sm hover:brightness-105 transition-all flex-shrink-0"
-            >
-              <span>Verify Required Documents</span>
-              <ArrowRight className="w-4 h-4" />
-            </NextLink>
-          </div>
-        </div>
-
-        {/* Financial Gap Summary: Honest Estimated Range */}
-        <section className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-xl font-bold text-paytm-navy flex items-center gap-2">
-                <span>{t.whereYouStand}</span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded bg-blue-100 text-paytm-navy">
-                  IRDAI Compliant Estimate
-                </span>
-              </h2>
-              <p className="text-xs text-paytm-muted mt-0.5">
-                Calculated from verified policy clauses, standard deductions, and hospital billing estimate.
+        {/* Tab 2: Clause Evidence & Policy Breakdown */}
+        {activeTab === "breakdown" && (
+          <div className="space-y-4">
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+              <h3 className="text-sm font-bold text-paytm-navy mb-1">Clause-Verified Policy Coverage</h3>
+              <p className="text-xs text-slate-500 mb-4">
+                Click any line item to inspect the verbatim policy text extracted from your document.
               </p>
-            </div>
-            <NextLink
-              href={`/journey/${journeyId}/coverage`}
-              className="text-xs font-semibold text-paytm-navy hover:underline flex items-center gap-1"
-            >
-              <span>See clause calculations</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </NextLink>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* 1. Total Hospital Estimate */}
-            <div className="bg-white rounded-lg p-5 border border-paytm-border shadow-sm">
-              <span className="text-xs font-bold text-paytm-muted uppercase tracking-wider block mb-1">
-                {t.totalEstimate}
-              </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-paytm-navy">
-                {formatINR(gap.estimated_total_cost)}
-              </div>
-              <p className="text-xs text-paytm-muted mt-2 flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-gray-400" />
-                <span>Pre-admission estimate provided by hospital</span>
-              </p>
-            </div>
-
-            {/* 2. Likely Covered Total */}
-            <div className="bg-white rounded-lg p-5 border border-emerald-200 shadow-sm bg-emerald-50/20">
-              <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-1">
-                {t.likelyCovered}
-              </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700">
-                {formatINR(gap.likely_covered_total)}
-              </div>
-              <p className="text-xs text-emerald-800 mt-2 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Subject to final claim scrutiny & TPA sanction</span>
-              </p>
-            </div>
-
-            {/* 3. Honest Estimated Out-of-Pocket Range */}
-            <div className="bg-white rounded-lg p-5 border-2 border-amber-300 shadow-sm bg-amber-50/25">
-              <span className="text-xs font-bold text-amber-900 uppercase tracking-wider block mb-1">
-                {t.outOfPocketRange}
-              </span>
-              <div className="text-xl sm:text-2xl font-extrabold text-amber-900 font-mono">
-                {formatINR(gap.gap_low)} &ndash; {formatINR(gap.gap_high)}
-              </div>
-              <div className="mt-2 text-xs font-semibold text-paytm-navy flex items-center justify-between">
-                <span>Expected Out-of-Pocket:</span>
-                <span className="text-sm font-bold text-amber-800">{formatINR(gap.gap_expected)}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Transparent Assumptions & Deductions Breakdown */}
-          <div className="mt-4 bg-white rounded-lg p-5 border border-paytm-border shadow-sm">
-            <h3 className="text-xs font-bold text-paytm-navy uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <Info className="w-4 h-4 text-paytm-navy" />
-              <span>Why This Out-of-Pocket Range Exists (Configurable Policy Deductions)</span>
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4 text-xs">
-              <div className="bg-paytm-sky p-3 rounded border border-blue-100">
-                <span className="font-semibold text-paytm-navy block mb-0.5">Room Rent Proportional Penalty</span>
-                <span className="text-sm font-bold text-red-600">{formatINR(gap.room_rent_penalty)}</span>
-                <p className="text-paytm-muted mt-1 leading-snug">
-                  Policy caps room at ₹5,000/day. ICU billed at ₹8,500/day triggers proportional deduction on associated services.
-                </p>
-              </div>
-
-              <div className="bg-paytm-sky p-3 rounded border border-blue-100">
-                <span className="font-semibold text-paytm-navy block mb-0.5">Non-Payable Consumables (10%)</span>
-                <span className="text-sm font-bold text-red-600">{formatINR(gap.non_payable_consumables)}</span>
-                <p className="text-paytm-muted mt-1 leading-snug">
-                  IRDAI non-payable list (gloves, PPE kits, cotton, administrative charge kits).
-                </p>
-              </div>
-
-              <div className="bg-paytm-sky p-3 rounded border border-blue-100">
-                <span className="font-semibold text-paytm-navy block mb-0.5">Co-Payment / Voluntary Deductible</span>
-                <span className="text-sm font-bold text-paytm-navy">{formatINR(gap.copay_amount)} (0%)</span>
-                <p className="text-paytm-muted mt-1 leading-snug">
-                  No co-pay detected in primary policy document. 100% indemnity on admissible sub-limits.
-                </p>
-              </div>
-            </div>
-
-            <ul className="space-y-1.5 border-t border-gray-100 pt-3">
-              {gap.assumptions.map((item, idx) => (
-                <li key={idx} className="text-xs text-paytm-muted flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-paytm-cyan flex-shrink-0 mt-1.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Two-Column Grid: Left (The Living Journey Line) & Right (Immediate Action Checklist) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: The Living Journey Line */}
-          <section className="lg:col-span-7 bg-white rounded-lg p-5 sm:p-6 border border-paytm-border shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="text-lg font-bold text-paytm-navy flex items-center gap-2">
-                  <span>{t.livingTimeline}</span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                </h2>
-                <p className="text-xs text-paytm-muted mt-0.5">
-                  Synchronized with Hospital Desk, Insurer TPA, and Family Actions.
-                </p>
-              </div>
-              <button
-                onClick={handleSimulateReplan}
-                disabled={isReplanning}
-                className="text-xs font-semibold text-paytm-navy hover:text-blue-900 flex items-center gap-1 bg-blue-50 px-2.5 py-1.5 rounded border border-blue-200"
-              >
-                <RefreshCw className={`w-3 h-3 ${isReplanning ? "animate-spin" : ""}`} />
-                <span>Simulate Query</span>
-              </button>
-            </div>
-
-            <LivingJourneyLine
-              events={journey.timeline_events || FALLBACK_JOURNEY.timeline_events}
-              onReplan={handleSimulateReplan}
-              isReplanning={isReplanning}
-            />
-          </section>
-
-          {/* Right Column: Required Action Checklist & Quick Actions */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Checklist Card */}
-            <div className="bg-white rounded-lg p-5 sm:p-6 border border-paytm-border shadow-sm">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-bold text-paytm-navy flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-paytm-cyan" />
-                  <span>Priority Admission Checklist</span>
-                </h3>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-paytm-sky text-paytm-navy">
-                  {journey.checklist.filter(c => c.status === "done").length}/{journey.checklist.length} Completed
-                </span>
-              </div>
 
               <div className="space-y-3">
-                {journey.checklist.map((item, idx) => (
+                {journey.coverage_findings.map((finding, idx) => (
                   <div
-                    key={item.id || idx}
-                    className={`p-3.5 rounded border transition-all ${
-                      item.status === "done"
-                        ? "bg-emerald-50/30 border-emerald-200 opacity-70"
-                        : item.title.includes("URGENT")
-                        ? "bg-amber-50/60 border-amber-300 ring-1 ring-amber-300"
-                        : "bg-paytm-sky/50 border-blue-100 hover:border-blue-200"
-                    }`}
+                    key={idx}
+                    onClick={() => setSelectedClaim({ ...finding, is_verified: finding.verified_against_source })}
+                    className="p-4 rounded-lg border border-slate-200 hover:border-paytm-cyan transition-all cursor-pointer bg-slate-50/50 hover:bg-blue-50/20"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-start gap-2.5">
-                        <input
-                          type="checkbox"
-                          checked={item.status === "done"}
-                          readOnly
-                          className="mt-0.5 rounded text-paytm-cyan focus:ring-0"
-                        />
-                        <div>
-                          <p className={`text-xs font-bold ${item.title.includes("URGENT") ? "text-amber-900" : "text-paytm-navy"}`}>
-                            {item.title}
-                          </p>
-                          <div className="flex flex-wrap items-center gap-2 mt-1 text-[11px] text-paytm-muted">
-                            <span>Actor: <strong className="text-gray-700">{item.responsible_party}</strong></span>
-                            <span>&bull;</span>
-                            <span>Within: <strong className="text-gray-700">{item.deadline_minutes} mins</strong></span>
-                          </div>
-                        </div>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-xs text-paytm-navy">{finding.category}</span>
+                        {finding.verified_against_source ? (
+                          <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">
+                            Verified in Policy
+                          </span>
+                        ) : (
+                          <span className="text-[10px] bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">
+                            Needs TPA Confirmation
+                          </span>
+                        )}
                       </div>
-                      <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${
-                        item.status === "done" ? "bg-emerald-100 text-emerald-800" : "bg-blue-100 text-paytm-navy"
-                      }`}>
-                        {item.status}
+                      <span className="font-mono text-xs font-semibold text-slate-500">
+                        Clause {finding.clause_ref}
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 italic border-l-2 border-paytm-cyan pl-2 mb-2">
+                      &ldquo;{finding.evidence_passage}&rdquo;
+                    </p>
+
+                    <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                      <span className="text-slate-500">
+                        {finding.evidence_doc} &bull; Page {finding.evidence_page}
+                      </span>
+                      <span className="font-semibold text-paytm-navy">
+                        Likely Covered: <strong className="text-emerald-700">{formatINR(finding.likely_covered)}</strong>
+                        {finding.out_of_pocket > 0 && (
+                          <span className="ml-2 text-amber-900">(Gap: {formatINR(finding.out_of_pocket)})</span>
+                        )}
                       </span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        )}
 
-            {/* Quick Links Card */}
-            <div className="bg-white rounded-lg p-5 border border-paytm-border shadow-sm space-y-3">
-              <h4 className="text-xs font-bold text-paytm-navy uppercase tracking-wider mb-2">
-                Emergency Tools & Evidence
-              </h4>
-
-              <NextLink
-                href="/documents"
-                className="flex items-center justify-between p-3 rounded bg-paytm-sky hover:bg-blue-100/60 transition-colors border border-blue-100"
-              >
-                <div className="flex items-center gap-2.5">
-                  <FileText className="w-4 h-4 text-paytm-navy" />
-                  <span className="text-xs font-bold text-paytm-navy">Document Hub & Aadhaar Masking</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-paytm-navy" />
-              </NextLink>
-
-              <NextLink
-                href={`/journey/${journeyId}/funding`}
-                className="flex items-center justify-between p-3 rounded bg-emerald-50 hover:bg-emerald-100/60 transition-colors border border-emerald-100"
-              >
-                <div className="flex items-center gap-2.5">
-                  <CreditCard className="w-4 h-4 text-emerald-800" />
-                  <span className="text-xs font-bold text-emerald-900">Explore Funding & UPI Deposit</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-emerald-800" />
-              </NextLink>
-
-              <NextLink
-                href="/counselor"
-                className="flex items-center justify-between p-3 rounded bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200"
-              >
-                <div className="flex items-center gap-2.5">
-                  <Building2 className="w-4 h-4 text-paytm-muted" />
-                  <span className="text-xs font-bold text-paytm-navy">Hospital Counselor View</span>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-paytm-muted" />
-              </NextLink>
-            </div>
-
-            {/* Privacy & Hard Delete */}
-            <div className="p-4 rounded border border-red-200 bg-red-50/30">
-              <div className="flex items-center justify-between">
+        {/* Tab 3: Emergency Funding & Payments */}
+        {activeTab === "funding" && (
+          <div className="space-y-6">
+            {/* Caution deposit card */}
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+              <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h4 className="text-xs font-bold text-red-900">Patient Privacy & Right to Erasure</h4>
-                  <p className="text-[11px] text-red-700 mt-0.5">
-                    Hard-delete this journey, documents, and embeddings permanently.
-                  </p>
+                  <h3 className="text-sm font-bold text-paytm-navy">Hospital Caution Deposit (₹50,000)</h3>
+                  <p className="text-xs text-slate-500">Required by hospital admission counter for ICU bed allocation</p>
                 </div>
-                <button
-                  onClick={() => setDeleteConfirmOpen(true)}
-                  className="px-2.5 py-1.5 rounded text-xs font-bold bg-white text-red-600 border border-red-300 hover:bg-red-50"
-                >
-                  Delete Data
-                </button>
+                <span className="text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">
+                  Urgent
+                </span>
               </div>
 
-              {deleteConfirmOpen && (
-                <div className="mt-3 pt-3 border-t border-red-200 text-xs text-red-800">
-                  <p className="mb-2">Are you sure? This will remove all session records permanently.</p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleDeleteData}
-                      disabled={isDeleting}
-                      className="px-3 py-1 bg-red-600 text-white font-bold rounded hover:bg-red-700"
-                    >
-                      {isDeleting ? "Deleting..." : "Confirm Hard Delete"}
-                    </button>
-                    <button
-                      onClick={() => setDeleteConfirmOpen(false)}
-                      className="px-3 py-1 bg-white border border-gray-300 text-gray-700 font-semibold rounded hover:bg-gray-50"
-                    >
-                      Cancel
-                    </button>
+              {depositPaid ? (
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0" />
+                  <div className="text-xs text-emerald-900">
+                    <span className="font-bold">₹50,000 Deposit Acknowledged! </span>
+                    <span>Digital receipt generated (TXN-88492019) and transmitted to Counter #4.</span>
                   </div>
+                </div>
+              ) : (
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-paytm-sky rounded-lg border border-blue-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-white rounded border border-paytm-border flex items-center justify-center text-paytm-navy font-mono text-xs">
+                      <QrCode className="w-7 h-7 text-paytm-navy" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-paytm-navy block">Pay via Paytm UPI</span>
+                      <span className="text-[11px] text-slate-500">Instant direct hospital settlement</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setDepositPaid(true)}
+                    className="w-full sm:w-auto bg-paytm-cyan text-paytm-navy font-bold px-4 py-2 rounded text-xs hover:brightness-105 shadow-sm"
+                  >
+                    Simulate UPI Pay (₹50,000)
+                  </button>
                 </div>
               )}
             </div>
+
+            {/* Emergency Credit line */}
+            <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span className="text-xs font-bold text-paytm-navy">Paytm Emergency Care Credit (Direct to Hospital)</span>
+                <span className="text-[11px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-200">
+                  Demo Partner, illustrative terms, not a real offer
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 mb-3">
+                Pre-approved emergency line up to ₹1,50,000 to bridge the out-of-pocket gap with 6-month zero-interest terms.
+              </p>
+              <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+                <span className="font-semibold text-paytm-navy">Disbursal in ~10 mins to hospital account</span>
+                <button
+                  type="button"
+                  className="px-3 py-1.5 bg-paytm-navy text-white font-bold rounded text-xs hover:bg-opacity-95"
+                >
+                  Request Disbursal
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </main>
 
-      {/* Footer Disclaimer */}
-      <footer className="mt-auto py-6 bg-white border-t border-paytm-border text-center text-xs text-paytm-muted">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Verified Evidence Modal */}
+      {selectedClaim && (
+        <EvidenceModal
+          claim={selectedClaim}
+          onClose={() => setSelectedClaim(null)}
+        />
+      )}
+
+      {/* Footer */}
+      <footer className="mt-auto py-4 bg-white border-t border-slate-200 text-center text-[11px] text-slate-500">
+        <div className="max-w-4xl mx-auto px-4">
           <p>{t.disclaimer}</p>
-          <p className="mt-1 font-mono text-[11px]">Paytm AI Hackathon 2024 &bull; Team Crazy Coders (PS-2 Financial Journeys)</p>
         </div>
       </footer>
     </div>
   );
 }
-
