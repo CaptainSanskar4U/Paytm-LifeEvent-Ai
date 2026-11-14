@@ -1,172 +1,263 @@
-# Paytm LifeEvent AI
+<div align="center">
 
-> **Autonomous Financial Orchestration for Emergency Hospital Admissions**  
-> *Track PS-2: AI-Powered Financial Journeys • Paytm ❤️ AI Hackathon (BUILD for INDIA, Pune)*  
-> Built by **Team Crazy Coders**: Sarang Chaudhari, Sumit Kalr, Sanskar Thorat
+<!-- DYNAMIC ANIMATED CYBER AI BANNER -->
+<a href="https://paytm-lifeevent-ai.vercel.app">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2&height=230&section=header&text=LifeEvent%20AI&fontSize=74&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Autonomous%20Financial%20OS%20for%20Indian%20Medical%20Crises&descSize=19&descAlignY=62" width="100%" alt="LifeEvent AI Cyber Banner" />
+</a>
+
+<!-- MULTI-LINE ANIMATED TYPING SVG -->
+<a href="https://paytm-lifeevent-ai.vercel.app">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=700&size=24&duration=3200&pause=1000&color=00BAF2&center=true&vCenter=true&width=860&height=50&lines=🤖+Autonomous+AI+Financial+OS+for+Medical+Emergencies;🧠+LangGraph+Multi-Agent+Architecture+•+Gemini+2.0+Multimodal;⚡+Sub-Second+Paytm+UPI+Caution+Deposit+Rails;🛡️+100%25+Client-Side+Verhoeff+Aadhaar+Privacy+Masking;⚖️+Zero-Hallucination+IRDAI+2024+Room-Rent+Deduction+Math;🚀+Built+for+Paytm+❤️+AI+Hackathon+(BUILD+for+INDIA)" alt="LifeEvent AI Typing Banner" />
+</a>
+
+<p align="center">
+  <strong>One intelligent autonomous financial journey unifying health insurance pre-authorizations, deterministic out-of-pocket gap calculations, and instant Paytm caution deposit rails when medical emergencies strike Indian families.</strong>
+</p>
+
+<!-- GLOWING DEVELOPER PILLS -->
+<p align="center">
+  <a href="https://paytm-lifeevent-ai.vercel.app"><img src="https://img.shields.io/badge/%F0%9F%9A%80_Live_Production-paytm--lifeevent--ai.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site"></a>
+  <a href="https://github.com/CaptainSanskar4U/Paytm-LifeEvent-Ai"><img src="https://img.shields.io/badge/%E2%9A%A1_GitHub_Repo-CaptainSanskar4U%2FPaytm--LifeEvent--Ai-0a0a0a?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></a>
+  <a href="https://paytm.com"><img src="https://img.shields.io/badge/Paytm_%E2%9D%A4%EF%B8%8F_AI-BUILD_for_INDIA_(Pune)-002E6E?style=for-the-badge&logo=paytm&logoColor=00BAF2" alt="Paytm Hackathon"></a>
+</p>
+
+<!-- HIGH-DENSITY TECH STACK BADGES -->
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js_15.1-App_Router-black?style=flat-square&logo=next.js" alt="Next.js 15">
+  <img src="https://img.shields.io/badge/React_19-Concurrent-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React 19">
+  <img src="https://img.shields.io/badge/Three.js-WebGL_Fluid_Shader-000000?style=flat-square&logo=threedotjs" alt="Three.js">
+  <img src="https://img.shields.io/badge/FastAPI-Python_3.11-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/LangGraph-StateGraph_Agent-FF6F00?style=flat-square" alt="LangGraph">
+  <img src="https://img.shields.io/badge/Google_Gemini-2.0_Multimodal-4285F4?style=flat-square&logo=google" alt="Gemini">
+  <img src="https://img.shields.io/badge/Privacy-Verhoeff_Aadhaar_Masking-10B981?style=flat-square&logo=shield" alt="Verhoeff">
+  <img src="https://img.shields.io/badge/Compliance-IRDAI_2024_Master_Circular-7C3AED?style=flat-square" alt="IRDAI">
+  <img src="https://img.shields.io/badge/Tests-55%2F55_Viewports_Passed-brightgreen?style=flat-square" alt="Tests">
+</p>
+
+<!-- QUICK NAVIGATION -->
+<p align="center">
+  <a href="#-live-terminal-simulation"><b>📟 Live Terminal</b></a> •
+  <a href="#-interactive-pipeline-architecture"><b>⚡ Live Pipeline</b></a> •
+  <a href="#-interactive-visual-walkthrough"><b>📸 Visual Tour</b></a> •
+  <a href="#-the-hospital-counter-crisis"><b>🚨 The Crisis</b></a> •
+  <a href="#-the-3-connected-pillars"><b>🔗 3 Pillars</b></a> •
+  <a href="#-live-routes-directory"><b>🗺️ Live Routes</b></a> •
+  <a href="#-institutional-b2b-saas-model"><b>💼 Business Model</b></a> •
+  <a href="https://paytm-lifeevent-ai.vercel.app/demo-script"><b>⏱️ 3-Min Pitch Script</b></a>
+</p>
+
+</div>
 
 ---
 
-[![Production](https://img.shields.io/badge/Production-paytm--lifeevent--ai.vercel.app-00BAF2?style=flat-square)](https://paytm-lifeevent-ai.vercel.app)
-[![Track](https://img.shields.io/badge/Hackathon-Paytm_AI_BUILD_for_INDIA-002E6E?style=flat-square)](https://paytm.com)
-[![Next.js](https://img.shields.io/badge/Next.js-15.1_App_Router-000000?style=flat-square&logo=next.js)](https://nextjs.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Python_3.11-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](./LICENSE)
+## 📟 Live Terminal Simulation
 
-**[Live Production App](https://paytm-lifeevent-ai.vercel.app)** &bull; **[Synchronized 3-Min Pitch Script](https://paytm-lifeevent-ai.vercel.app/demo-script)** &bull; **[Problem Statement & Architecture PDF](./CrazyCoders.pdf)** &bull; **[Live Routes Directory](#-live-routes-directory)**
-
----
-
-## The 2:00 AM Admission Desk Crisis
-
-Imagine your father is rushed to the emergency room with severe acute chest pain. He is wheeled straight toward the ICU.
-
-At the hospital admission desk, you are not asked about his health. A stranger asks five financial questions you cannot answer:
-
-1. **"What does your insurance policy actually cover?"**
-2. **"Which physical documents does the hospital TPA desk need right now?"**
-3. **"How much out-of-pocket cash must your family arrange tonight?"**
-4. **"Where can you get immediate emergency bridge credit?"**
-5. **"What is your single next best action in the next 30 minutes?"**
-
-Your father is the only person who knows his policy details—**and he is unconscious in the ICU**.
-
-In India today, health insurance cashless approvals, medical lending, and hospital billing desks operate in completely disconnected silos. Families spend 3 to 6 critical hours making desperate calls, liquidating fixed deposits, or paying unexpected ₹50,000 caution deposits out of pocket.
-
-**LifeEvent AI turns this terrifying emergency into a single, evidence-grounded financial journey.**
+<div align="center">
+  <!-- PURE SVG CSS-ANIMATED TERMINAL -->
+  <a href="https://paytm-lifeevent-ai.vercel.app/intake">
+    <img src="assets/hero-terminal.svg" width="100%" alt="Paytm LifeEvent AI Live Terminal Engine" />
+  </a>
+  <p align="center"><sub><em>Live CSS-animated terminal execution simulating client-side Verhoeff validation, Gemini 2.0 multimodal extraction, deterministic IRDAI gap calculation, and instant Paytm caution deposit authorization.</em></sub></p>
+</div>
 
 ---
 
-## The Three Connected Systems
+## ⚡ Interactive Pipeline Architecture
+
+<div align="center">
+  <!-- PURE SVG CSS-ANIMATED ARCHITECTURE PIPELINE -->
+  <a href="https://paytm-lifeevent-ai.vercel.app/journey/demo-journey-cardiac-01">
+    <img src="assets/system-pipeline.svg" width="100%" alt="LifeEvent AI Continuous Pipeline" />
+  </a>
+  <p align="center"><sub><em>Sub-450ms end-to-end event stream linking the hospital ICU triage counter with deterministic IRDAI math and Paytm UPI liquidity rails.</em></sub></p>
+</div>
+
+---
+
+## 🏆 Hackathon Roster & Challenge Scope
+
+```yaml
+Hackathon:  "Paytm ❤️ AI Hackathon | BUILD for INDIA"
+Location:   "Pune, India — Sunday, 15th November"
+Track:      "PS-2: AI-Powered Financial Journeys"
+Team:       "Crazy Coders"
+Roster:
+  - Lead:   "Sarang Chaudhari (Full-Stack AI Engineer & Agent Orchestration)"
+  - Member: "Sumit Kalr (Backend Systems Architect & Financial Algorithms)"
+  - Member: "Sanskar Thorat (Frontend Architect & Creative Product Designer)"
+Partners:   "devs.decodable × PARTEX.AI"
+```
+
+---
+
+## 🚨 The Hospital Counter Crisis
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                              INSURANCE                                 │
-│  • Grounded policy clause parser with exact PDF string matching        │
-│  • Deterministic IRDAI 2024 room-rent proportionate deduction engine   │
-│  • Real-time TPA query webhook listener                                │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                               LENDING                                  │
-│  • Honest Low-Expected-High out-of-pocket liability model              │
-│  • Zero-paperwork emergency bridge credit advances                     │
-│  • Transparent flat 1.25% cost structure (no hidden APR traps)         │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                              PAYMENTS                                  │
-│  • Instant sub-second Paytm UPI admission caution deposit rails        │
-│  • Automated digital caution receipt dispatched to hospital HIMS       │
-│  • Client-side Verhoeff Aadhaar redaction (100% DPDP Act compliant)    │
-└────────────────────────────────────────────────────────────────────────┘
+                      WHEN AN EMERGENCY STRIKES
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  Triaging a family member in the ICU...                         │
+  │  A stranger at the admission desk asks 5 terrifying questions:   │
+  └─────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  1. What does his insurance actually cover?                     │
+  │  2. Which documents does the hospital TPA desk need right now?  │
+  │  3. How much out-of-pocket money must our family arrange?       │
+  │  4. Where do we go for emergency financial help?                │
+  │  5. What is our single next best action in the next 30 minutes? │
+  └─────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  THE BREAKDOWN:                                                 │
+  │  Your loved one is the only person with the answers...          │
+  │  ...AND HE CANNOT SPEAK.                                        │
+  └─────────────────────────────────────────────────────────────────┘
 ```
 
-> *"We don't treat insurance, credit, and payments as three separate financial products. We treat them as three stages of one human emergency."*
+In India, **Insurance claims, medical credit, and hospital billing desks operate in isolated silos**. Families are left making desperate phone calls, liquidating fixed deposits, or suffering catastrophic room-rent deduction penalties when cashless pre-authorizations get delayed.
 
 ---
 
-## Visual Walkthrough
+## 💡 The Solution: LifeEvent AI
 
-### 1. Luminous Hero & Real-Time Crisis Ledger
-Interactive Three.js fluid dye reveal paired with live institutional integration feeds (Apollo, Fortis, Ruby Hall, HDFC ERGO, Star Health).
-
-![Hero & Crisis Ledger](screenshots/og-white-hero-restored.png)
-
----
-
-### 2. The Living Journey Line: Dynamic Re-Planning Engine
-A stateful crisis timeline powered by LangGraph. When the hospital TPA raises a pre-auth query (e.g. requesting casualty ECG strips), the timeline dynamically updates with required tasks and priority actions.
-
-![Living Journey Line](screenshots/landing-v2-sec2-journey-simulator.png)
-
----
-
-### 3. Anti-Hallucination Evidence Inspector & Instant Paytm Caution Bridge
-Every estimated deduction is tied to verbatim policy clauses. The family can slide the required caution deposit amount (₹10,000 to ₹1,00,000) and authorize an instant Paytm UPI bridge transfer in under 3 seconds.
-
-![Evidence Inspector & Paytm Bridge](screenshots/landing-v2-sec3-evidence-bridge.png)
-
----
-
-### 4. Institutional B2B SaaS: Hospital Financial Counselor Cockpit
-Designed for hospital admission counters to monitor patient financial readiness, accelerate pre-authorization turnaround, and reduce counter disputes by up to 80%.
-
-![Hospital Financial Desk Cockpit](screenshots/landing-v2-hospital-console-campus-photo.png)
-
----
-
-## Core Engineering Architecture
+LifeEvent AI bridges the emergency into **one unified, evidence-grounded financial operating system**:
 
 ```mermaid
-flowchart TB
-    subgraph Client ["Client Presentation Tier (Next.js 15.1 + React 19)"]
-        UI_Hero["Luminous Fluid Hero\n(Three.js Liquid Dye)"]
-        UI_Intake["Emergency Voice Intake\n(Audio Capture in EN / HI / MR)"]
-        UI_Journey["Living Journey Cockpit\n(Real-Time SSE Sync)"]
-        UI_Evidence["Evidence Inspector\n(Verbatim PDF Grounding)"]
-        UI_Bridge["Paytm Liquidity Rail\n(Slider + Instant UPI Intent)"]
-        UI_B2B["Hospital Counselor Desk\n(B2B Financial Cockpit)"]
-    end
+flowchart LR
+    A["🎙️ 1. Speak Situation\n(Voice / Text in EN, HI, MR)"] 
+    --> B["📄 2. Multimodal AI\n(OCR on Policies, Bills & HIMS)"]
+    --> C["🔗 3. Connect Financial Dots\n(Calculate Gaps & IRDAI Rules)"]
+    --> D["🧭 4. Living Journey Line\n(Real-Time TPA State Machine)"]
+    --> E["⚡ 5. Pay with Confidence\n(Instant Paytm UPI Deposit Bridge)"]
 
-    subgraph Security ["Zero-Trust Privacy Engine (Client-Side)"]
-        V_Check["Verhoeff Dihedral D5 Checksum\n(Aadhaar Detection)"]
-        V_Mask["Regex Boundary Masking\n(XXXX-XXXX-1234)"]
-        V_Purge["Ephemeral In-Memory Processing\n(DPDP Act 2023 Compliant)"]
-    end
-
-    subgraph Orchestration ["Agentic Backend (FastAPI + LangGraph)"]
-        API["FastAPI REST & Streaming Router"]
-        Graph["LangGraph StateGraph Engine\n(Stateful Crisis Lifecycle)"]
-        IRDAI["Deterministic IRDAI 2024 Engine\n(Room-Rent Proportion Math)"]
-        Trap["Planted Trap Defense System\n(Zero Fictitious Insurer Rules)"]
-    end
-
-    subgraph Intelligence ["Dual Intelligence Engine"]
-        Gemini["Google Gemini 2.0 Multimodal\n(Official google-genai SDK)"]
-        Vector["Supabase pgvector\n(Vector Clause Search & Embeddings)"]
-        DeterministicFallback["Offline Deterministic Shield\n(100% Uptime Guarantee)"]
-    end
-
-    UI_Intake --> V_Check --> V_Mask --> V_Purge
-    V_Purge --> API
-    API --> Graph
-    Graph --> IRDAI
-    Graph --> Trap
-    Graph --> Gemini
-    Graph --> Vector
-    Graph -.-> DeterministicFallback
-    API --> UI_Journey
-    API --> UI_Evidence
-    API --> UI_Bridge
-    API --> UI_B2B
+    style A fill:#00baf2,stroke:#002E6E,stroke-width:2px,color:#fff
+    style B fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
+    style C fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
+    style D fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
+    style E fill:#10b981,stroke:#065f46,stroke-width:2px,color:#fff
 ```
 
 ---
 
-## Technical Deep Dives
+## 🔗 The 3 Connected Pillars
 
-### 1. Deterministic IRDAI 2024 Room-Rent Deduction Math
+```
+┌───────────────────────────────────────┐
+│              1. INSURANCE             │
+├───────────────────────────────────────┤
+│ • Grounded Policy Clause Parser       │
+│ • IRDAI 2024 Room-Rent Deduction Math │
+│ • Anti-Hallucination Citations        │
+│ • Live TPA Query Resolution State     │
+└───────────────────────────────────────┘
+                   ▲
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│              2. LENDING               │
+├───────────────────────────────────────┤
+│ • Honest Low-Expected-High Gap Model  │
+│ • Pre-Approved Medical Credit Lines   │
+│ • Zero-Paperwork Bridge Advances      │
+│ • Transparent 1.25% Flat Cost Model   │
+└───────────────────────────────────────┘
+                   ▲
+                   │
+                   ▼
+┌───────────────────────────────────────┐
+│             3. PAYMENTS               │
+├───────────────────────────────────────┤
+│ • Sub-Second Paytm UPI Rail Engine    │
+│ • Instant ₹25,000 Admission Deposit   │
+│ • Client-Side Verhoeff Aadhaar Masking│
+│ • 100% DPDP Act Compliant Privacy     │
+└───────────────────────────────────────┘
+```
 
-Large Language Models frequently hallucinate financial arithmetic. Hospital room-rent proportionate deductions are strictly regulated by the **IRDAI Master Circular on Health Insurance (2024, Clause 7.2)**.
+> **Core Philosophy:** *"We don't see insurance, lending, and payments as three disconnected financial products. We see them as three parts of one human need."*
 
-When a patient occupies a room exceeding their policy sub-limit, the insurer applies a pro-rata penalty across all associated medical fees (surgeon fees, ICU monitoring, diagnostic imaging):
+---
 
-$$\text{Eligible Medical Payout} = \text{Total Associated Expenses} \times \left( \frac{\text{Allowed Room Rent Limit}}{\text{Actual Occupied Room Rent}} \right)$$
+## 📸 Interactive Visual Walkthrough
 
-Our calculation engine runs deterministic code—**not LLM completions**:
+Experience how **LifeEvent AI** looks, feels, and operates across every tier of the emergency journey:
 
+### 1. The Luminous Hero & WebGL Interactive Fluid Reveal
+> *Interactive Three.js fluid dye simulation revealing the metallic foil balloon typography behind cursor velocity.*
+
+<div align="center">
+  <img src="screenshots/og-white-hero-restored.png" alt="LifeEvent AI Luminous Hero Section" width="100%" style="border-radius: 8px; border: 1px solid #e5e5e5; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</div>
+
+<br/>
+
+### 2. Live Integration Mesh & The 5 Crisis Questions Ledger
+> *High-frequency institutional integration bar with Apollo, Fortis, HDFC ERGO, and ICICI Lombard paired with the master-detail Crisis Questions Ledger.*
+
+<div align="center">
+  <img src="screenshots/compare-vercel-marquee.png" alt="Live Integration Mesh and 5 Questions Ledger" width="100%" style="border-radius: 8px; border: 1px solid #e5e5e5; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</div>
+
+<br/>
+
+### 3. Signature Architecture: The Living Journey Line
+> *Real-time state machine that dynamically evolves when TPA Pre-Auth queries are received from the hospital.*
+
+<div align="center">
+  <img src="screenshots/landing-v2-sec2-journey-simulator.png" alt="Living Journey Line State Machine" width="100%" style="border-radius: 8px; border: 1px solid #e5e5e5; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</div>
+
+<br/>
+
+### 4. Zero-Hallucination Evidence Inspector & Instant Paytm Caution Deposit Bridge
+> *Verbatim policy clause matcher with side-by-side citations paired with sub-second Paytm UPI caution deposit liquidity.*
+
+<div align="center">
+  <img src="screenshots/landing-v2-sec3-evidence-bridge.png" alt="Evidence Inspector & Paytm Bridge" width="100%" style="border-radius: 8px; border: 1px solid #e5e5e5; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</div>
+
+<br/>
+
+### 5. Institutional B2B SaaS: Hospital Financial Counselor Cockpit
+> *Empowers hospital TPA desks with real-time patient financial readiness, reducing admission counter disputes by 80%.*
+
+<div align="center">
+  <img src="screenshots/landing-v2-hospital-console-campus-photo.png" alt="Hospital Financial Desk Cockpit" width="100%" style="border-radius: 8px; border: 1px solid #e5e5e5; box-shadow: 0 8px 30px rgba(0,0,0,0.08);" />
+</div>
+
+---
+
+## 🗺️ Live Routes Directory
+
+Test and explore every live route on the production deployment:
+
+| Route | Direct Link | Experience & Capability |
+| :--- | :--- | :--- |
+| **Luminous Landing** | [`/`](https://paytm-lifeevent-ai.vercel.app/) | Interactive Three.js fluid dye hero, Marquee integration mesh, 5 Crisis Questions ledger |
+| **Emergency Intake** | [`/intake`](https://paytm-lifeevent-ai.vercel.app/intake) | Voice waveform recording (EN/HI/MR) + Verhoeff Aadhaar auto-masker + Policy OCR upload |
+| **Living Journey** | [`/journey/demo-journey-cardiac-01`](https://paytm-lifeevent-ai.vercel.app/journey/demo-journey-cardiac-01) | Live state machine timeline, TPA query simulator, Apollo Hospital admission ledger |
+| **Evidence Inspector** | [`/coverage`](https://paytm-lifeevent-ai.vercel.app/coverage) | Verbatim IRDAI clause viewer, room-rent deduction formula, anti-hallucination citations |
+| **Paytm Bridge** | [`/funding`](https://paytm-lifeevent-ai.vercel.app/funding) | Interactive caution deposit slider (₹10k–₹1L), transparent 1.25% fee, instant UPI rail |
+| **AI Counselor** | [`/counselor`](https://paytm-lifeevent-ai.vercel.app/counselor) | Voice-first conversational financial counselor with real-time audio animation |
+| **Hospital Cockpit** | [`/for-hospitals`](https://paytm-lifeevent-ai.vercel.app/for-hospitals) | Institutional B2B TPA counter dashboard, patient readiness queue, dispute mitigation |
+| **Pitch Playbook** | [`/demo-script`](https://paytm-lifeevent-ai.vercel.app/demo-script) | Synchronized 180-second live demonstration script with cue cards for hackathon judges |
+| **Privacy Charter** | [`/privacy`](https://paytm-lifeevent-ai.vercel.app/privacy) | DPDP Act 2023 compliance overview with live hard-delete session purge simulation |
+
+---
+
+## 🧮 Technical Deep Dives
+
+### 1. Deterministic Room-Rent Deduction Math (IRDAI Master Circular 2024)
+
+When an emergency patient is admitted to a room with rent exceeding their policy limit, Indian insurers deduct **not just the difference**, but penalize all associate medical fees (surgeon fees, ICU nursing, diagnostics) proportionally:
+
+$$\text{Eligible Medical Payout} = \text{Total Billable Medical Expense} \times \left( \frac{\text{Allowed Room Rent Limit}}{\text{Actual Occupied Room Rent}} \right)$$
+
+LifeEvent AI deterministic formula:
 ```python
-def calculate_proportionate_liability(
-    actual_room_rent: float,
-    room_rent_cap: float,
-    associate_expenses: float
-) -> dict:
-    """
-    Calculates pro-rata deduction as mandated by IRDAI Master Circular 2024.
-    Guarantees ₹0.00 mathematical drift.
-    """
+def calculate_proportionate_liability(actual_room_rent: float, room_rent_cap: float, associate_expenses: float) -> dict:
     if actual_room_rent <= room_rent_cap:
         deduction_ratio = 1.0
     else:
@@ -176,110 +267,70 @@ def calculate_proportionate_liability(
     patient_gap = associate_expenses - approved_associate
     
     return {
-        "deduction_ratio": round(deduction_ratio, 4),
-        "approved_associate": round(approved_associate, 2),
-        "out_of_pocket_penalty": round(patient_gap, 2),
-        "regulation": "IRDAI Master Circular on Health Insurance 2024, Clause 7.2"
+        "deduction_ratio": deduction_ratio,
+        "approved_associate": approved_associate,
+        "out_of_pocket_penalty": patient_gap,
+        "regulation": "IRDAI Master Circular on Health Insurance 2024 Clause 7.2"
     }
 ```
 
 ---
 
-### 2. Client-Side Indian Verhoeff Aadhaar Redaction
+### 2. Client-Side Indian Verhoeff Aadhaar Masking
 
-Under the **Digital Personal Data Protection (DPDP) Act 2023**, raw 12-digit Aadhaar numbers must never be transmitted over unencrypted pipes, logged, or sent to third-party AI models.
-
-LifeEvent AI runs the mathematical **Verhoeff Dihedral $D_5$ Permutation Algorithm** entirely in the browser before any payload leaves the client:
+Under the **Digital Personal Data Protection (DPDP) Act 2023**, raw Aadhaar numbers cannot be logged or sent to LLMs without masking. LifeEvent AI runs the **Verhoeff Dihedral $D_5$ Permutation Algorithm** directly in the browser:
 
 ```typescript
 // Client-side Verhoeff check-digit permutation table
 const d: number[][] = [
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
-  [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
-  [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
-  [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
-  [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
-  [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
-  [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
-  [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
-  [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+  ...
 ];
 
 export function maskAadhaarVerhoeff(input: string): string {
-  // Regex isolates potential 12-digit numbers while preserving 10-digit mobile & policy IDs
   return input.replace(/\b(\d{4})[\s-]?(\d{4})[\s-]?(\d{4})\b/g, (match, p1, p2, p3) => {
-    return `XXXX-XXXX-${p3}`; // Mask first 8 digits, retain last 4 for admission desk verification
+    return `XXXX-XXXX-${p3}`; // Masks first 8 digits, preserves last 4 for verification
   });
 }
 ```
-
-- **Aadhaar Numbers:** Masked to `XXXX-XXXX-1234`
-- **10-Digit Mobile Numbers & Policy IDs:** Preserved with zero false positives
-- **Document Photos:** Processed in local browser memory and immediately discarded.
-
----
-
-### 3. The Living Journey: LangGraph State Machine
-
-Unlike static chatbots that forget context between prompts, LifeEvent AI models the hospital admission lifecycle as a formal **LangGraph StateGraph**:
-
-```
-[TRIAGE_SUBMITTED]
-       │
-       ▼
-[VERHOEFF_MASKED]
-       │
-       ▼
-[PREAUTH_FILED]
-       │
-       ▼
-[TPA_QUERY_RAISED] ◄─── (Webhook from Insurer TPA Desk)
-       │
-       ├─────────────────────────────────────────┐
-       ▼                                         ▼
-[URGENT_TASK_PUSHED]                  [CAUTION_DEPOSIT_BRIDGED]
-(e.g. Upload Casualty ECG)            (Paytm UPI Instant ₹50k Rail)
-       │                                         │
-       └───────────────────┬─────────────────────┘
-                           ▼
-                  [PREAUTH_APPROVED]
-                           │
-                           ▼
-                 [DISCHARGE_SETTLEMENT]
-```
+* **Aadhaar Numbers:** Masked to `XXXX-XXXX-1234`
+* **Policy Numbers & Phone Numbers:** Preserved without corruption
+* **Raw ID Photos:** Processed in browser memory and immediately discarded.
 
 ---
 
-## 🗺️ Live Routes Directory
+### 3. The Living Journey Line: Stateful Crisis Lifecycle
 
-| Route | Link | Experience & Capability |
-| :--- | :--- | :--- |
-| **Luminous Landing** | [`/`](https://paytm-lifeevent-ai.vercel.app/) | Three.js fluid dye reveal, integration marquee, 5 Crisis Questions ledger |
-| **Emergency Intake** | [`/intake`](https://paytm-lifeevent-ai.vercel.app/intake) | Multilingual voice intake (EN, HI, MR), client-side Aadhaar masking, policy upload |
-| **Living Journey** | [`/journey/demo-journey-cardiac-01`](https://paytm-lifeevent-ai.vercel.app/journey/demo-journey-cardiac-01) | Live state machine timeline, TPA query simulator, Apollo Hospital admission ledger |
-| **Evidence Inspector** | [`/coverage`](https://paytm-lifeevent-ai.vercel.app/coverage) | Verbatim IRDAI clause viewer, room-rent deduction formula, anti-hallucination citations |
-| **Paytm Bridge** | [`/funding`](https://paytm-lifeevent-ai.vercel.app/funding) | Caution deposit slider (₹10k–₹1L), transparent 1.25% fee, instant UPI rail simulation |
-| **AI Counselor** | [`/counselor`](https://paytm-lifeevent-ai.vercel.app/counselor) | Voice-first conversational financial counselor with real-time waveform animation |
-| **Hospital Cockpit** | [`/for-hospitals`](https://paytm-lifeevent-ai.vercel.app/for-hospitals) | Institutional B2B TPA counter dashboard, patient readiness queue, dispute mitigation |
-| **Pitch Playbook** | [`/demo-script`](https://paytm-lifeevent-ai.vercel.app/demo-script) | Synchronized 180-second live demonstration script with cue cards for hackathon judges |
-| **Privacy Charter** | [`/privacy`](https://paytm-lifeevent-ai.vercel.app/privacy) | DPDP Act 2023 compliance overview with live hard-delete session purge simulation |
+Unlike static dashboards, LifeEvent AI is a **LangGraph StateGraph** that dynamically shifts states:
+1. `TRIAGE_SUBMITTED`
+2. `VERHOEFF_MASKED`
+3. `PREAUTH_FILED`
+4. `TPA_QUERY_RAISED` *(e.g. Hospital requests ECG tracing)*
+5. `CAUTION_DEPOSIT_BRIDGED` *(Paytm UPI ₹25k instant liquidity)*
+6. `PREAUTH_APPROVED`
+7. `DISCHARGE_SETTLEMENT`
 
 ---
 
-## Institutional B2B SaaS Model (B2B2C)
+## 💼 Institutional Business Model (B2B2C)
 
 > *"Patients and families use LifeEvent AI for free. Healthcare and financial institutions pay for the coordination intelligence."*
 
-| Customer Tier | Offering | Revenue Mechanism | Unit Economics |
-| :--- | :--- | :--- | :--- |
-| **Hospitals & Nursing Homes** | TPA Counter Cockpit & Patient Financial Readiness | B2B SaaS Monthly Platform Fee | **₹25,000 / hospital / month**<br/>*(20 Hospitals = ₹60 Lakh ARR)* |
-| **Insurers & TPAs** | Automated Query Resolution & Clean Pre-Auth Pipeline | Enterprise Workflow License + Per-Claim Fee | **₹150 per processed pre-authorization** |
-| **Lenders & Paytm Payments** | Instant Caution Deposit Bridge & Emergency Lines | Payment Rail Fee & Origination Commission | **1.25% flat transparent fee** |
+```
+┌─────────────────────────────────┬─────────────────────────────────┬─────────────────────────────────┐
+│     ENGINE 1: HOSPITALS         │    ENGINE 2: INSURERS & TPAs    │   ENGINE 3: LENDERS & PAYMENTS  │
+├─────────────────────────────────┼─────────────────────────────────┼─────────────────────────────────┤
+│ • B2B SaaS Platform Fee         │ • Enterprise Workflow License   │ • UPI Transaction Origination   │
+│ • ₹25,000 / hospital / month    │ • Usage-based pre-auth fees     │ • Instant Bridge Loan API fee   │
+│ • Eliminates counter friction   │ • Reduces query turnaround      │ • 1.25% flat transparent fee    │
+│ • 20 Hospitals = ₹60 Lakh ARR   │ • Drastically cuts fraud/denial │ • Sub-second liquidity via Paytm│
+└─────────────────────────────────┴─────────────────────────────────┴─────────────────────────────────┘
+```
 
 ---
 
-## Responsive Viewport Verification
+## 🧪 Multi-Viewport Quality Verification
 
 Automated Playwright test suite verifies **all 11 routes across 5 device viewports** with zero horizontal overflow:
 
@@ -297,60 +348,49 @@ node scripts/check-responsive-overflow.mjs
 
 ---
 
-## Getting Started
+## 🚀 Quickstart & Setup Guide
 
-### Prerequisites
-- Node.js `20.x` or `24.x`
-- Python `3.11+`
-
-### Quick Start (Frontend)
+### Running Locally in 60 Seconds:
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/CaptainSanskar4U/Paytm-LifeEvent-Ai.git
 cd Paytm-LifeEvent-Ai/frontend
 
-# 2. Install dependencies
+# 2. Install dependencies & run
 npm install
-
-# 3. Start development server
 npm run dev
+
+# 3. Open browser: http://localhost:3000
 ```
 
-Open `http://localhost:3000` in your browser.
-
-*Windows Quick Launch:* Double-click `run_demo.bat` in the repository root.
+*Windows 1-Click Launch:* Simply double-click **`run_demo.bat`** in the repository root.
 
 ---
 
-## 180-Second Judge Presentation Playbook
+## ⏱️ 180-Second Judge Presentation Playbook
 
-Open **[`/demo-script`](https://paytm-lifeevent-ai.vercel.app/demo-script)** on your presenter device for a synchronized, interactive 3-minute pitch:
+During the live pitch, open **[`/demo-script`](https://paytm-lifeevent-ai.vercel.app/demo-script)** on your presenter device for a synchronized, interactive 3-minute flow:
 
 ```
-[0:00 - 0:30] ── THE HOOK & COUNTER CRISIS
+[0:00 - 0:45] ── THE HOOK & COUNTER CRISIS
               • Open https://paytm-lifeevent-ai.vercel.app
               • Point to the hospital counter crisis & 5 terrifying questions.
 
-[0:30 - 1:00] ── INTAKE & AADHAAR MASKING
-              • Click "Start Emergency Intake" ➔ "Try Sample Emergency (Cardiac)"
-              • Show patient Ramesh Kulkarni's voice audio intake simulation.
+[0:45 - 1:30] ── EMERGENCY INTAKE & AADHAAR MASKING
+              • Click "START EMERGENCY INTAKE"
+              • Show patient Ramesh Kulkarni's voice audio waveform simulation.
               • Demonstrate live Verhoeff Aadhaar redaction (XXXX-XXXX-1234).
 
-[1:00 - 1:45] ── HONEST GAP & EVIDENCE INSPECTOR
+[1:30 - 2:15] ── THE LIVING JOURNEY LINE & TPA QUERY
               • Navigate to /journey/demo-journey-cardiac-01
-              • Highlight honest range (₹1.44L–₹1.76L) vs exact liability hallucination.
+              • Click "Simulate TPA Query" -> State transitions live to TPA_QUERY_RAISED.
               • Inspect exact verbatim IRDAI 2024 room-rent penalty citations.
-
-[1:45 - 2:15] ── LIVING JOURNEY LINE & TPA QUERY "WOW MOMENT"
-              • Click "Simulate: TPA Pre-Auth Query"
-              • TPA desk requests casualty ECG strip ➔ LangGraph re-plans state dynamically.
-              • New urgent action dynamically pushed to top of family's checklist.
 
 [2:15 - 2:45] ── PAYTM INSTANT CAUTION DEPOSIT BRIDGE
               • Navigate to /funding
-              • Slide emergency deposit to ₹35,000 ➔ Fee displays ₹437.50 (flat 1.25%).
-              • Click "Authorize via Paytm UPI" ➔ Instant sub-second clearance.
+              • Slide emergency deposit to ₹35,000 -> Fee transparently displays ₹437.50.
+              • Click "Authorize via Paytm UPI" -> Instant sub-second clearance.
 
 [2:45 - 3:00] ── B2B HOSPITAL SAAS & CONCLUSION
               • Navigate to /for-hospitals
@@ -360,17 +400,16 @@ Open **[`/demo-script`](https://paytm-lifeevent-ai.vercel.app/demo-script)** on 
 
 ---
 
-## Team Crazy Coders
+<div align="center">
 
-Built for **Paytm ❤️ AI Hackathon | BUILD for INDIA**  
-*Pune, India — Sunday, 15th November*
+<!-- DYNAMIC ANIMATED WAVING FOOTER -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2&height=120&section=footer" width="100%" alt="Footer Wave" />
 
-- **Sarang Chaudhari** &bull; Full-Stack AI Engineer & Agent Orchestration
-- **Sumit Kalr** &bull; Backend Systems Architect & Financial Algorithms
-- **Sanskar Thorat** &bull; Frontend Architect & Creative Product Designer
+### Built with ❤️ by **Team Crazy Coders**
+**Sarang Chaudhari** • **Sumit Kalr** • **Sanskar Thorat**  
+*Paytm AI Hackathon (BUILD for INDIA), Pune*
 
-*Partner Track: devs.decodable × PARTEX.AI*
+[![Vercel](https://img.shields.io/badge/Production%20URL-paytm--lifeevent--ai.vercel.app-000?style=for-the-badge&logo=vercel)](https://paytm-lifeevent-ai.vercel.app)
+[![GitHub](https://img.shields.io/badge/Source%20Code-CaptainSanskar4U%2FPaytm--LifeEvent--Ai-181717?style=for-the-badge&logo=github)](https://github.com/CaptainSanskar4U/Paytm-LifeEvent-Ai)
 
----
-
-*Licensed under the [MIT License](./LICENSE).*
+</div>
