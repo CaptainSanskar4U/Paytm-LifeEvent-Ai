@@ -30,6 +30,14 @@ export function Navbar({ currentLang = "en", onLanguageChange }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = translations[lang] || translations.en;
 
+  // Dedicated navigation handler ensuring 100% clean redirect to the original white landing page
+  const handleHomeRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (typeof window !== "undefined") {
+      window.location.href = "/";
+    }
+  };
+
   useEffect(() => {
     setLang(currentLang);
   }, [currentLang]);
@@ -91,12 +99,17 @@ export function Navbar({ currentLang = "en", onLanguageChange }: NavbarProps) {
       <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Logotype */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+          <Link
+            href="/"
+            onClick={handleHomeRedirect}
+            className="flex items-center gap-2 sm:gap-3 group flex-shrink-0 cursor-pointer"
+            aria-label="Navigate to LifeEvent AI Homepage"
+          >
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#002970] to-[#001744] flex items-center justify-center text-white font-black text-sm shadow-sm group-hover:shadow-md transition-all">
               <span className="text-[#00baf2] font-mono text-sm sm:text-base">L</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 flex items-center gap-1.5">
+              <span className="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 flex items-center gap-1.5 group-hover:text-[#002970] transition-colors">
                 LifeEvent AI
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               </span>
@@ -193,12 +206,22 @@ export function Navbar({ currentLang = "en", onLanguageChange }: NavbarProps) {
           <div className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-200">
             {/* Drawer Header */}
             <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#002970] flex items-center justify-center text-white font-bold text-xs">
+              <Link
+                href="/"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleHomeRedirect(e);
+                }}
+                className="flex items-center gap-2.5 group cursor-pointer"
+                aria-label="Navigate to LifeEvent AI Homepage"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#002970] flex items-center justify-center text-white font-bold text-xs group-hover:bg-[#001744] transition-colors">
                   L
                 </div>
-                <span className="font-extrabold text-sm text-slate-900">LifeEvent AI Navigation</span>
-              </div>
+                <span className="font-extrabold text-sm text-slate-900 group-hover:text-[#002970] transition-colors">
+                  LifeEvent AI
+                </span>
+              </Link>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
