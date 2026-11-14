@@ -69,7 +69,7 @@ export default function CounselorConsolePage() {
   const [filterUrgency, setFilterUrgency] = useState<string>("all");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/counselor/journeys")
+    fetch("/api/counselor/journeys")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {

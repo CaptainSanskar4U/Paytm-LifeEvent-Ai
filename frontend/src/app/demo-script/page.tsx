@@ -26,7 +26,7 @@ export default function DemoScriptPage() {
     {
       time: "00:00 - 00:30",
       title: "1. The Hospital Counter Crisis & 5 Urgent Questions",
-      screen: "Landing Page (http://localhost:3000/)",
+      screen: "Landing Page (paytm-lifeevent-ai.vercel.app)",
       narrative:
         "Judges, imagine it's 2:00 AM. Your 58-year-old father has been rushed to Ruby Hall Clinic ICU with acute chest pain. Standing at the counter, you face five terrifying questions: What does insurance pay? What documents are missing? What is the real gap? Where do we get emergency cash? What is our single next best action right now? Disconnected silos leave families desperate. LifeEvent AI turns this crisis into a calm, evidence-backed action plan.",
       actionLabel: "View Landing Page",

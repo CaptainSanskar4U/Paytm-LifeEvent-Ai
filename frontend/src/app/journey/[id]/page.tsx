@@ -251,7 +251,7 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
   const [depositPaid, setDepositPaid] = useState(false);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/journey/${journeyId}`)
+    fetch(`/api/journey/${journeyId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.gap) {
@@ -267,7 +267,7 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
     setIsReplanning(true);
     setReplanNotice(null);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/journey/${journeyId}/replan`, {
+      const res = await fetch(`/api/journey/${journeyId}/replan`, {
         method: "POST"
       });
       if (res.ok) {

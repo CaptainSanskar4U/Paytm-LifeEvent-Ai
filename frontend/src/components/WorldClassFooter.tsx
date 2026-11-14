@@ -133,12 +133,32 @@ export function WorldClassFooter() {
               </li>
               <li>
                 <Link
+                  href="/how-it-works"
+                  className="text-neutral-700 hover:text-paytm-navy transition-colors flex items-center gap-1"
+                >
+                  <span>Architecture Blueprint</span>
+                  <ArrowUpRight className="w-3 h-3 text-neutral-400" />
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/privacy"
                   className="text-neutral-700 hover:text-paytm-navy transition-colors flex items-center gap-1"
                 >
                   <span>Verhoeff Privacy Policy</span>
                   <ArrowUpRight className="w-3 h-3 text-neutral-400" />
                 </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/CaptainSanskar4U/Paytm-LifeEvent-Ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-700 hover:text-paytm-navy transition-colors flex items-center gap-1"
+                >
+                  <span>GitHub Repository</span>
+                  <ArrowUpRight className="w-3 h-3 text-neutral-400" />
+                </a>
               </li>
               <li>
                 <span className="text-neutral-400 text-[11px] block mt-2">

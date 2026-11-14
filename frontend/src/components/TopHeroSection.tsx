@@ -84,6 +84,8 @@ export function TopHeroSection() {
                 <Link href="/documents">DOCS</Link>
                 <span>/</span>
                 <Link href="/demo-script" className="font-bold text-paytm-navy">PITCH</Link>
+                <span>/</span>
+                <a href="https://github.com/CaptainSanskar4U/Paytm-LifeEvent-Ai" target="_blank" rel="noopener noreferrer">GITHUB</a>
                 <span className="px-1.5 py-0.5 rounded bg-slate-100 text-[11px] font-bold text-slate-700">EN</span>
               </div>
             </div>

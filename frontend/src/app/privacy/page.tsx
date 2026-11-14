@@ -27,7 +27,7 @@ export default function PrivacyCharterPage() {
     setIsDeleting(true);
     setDeleteStatus(null);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/journey/${journeyIdToDelete}`, {
+      const res = await fetch(`/api/journey/${journeyIdToDelete}`, {
         method: "DELETE"
       });
       if (res.ok) {
