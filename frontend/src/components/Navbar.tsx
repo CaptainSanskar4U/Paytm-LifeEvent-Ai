@@ -2,7 +2,22 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Shield, Globe, FileText, Building2, HelpCircle } from "lucide-react";
+import {
+  Shield,
+  Activity,
+  Menu,
+  X,
+  ArrowRight,
+  Zap,
+  Lock,
+  Building2,
+  FileText,
+  Sparkles,
+  Trophy,
+  Scale,
+  CreditCard,
+  ChevronRight
+} from "lucide-react";
 import { Language, translations } from "@/lib/translations";
 
 interface NavbarProps {
@@ -12,11 +27,20 @@ interface NavbarProps {
 
 export function Navbar({ currentLang = "en", onLanguageChange }: NavbarProps) {
   const [lang, setLang] = useState<Language>(currentLang);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = translations[lang] || translations.en;
 
   useEffect(() => {
     setLang(currentLang);
   }, [currentLang]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleLangSelect = (newLang: Language) => {
     setLang(newLang);
@@ -25,98 +49,212 @@ export function Navbar({ currentLang = "en", onLanguageChange }: NavbarProps) {
     }
   };
 
+  // Curated, uncluttered primary navigation
+  const primaryLinks = [
+    { href: "/intake", label: "Emergency Intake" },
+    { href: "/journey/demo-journey-cardiac-01", label: "Living Journey" },
+    { href: "/journey/demo-journey-cardiac-01/coverage", label: "Evidence Auditor" },
+    { href: "/journey/demo-journey-cardiac-01/funding", label: "Paytm Bridge" },
+    { href: "/counselor", label: "Hospital Desk" },
+  ];
+
+  const drawerSections = [
+    {
+      title: "Patient & Family Flow",
+      links: [
+        { href: "/intake", label: "Emergency Crisis Intake", desc: "Voice or text plain-language triage with zero-knowledge Aadhaar masking" },
+        { href: "/journey/demo-journey-cardiac-01", label: "Living Journey State Machine", desc: "Real-time task sequencing, SSE live updates & honest IRDAI gap range" },
+        { href: "/journey/demo-journey-cardiac-01/coverage", label: "Forensic Evidence Chamber", desc: "Verbatim policy clause proof with character-by-character SHA-256 checks" },
+        { href: "/journey/demo-journey-cardiac-01/funding", label: "Paytm UPI Caution Deposit", desc: "Instant 8-second caution money bridge directly to hospital Counter #4" },
+      ]
+    },
+    {
+      title: "Hospital & Institutional Network",
+      links: [
+        { href: "/counselor", label: "Hospital Counselor Cockpit", desc: "B2B emergency admission triage queue & TPA clearance telemetry" },
+        { href: "/for-hospitals", label: "Institutional Pilot Partnership", desc: "45-min cashless approval SLA & zero counter friction onboarding" },
+        { href: "/how-it-works", label: "System Architecture Blueprint", desc: "5-stage deterministic pipeline & LangGraph state machine flow" },
+      ]
+    },
+    {
+      title: "Compliance, Privacy & Evaluation",
+      links: [
+        { href: "/documents", label: "Document Ingestion & Redactor Lab", desc: "Dihedral D5 Verhoeff algorithm playground & ABDM corpus" },
+        { href: "/privacy", label: "DPDP 2023 Data Sovereignty Charter", desc: "Zero raw image storage & one-click hard-purge verification" },
+        { href: "/demo-script", label: "Judge 3-Minute Presentation Script", desc: "Live stage teleprompter with direct feature launchers" },
+      ]
+    }
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-paytm-navy text-white shadow-md border-b border-paytm-navyDark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded bg-paytm-cyan flex items-center justify-center text-paytm-navy font-black text-lg shadow-sm">
-            L
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-base sm:text-lg tracking-tight flex items-center gap-1.5 text-white">
-              LifeEvent AI
-              <span className="text-[10px] bg-paytm-cyan text-paytm-navy font-bold px-1.5 py-0.5 rounded tracking-wide uppercase">
-                Paytm Hackathon
+    <>
+      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
+          {/* Brand Logotype */}
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#002970] to-[#001744] flex items-center justify-center text-white font-black text-sm shadow-sm group-hover:shadow-md transition-all">
+              <span className="text-[#00baf2] font-mono text-sm sm:text-base">L</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 flex items-center gap-1.5">
+                LifeEvent AI
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               </span>
-            </span>
-            <span className="text-[11px] text-slate-300 -mt-1 font-medium hidden md:inline">
-              Financial journeys in medical emergencies
-            </span>
+              <span className="text-[11px] font-medium text-slate-500 -mt-0.5 hidden sm:inline">
+                Medical Financial Coordination
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links (Clean, Uncluttered, Spaced) */}
+          <nav className="hidden lg:flex items-center gap-6 lg:gap-8 text-[13px] font-medium text-slate-600">
+            {primaryLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-[#002970] transition-colors py-1 relative hover:font-semibold"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right Utility Group */}
+          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+            {/* Minimalist Pill Language Switcher */}
+            <div className="flex items-center bg-slate-100/90 p-0.5 rounded-lg border border-slate-200/70 text-[11px] sm:text-xs font-mono font-medium">
+              <button
+                type="button"
+                onClick={() => handleLangSelect("en")}
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md transition-all ${
+                  lang === "en"
+                    ? "bg-white text-[#002970] font-bold shadow-xs border border-slate-200/60"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLangSelect("hi")}
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md transition-all ${
+                  lang === "hi"
+                    ? "bg-white text-[#002970] font-bold shadow-xs border border-slate-200/60"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                हिं
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLangSelect("mr")}
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md transition-all ${
+                  lang === "mr"
+                    ? "bg-white text-[#002970] font-bold shadow-xs border border-slate-200/60"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                मरा
+              </button>
+            </div>
+
+            {/* Primary Action Button */}
+            <Link
+              href="/intake"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#002970] text-white text-xs font-semibold hover:bg-[#001d52] transition-all shadow-sm hover:shadow active:scale-98"
+            >
+              <Zap className="w-3.5 h-3.5 text-[#00baf2]" />
+              <span>Start Intake</span>
+            </Link>
+
+            {/* Menu Trigger Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors border border-slate-200/70"
+              aria-label="Open Navigation Directory"
+            >
+              <Menu className="w-4 h-4" />
+            </button>
           </div>
-        </Link>
-
-        {/* Navigation & Utilities */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          <Link
-            href="/how-it-works"
-            className="text-xs text-slate-200 hover:text-white font-medium transition-colors hidden sm:inline"
-          >
-            How It Works
-          </Link>
-
-          <Link
-            href="/documents"
-            className="text-xs text-slate-200 hover:text-white font-medium transition-colors hidden md:inline"
-          >
-            Documents
-          </Link>
-
-          <Link
-            href="/counselor"
-            className="text-xs text-slate-200 hover:text-white font-medium flex items-center gap-1 transition-colors hidden sm:flex"
-          >
-            <Shield className="w-3.5 h-3.5 text-paytm-cyan" />
-            <span>Counselor</span>
-          </Link>
-
-          <Link
-            href="/for-hospitals"
-            className="text-xs text-slate-200 hover:text-white font-medium transition-colors hidden lg:inline"
-          >
-            For Hospitals
-          </Link>
-
-          {/* Language Switcher */}
-          <div className="flex items-center bg-paytm-navyDark/80 p-0.5 rounded border border-slate-700">
-            <button
-              type="button"
-              onClick={() => handleLangSelect("en")}
-              className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                lang === "en" ? "bg-paytm-cyan text-paytm-navy font-bold" : "text-slate-300 hover:text-white"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              onClick={() => handleLangSelect("hi")}
-              className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                lang === "hi" ? "bg-paytm-cyan text-paytm-navy font-bold" : "text-slate-300 hover:text-white"
-              }`}
-            >
-              हिं
-            </button>
-            <button
-              type="button"
-              onClick={() => handleLangSelect("mr")}
-              className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                lang === "mr" ? "bg-paytm-cyan text-paytm-navy font-bold" : "text-slate-300 hover:text-white"
-              }`}
-            >
-              मरा
-            </button>
-          </div>
-
-          {/* Primary Action Button */}
-          <Link
-            href="/intake"
-            className="bg-paytm-cyan text-paytm-navy font-bold text-xs px-3 py-2 rounded shadow hover:bg-white transition-all active:scale-95 flex items-center gap-1.5"
-          >
-            <span>Emergency Intake</span>
-          </Link>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Slide-over Full Route Directory Modal */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Drawer Panel */}
+          <div className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-200">
+            {/* Drawer Header */}
+            <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
+              <div className="flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-[#002970] flex items-center justify-center text-white font-bold text-xs">
+                  L
+                </div>
+                <span className="font-extrabold text-sm text-slate-900">LifeEvent AI Navigation</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors"
+                aria-label="Close Menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Drawer Content */}
+            <div className="p-6 space-y-6 flex-grow">
+              {drawerSections.map((sec, idx) => (
+                <div key={idx} className="space-y-2">
+                  <h3 className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold px-2">
+                    {sec.title}
+                  </h3>
+                  <div className="space-y-1">
+                    {sec.links.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="group flex flex-col p-2.5 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200/60"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-slate-900 group-hover:text-[#002970] transition-colors">
+                            {link.label}
+                          </span>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#002970] group-hover:translate-x-0.5 transition-all" />
+                        </div>
+                        <span className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
+                          {link.desc}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Drawer Footer CTA */}
+            <div className="p-5 border-t border-slate-100 bg-slate-50/60">
+              <Link
+                href="/intake"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#002970] text-white text-xs font-semibold shadow-sm hover:bg-[#001d52] transition-colors"
+              >
+                <Zap className="w-4 h-4 text-[#00baf2]" />
+                <span>Launch Emergency Intake</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

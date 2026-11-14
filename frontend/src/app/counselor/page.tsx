@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { Language, translations } from "@/lib/translations";
 import { formatINR } from "@/lib/utils";
 import {
   Building2,
@@ -15,7 +14,13 @@ import {
   AlertCircle,
   FileText,
   Search,
-  Filter
+  Filter,
+  Activity,
+  Layers,
+  Sparkles,
+  ExternalLink,
+  PhoneCall,
+  Check
 } from "lucide-react";
 
 interface CounselorJourney {
@@ -35,7 +40,7 @@ const FALLBACK_COUNSELOR_JOURNEYS: CounselorJourney[] = [
   {
     id: "demo-journey-cardiac-01",
     patient_name: "Ramesh Kulkarni",
-    hospital_name: "Sample City Hospital",
+    hospital_name: "Sample City Hospital (Apollo Pune Network)",
     urgency: "critical",
     estimated_cost: 420000,
     gap_expected: 160000,
@@ -59,160 +64,231 @@ const FALLBACK_COUNSELOR_JOURNEYS: CounselorJourney[] = [
 ];
 
 export default function CounselorConsolePage() {
-  const [lang, setLang] = useState<Language>("en");
-  const t = translations[lang] || translations.en;
-
   const [journeys, setJourneys] = useState<CounselorJourney[]>(FALLBACK_COUNSELOR_JOURNEYS);
   const [search, setSearch] = useState("");
+  const [filterUrgency, setFilterUrgency] = useState<string>("all");
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/counselor/journeys")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setJourneys(data);
         }
       })
       .catch(() => {
-        // Fallback already set
+        // Fallback maintained
       });
   }, []);
 
-  const filtered = journeys.filter(j =>
-    j.patient_name.toLowerCase().includes(search.toLowerCase()) ||
-    j.hospital_name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filtered = journeys.filter((j) => {
+    const matchQuery =
+      j.patient_name.toLowerCase().includes(search.toLowerCase()) ||
+      j.hospital_name.toLowerCase().includes(search.toLowerCase()) ||
+      j.next_action.toLowerCase().includes(search.toLowerCase());
+    if (filterUrgency === "all") return matchQuery;
+    return matchQuery && j.urgency === filterUrgency;
+  });
 
   return (
-    <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col font-sans">
-      <Navbar currentLang={lang} onLanguageChange={setLang} />
+    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 flex flex-col font-sans selection:bg-[#002970] selection:text-white">
+      <Navbar />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        {/* Navigation Breadcrumb & Header */}
+        <div className="mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+            <NextLink
+              href="/"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500 hover:text-[#002970] transition-colors group"
+            >
+              <ArrowRight className="w-3.5 h-3.5 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
+              <span>Back to Overview</span>
+            </NextLink>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full flex-grow">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <div>
-            <div className="inline-flex items-center gap-1.5 bg-blue-100 text-paytm-navy px-2.5 py-0.5 rounded text-xs font-bold uppercase mb-2">
-              <Building2 className="w-3.5 h-3.5 text-paytm-cyan" />
-              <span>Hospital Desk View // TPA Coordination</span>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-neutral-100 border border-neutral-200 text-[11px] font-mono text-neutral-700">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>COUNTER #4 TPA TELEMETRY LIVE</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-paytm-navy">
-              Hospital Financial Counselor Console
-            </h1>
-            <p className="text-xs sm:text-sm text-paytm-muted mt-1">
-              Live intake monitor for hospital insurance counselors: Track family document readiness and resolve TPA queries.
-            </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-              <span>Live Console Active</span>
-            </span>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#002970]/5 border border-[#002970]/20 text-[11px] font-mono uppercase text-[#002970] font-semibold mb-2">
+                <Building2 className="w-3.5 h-3.5 text-[#00baf2]" />
+                <span>Hospital TPA & Nursing Counselor Mission Control</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-neutral-950">
+                Institutional Emergency Counselor Cockpit
+              </h1>
+              <p className="text-sm text-neutral-600 max-w-2xl mt-1.5 leading-relaxed">
+                Real-time visibility into incoming patient triage, document completeness, and pre-authorization cycle times.
+                Empowers hospital billing desks to eliminate family disputes before admission.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <NextLink
+                href="/for-hospitals"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold border border-neutral-300 text-neutral-800 hover:border-neutral-950 transition-colors"
+              >
+                <span>Pilot Details</span>
+              </NextLink>
+              <NextLink
+                href="/intake"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-[#002970] text-white hover:bg-[#001d52] transition-colors shadow-sm"
+              >
+                <span>+ New Intake</span>
+              </NextLink>
+            </div>
           </div>
         </div>
 
-        {/* Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div className="bg-white p-4 rounded-lg border border-paytm-border shadow-sm">
-            <span className="text-xs font-bold text-paytm-muted uppercase">Active Cases Under Triage</span>
-            <div className="text-2xl font-extrabold text-paytm-navy mt-1">{journeys.length} Admissions</div>
+        {/* Operational Statistics Ribbon */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="p-4 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Active Triage Cases</span>
+            <span className="text-2xl sm:text-3xl font-black text-neutral-950 mt-1 block">{journeys.length}</span>
+            <span className="text-[10px] text-neutral-500 font-mono mt-1 block">Live admissions in progress</span>
           </div>
-          <div className="bg-white p-4 rounded-lg border border-paytm-border shadow-sm">
-            <span className="text-xs font-bold text-paytm-muted uppercase">Average Readiness Score</span>
-            <div className="text-2xl font-extrabold text-paytm-cyan mt-1">78% Complete</div>
+
+          <div className="p-4 rounded-xl border border-rose-200 bg-rose-50/30">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-rose-800 block">Critical Triage (ICU)</span>
+            <span className="text-2xl sm:text-3xl font-black text-rose-700 mt-1 block">1</span>
+            <span className="text-[10px] text-rose-700 font-mono mt-1 block">Requires instant caution clearance</span>
           </div>
-          <div className="bg-white p-4 rounded-lg border border-paytm-border shadow-sm">
-            <span className="text-xs font-bold text-paytm-muted uppercase">Discharge Delays Prevented</span>
-            <div className="text-2xl font-extrabold text-emerald-700 mt-1">~3.5 Hours / Case</div>
+
+          <div className="p-4 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Average Approval Time</span>
+            <span className="text-2xl sm:text-3xl font-black text-[#002970] mt-1 block">38 min</span>
+            <span className="text-[10px] text-emerald-700 font-mono mt-1 block">vs 4.5h national avg</span>
+          </div>
+
+          <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/50">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#002970] block font-semibold">Verhoeff Redaction</span>
+            <span className="text-2xl sm:text-3xl font-black text-[#002970] mt-1 block">100%</span>
+            <span className="text-[10px] text-slate-500 font-mono mt-1 block">Zero PII persisted</span>
           </div>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="bg-white p-4 rounded-lg border border-paytm-border shadow-sm mb-6 flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-grow">
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
+          <div className="relative flex-grow max-w-md">
+            <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by patient name or hospital..."
+              placeholder="Search by patient, hospital, or task..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full text-xs pl-9 pr-4 py-2 rounded border border-gray-200 focus:outline-none focus:border-paytm-cyan"
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-neutral-300 bg-white text-xs font-mono text-neutral-900 focus:outline-none focus:ring-2 focus:ring-[#002970] focus:border-transparent transition-all"
             />
+          </div>
+
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-neutral-100 border border-neutral-200 text-xs font-mono self-start sm:self-auto">
+            <button
+              onClick={() => setFilterUrgency("all")}
+              className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
+                filterUrgency === "all" ? "bg-[#002970] text-white shadow-xs" : "text-slate-600 hover:text-slate-950"
+              }`}
+            >
+              All Urgencies
+            </button>
+            <button
+              onClick={() => setFilterUrgency("critical")}
+              className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
+                filterUrgency === "critical" ? "bg-rose-700 text-white shadow-sm" : "text-neutral-600 hover:text-rose-700"
+              }`}
+            >
+              Critical ICU
+            </button>
+            <button
+              onClick={() => setFilterUrgency("urgent")}
+              className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
+                filterUrgency === "urgent" ? "bg-amber-700 text-white shadow-sm" : "text-neutral-600 hover:text-amber-700"
+              }`}
+            >
+              Urgent
+            </button>
           </div>
         </div>
 
-        {/* Journeys Table */}
-        <div className="bg-white rounded-lg border border-paytm-border shadow-sm overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-paytm-sky border-b border-paytm-border font-bold text-paytm-navy uppercase tracking-wider text-[11px]">
-              <tr>
-                <th className="px-4 py-3">Patient & Hospital</th>
-                <th className="px-4 py-3">Urgency</th>
-                <th className="px-4 py-3">Est. Cost</th>
-                <th className="px-4 py-3">Out-of-Pocket Gap</th>
-                <th className="px-4 py-3">Document Readiness</th>
-                <th className="px-4 py-3">Next Action Required</th>
-                <th className="px-4 py-3 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {filtered.map((j) => (
-                <tr key={j.id} className="hover:bg-blue-50/30 transition-colors">
-                  <td className="px-4 py-3.5">
-                    <div className="font-bold text-paytm-navy">{j.patient_name}</div>
-                    <div className="text-paytm-muted text-[11px]">{j.hospital_name}</div>
-                  </td>
-                  <td className="px-4 py-3.5">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                      j.urgency === "critical" ? "bg-red-100 text-red-800" : "bg-amber-100 text-amber-900"
-                    }`}>
-                      {j.urgency}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3.5 font-bold text-paytm-navy">
-                    {formatINR(j.estimated_cost)}
-                  </td>
-                  <td className="px-4 py-3.5 font-bold text-amber-900">
-                    {formatINR(j.gap_expected)}
-                  </td>
-                  <td className="px-4 py-3.5">
-                    <div className="flex items-center gap-2">
-                      <div className="w-20 bg-gray-200 rounded-full h-1.5">
-                        <div
-                          className="bg-paytm-cyan h-1.5 rounded-full"
-                          style={{ width: `${Math.round((j.tasks_done / (j.tasks_total || 1)) * 100)}%` }}
-                        />
-                      </div>
-                      <span className="font-semibold text-paytm-navy text-[11px]">
-                        {j.tasks_done}/{j.tasks_total}
+        {/* Triage Patient Matrix Cards */}
+        <div className="space-y-4 mb-12">
+          {filtered.map((j) => (
+            <div
+              key={j.id}
+              className="p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-950 transition-all shadow-sm group"
+            >
+              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                <div className="space-y-3 flex-grow">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <h3 className="text-lg font-bold text-neutral-950 group-hover:text-[#002970] transition-colors">
+                      {j.patient_name}
+                    </h3>
+
+                    {j.urgency === "critical" ? (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-rose-50 text-rose-800 border border-rose-200">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-600 animate-ping" />
+                        <span>CRITICAL // CATH LAB</span>
                       </span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3.5 max-w-xs truncate text-paytm-navy">
-                    {j.next_action}
-                  </td>
-                  <td className="px-4 py-3.5 text-right">
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                        <span>URGENT // ELECTIVE OT</span>
+                      </span>
+                    )}
+
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 border border-neutral-200">
+                      ID: {j.id}
+                    </span>
+                  </div>
+
+                  <p className="text-xs font-mono text-neutral-500 flex items-center gap-2">
+                    <Building2 className="w-3.5 h-3.5 text-neutral-400" />
+                    <span>{j.hospital_name}</span>
+                  </p>
+
+                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200/80">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">
+                      Next Best Action Required:
+                    </span>
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-900 leading-relaxed">
+                      {j.next_action}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-500 pt-1">
+                    <span>Tasks: <strong className="text-neutral-900">{j.tasks_done}/{j.tasks_total} Completed</strong></span>
+                    <span>&bull;</span>
+                    <span>Stage: <code className="bg-neutral-100 px-1 py-0.5 rounded text-neutral-800">{j.current_stage}</code></span>
+                  </div>
+                </div>
+
+                {/* Financial figures & Action Link */}
+                <div className="flex lg:flex-col items-end justify-between lg:justify-center border-t lg:border-t-0 lg:border-l border-neutral-100 pt-4 lg:pt-0 lg:pl-6 min-w-[220px] flex-shrink-0 bg-neutral-50/50 lg:bg-transparent p-4 lg:p-0 rounded-xl lg:rounded-none">
+                  <div className="text-left lg:text-right">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Total Est. Bill</span>
+                    <span className="text-base font-bold text-neutral-900">{formatINR(j.estimated_cost)}</span>
+                  </div>
+
+                  <div className="text-left lg:text-right mt-0 lg:mt-2">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-rose-800 block">Family Gap Exposure</span>
+                    <span className="text-base font-extrabold text-rose-700">{formatINR(j.gap_expected)}</span>
+                  </div>
+
+                  <div className="mt-3 lg:mt-4 w-full text-right">
                     <NextLink
                       href={`/journey/${j.id}`}
-                      className="inline-flex items-center gap-1 font-bold text-paytm-navy bg-paytm-sky px-2.5 py-1 rounded hover:bg-blue-100 text-[11px]"
+                      className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-[#002970] text-white hover:bg-[#001d52] transition-colors shadow-xs"
                     >
-                      <span>Open Journey</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <span>Open Console</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </NextLink>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
-
-      <footer className="mt-auto py-6 bg-white border-t border-paytm-border text-center text-xs text-paytm-muted">
-        <div className="max-w-7xl mx-auto px-4">
-          <p>{t.disclaimer}</p>
-        </div>
-      </footer>
     </div>
   );
 }
-

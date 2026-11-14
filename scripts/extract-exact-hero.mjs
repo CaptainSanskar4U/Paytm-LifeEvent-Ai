@@ -31,3 +31,4 @@ async function extractExactHero() {
 }
 
 extractExactHero().catch(console.error);
+

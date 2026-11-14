@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import NextLink from "next/link";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { VoiceRecorder } from "@/components/VoiceRecorder";
 import { Language, translations } from "@/lib/translations";
@@ -254,37 +255,60 @@ export default function IntakePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
       <Navbar currentLang={lang} onLanguageChange={setLang} />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10 w-full flex-grow">
-        {/* Header */}
-        <div className="mb-6">
-          <div className="inline-flex items-center gap-1.5 bg-blue-100 text-paytm-navy px-2.5 py-0.5 rounded text-xs font-bold uppercase mb-2">
-            <HeartPulse className="w-3.5 h-3.5 text-paytm-cyan" />
-            <span>Emergency Intake & Document Ingestion</span>
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14 w-full flex-grow">
+        {/* Editorial Section Header */}
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-3 text-[11px] font-mono font-bold uppercase tracking-widest text-neutral-800">
+            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy animate-pulse" />
+            <span>[ 01 // EMERGENCY INGESTION ENGINE ]</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-paytm-navy">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-[1.12]">
             Record Emergency Admission
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1">
-            Provide patient details and upload photos of your health policy or hospital estimate. LifeEvent AI audits your coverage and computes your out-of-pocket range live.
+          <p className="text-sm sm:text-base text-neutral-600 mt-2 max-w-2xl leading-relaxed">
+            Provide patient details and upload photos of your health policy or hospital estimate. LifeEvent AI audits your coverage and computes your out-of-pocket range live with zero hallucination.
           </p>
+
+          {/* Clinical Context Banner */}
+          <div className="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mt-6 border border-neutral-200 shadow-sm">
+            <Image
+              src="/images/hospital-desk.jpg"
+              alt="Hospital Admission Desk"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/70 to-transparent" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span className="text-paytm-cyan font-mono text-[10px] font-bold uppercase tracking-widest">
+                VERHOEFF ENFORCED CLIENT-SIDE PRIVACY
+              </span>
+              <h3 className="text-base sm:text-lg font-bold text-white mt-0.5">
+                Hospital Billing Desk Ingestion Channel
+              </h3>
+              <p className="text-xs text-neutral-300 max-w-md mt-0.5 hidden sm:block">
+                Aadhaar identifiers are masked directly in browser memory before network transmission.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Mode Selector Tabs */}
-        <div className="flex border-b border-slate-200 mb-6 bg-white rounded-t-xl p-1 gap-2">
+        <div className="flex border border-neutral-200 mb-8 bg-neutral-50 rounded-xl p-1 gap-2">
           <button
             type="button"
             onClick={() => setMode("live")}
-            className={`flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${
+            className={`flex-1 py-3 text-xs sm:text-sm font-bold font-mono uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2 ${
               mode === "live"
-                ? "bg-paytm-navy text-white shadow-sm"
-                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                ? "bg-[#002970] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white"
             }`}
           >
-            <Camera className="w-4 h-4 text-paytm-cyan" />
-            <span>Live Patient Intake (Upload Policy Photo & Real Details)</span>
+            <Camera className="w-4 h-4 text-[#00baf2]" />
+            <span>Live Patient Intake (Real Details)</span>
           </button>
 
           <button
@@ -293,36 +317,36 @@ export default function IntakePage() {
               setMode("demo");
               handleLoadSample("cardiac");
             }}
-            className={`py-2.5 px-4 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2 ${
+            className={`py-3 px-5 text-xs sm:text-sm font-bold font-mono uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2 ${
               mode === "demo"
-                ? "bg-amber-100 text-amber-900 border border-amber-300"
-                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                ? "bg-[#002970] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white"
             }`}
           >
-            <Sparkles className="w-4 h-4 text-amber-600" />
-            <span className="hidden sm:inline">Load Sample Emergency (Cardiac)</span>
+            <Sparkles className="w-4 h-4 text-[#00baf2]" />
+            <span className="hidden sm:inline">Load Sample (Cardiac ₹4.2L)</span>
             <span className="sm:hidden">Sample Demo</span>
           </button>
         </div>
 
         {mode === "demo" && (
-          <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 text-amber-900">
-              <Sparkles className="w-4 h-4 text-amber-700 flex-shrink-0" />
+          <div className="mb-8 bg-blue-50/70 text-slate-800 border border-blue-200/80 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex items-center gap-2 text-[#002970]">
+              <Sparkles className="w-4 h-4 text-[#002970] flex-shrink-0" />
               <span>Sample emergency pre-loaded. Click below to inspect or submit.</span>
             </div>
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => handleLoadSample("cardiac")}
-                className="px-2.5 py-1 bg-white border border-amber-300 text-amber-900 font-bold rounded hover:bg-amber-100"
+                className="px-3 py-1.5 bg-white border border-blue-200 text-[#002970] font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-xs"
               >
                 Cardiac Case (₹4.2L)
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadSample("orthopedic")}
-                className="px-2.5 py-1 bg-white border border-amber-300 text-amber-900 font-bold rounded hover:bg-amber-100"
+                className="px-3 py-1.5 bg-white border border-blue-200 text-[#002970] font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-xs"
               >
                 Ortho Case (₹1.85L)
               </button>
@@ -748,42 +772,39 @@ export default function IntakePage() {
           </div>
 
           {/* Submission Bar */}
-          <div className="bg-paytm-navy text-white rounded-xl p-5 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="bg-gradient-to-r from-blue-50/70 via-white to-white rounded-2xl p-6 sm:p-8 border-l-4 border-[#002970] border-y border-r border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-xs font-bold text-paytm-cyan uppercase tracking-wider block">
-                Ready to Analyze Journey
+              <span className="text-xs font-mono font-bold text-[#002970] uppercase tracking-wider block">
+                04 // Launch Deterministic Analysis
               </span>
-              <p className="text-xs text-slate-300 mt-0.5">
-                Computes honest out-of-pocket range, generates hospital checklist & verifies clauses.
+              <h3 className="text-lg font-bold text-slate-900 mt-1">
+                Ready to Process Patient Admission Journey
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 max-w-md">
+                Computes honest out-of-pocket range, flags room rent proportional penalties, verifies IRDAI clauses & activates Paytm caution bridge standby.
               </p>
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full sm:w-auto px-6 py-3 rounded-lg bg-paytm-cyan text-paytm-navy font-extrabold text-sm hover:brightness-105 transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 flex-shrink-0 disabled:opacity-50"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#002970] text-white font-semibold text-xs uppercase tracking-wider hover:bg-[#001d52] transition-all shadow-xs active:scale-98 flex items-center justify-center gap-2.5 flex-shrink-0 disabled:opacity-50"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-paytm-navy" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#00baf2]" />
                   <span>Analyzing Policy & Generating Journey...</span>
                 </>
               ) : (
                 <>
                   <span>Start Live Financial Journey</span>
-                  <ArrowRight className="w-4 h-4 text-paytm-navy" />
+                  <ArrowRight className="w-4 h-4 text-[#00baf2]" />
                 </>
               )}
             </button>
           </div>
         </form>
       </main>
-
-      <footer className="mt-auto py-4 bg-white border-t border-slate-200 text-center text-xs text-slate-500">
-        <div className="max-w-4xl mx-auto px-4">
-          <p>{t.disclaimer}</p>
-        </div>
-      </footer>
     </div>
   );
 }

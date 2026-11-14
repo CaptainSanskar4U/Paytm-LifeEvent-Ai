@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import NextLink from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { Language, translations } from "@/lib/translations";
 import {
   Mic,
   FileSearch,
@@ -14,114 +12,133 @@ import {
   Zap,
   ArrowRight,
   Database,
-  Lock
+  Lock,
+  Cpu,
+  Layers,
+  ArrowUpRight
 } from "lucide-react";
 
 export default function HowItWorksPage() {
-  const [lang, setLang] = useState<Language>("en");
-  const t = translations[lang] || translations.en;
-
   const steps = [
     {
       num: "01",
-      icon: <Mic className="w-6 h-6 text-paytm-cyan" />,
-      title: "Speak or Dictate in Plain Language",
-      description: "When an emergency strikes, nobody has time to fill 40-field forms. Family attendants simply speak their situation in English, Hindi, or Marathi. LifeEvent AI extracts the hospital, patient condition, and urgency."
+      icon: <Mic className="w-5 h-5 text-[#00baf2]" />,
+      title: "Multilingual Plain-Language Emergency Intake",
+      tag: "Input Layer",
+      description:
+        "When an emergency strikes at 2:00 AM, family members cannot navigate 40-field hospital portals. Attendants speak or type in everyday English, Hindi, or Marathi. LifeEvent AI extracts patient vitals, admission reason, and hospital counter context without conversational fluff.",
+      link: "/intake",
+      linkText: "Test Intake Form"
     },
     {
       num: "02",
-      icon: <Lock className="w-6 h-6 text-paytm-cyan" />,
-      title: "Zero-Knowledge Aadhaar Redaction",
-      description: "Before policy schedules and pre-auth estimates are parsed, our mathematical Verhoeff check-digit redactor masks Indian Aadhaar numbers on-device. Identity document photos are discarded immediately."
+      icon: <Lock className="w-5 h-5 text-emerald-400" />,
+      title: "Client-Side Verhoeff Aadhaar Cryptographic Redactor",
+      tag: "Privacy & DPDP",
+      description:
+        "Before text touches any network socket, database, or LLM context, our client-side parser runs the mathematical Dihedral Group D5 Verhoeff checksum algorithm. Valid 12-digit Aadhaar numbers are converted to XXXX-XXXX-XXXX while contact phone numbers and policy codes remain intact.",
+      link: "/documents",
+      linkText: "Test Redactor Lab"
     },
     {
       num: "03",
-      icon: <FileSearch className="w-6 h-6 text-paytm-cyan" />,
-      title: "Anti-Hallucination Citation Verification",
-      description: "Every coverage calculation is verified string-by-string against the exact text extracted from the policy PDF. If an LLM hallucination cannot be matched directly in the document page, it is flagged as unverified."
+      icon: <Calculator className="w-5 h-5 text-[#00baf2]" />,
+      title: "Deterministic IRDAI 2024 Math Engine",
+      tag: "Calculation Engine",
+      description:
+        "We never ask an LLM to guess billing math. A deterministic Python engine calculates the honest out-of-pocket range: factoring in IRDAI non-payable consumables (gloves, sanitizers), proportionate room-rent penalties, and policy co-pays. The result is an honest range: Low, Expected, High.",
+      link: "/journey/demo-journey-cardiac-01",
+      linkText: "View Honest Range Card"
     },
     {
       num: "04",
-      icon: <Calculator className="w-6 h-6 text-paytm-cyan" />,
-      title: "Honest Out-of-Pocket Range Estimation",
-      description: "We never claim an 'exact liability' figure. We calculate an honest range factoring in room rent proportional deduction penalties, IRDAI non-payable consumables (10%), and co-pay rules."
+      icon: <FileSearch className="w-5 h-5 text-purple-400" />,
+      title: "Anti-Hallucination Citation Grounding Gate",
+      tag: "Verification Protocol",
+      description:
+        "Every rupee of eligible coverage is matched string-by-string against the ingested insurer policy PDF. If an adversarial prompt or hallucination suggests unverified benefits (e.g. VIP suite upgrades), our citation gate flags it immediately and drops covered liability to ₹0.",
+      link: "/journey/demo-journey-cardiac-01/coverage",
+      linkText: "Inspect Forensic Chamber"
     },
     {
       num: "05",
-      icon: <GitBranch className="w-6 h-6 text-paytm-cyan" />,
-      title: "The Living Journey Line & Dynamic Re-planning",
-      description: "An emergency is not a static chatbot conversation. When new documents arrive—such as an insurer TPA query for an admission ECG—the living timeline automatically adapts, re-prioritizing tasks."
+      icon: <GitBranch className="w-5 h-5 text-emerald-400" />,
+      title: "Living Financial State Machine & Live SSE Re-planning",
+      tag: "State Machine",
+      description:
+        "Real hospital emergencies are continuous lifecycles, not static chatbot transcripts. When an insurer TPA queries for a baseline ECG strip, the LangGraph journey state machine updates dynamically via Server-Sent Events, re-prioritizing the family's Next Best Action on mobile in sub-second time.",
+      link: "/counselor",
+      linkText: "Open Counselor Cockpit"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col font-sans">
-      <Navbar currentLang={lang} onLanguageChange={setLang} />
+    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 flex flex-col font-sans selection:bg-[#002970] selection:text-white">
+      <Navbar />
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        {/* Navigation Breadcrumb */}
+        <div className="mb-8">
+          <NextLink
+            href="/"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500 hover:text-[#002970] transition-colors group mb-4"
+          >
+            <ArrowRight className="w-3.5 h-3.5 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Return to Overview</span>
+          </NextLink>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full flex-grow">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 bg-blue-100 text-paytm-navy px-3 py-1 rounded-full text-xs font-bold uppercase mb-3">
-            <Zap className="w-3.5 h-3.5 text-paytm-cyan" />
-            <span>Architecture & Technology // PS-2 Financial Journeys</span>
+          <div className="pb-6 border-b border-neutral-200">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#002970]/5 border border-[#002970]/20 text-[11px] font-mono uppercase text-[#002970] font-semibold mb-2">
+              <Cpu className="w-3.5 h-3.5 text-[#00baf2]" />
+              <span>Architecture Specification // PS-2 Cross-Domain Engine</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950">
+              How LifeEvent AI Connects the Financial Dots
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mt-2 leading-relaxed">
+              From panic-driven hospital emergency intake to verified cashless discharge:
+              Explore the five architectural pillars powering our zero-hallucination healthcare financial engine.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-paytm-navy tracking-tight">
-            How LifeEvent AI Connects the Financial Dots
-          </h1>
-          <p className="text-sm sm:text-base text-paytm-muted mt-3">
-            From panicky hospital intake to verified cashless discharge: Explore the 5 pillars powering our cross-domain emergency engine.
-          </p>
         </div>
 
-        {/* 5 Steps Vertical Flow */}
-        <div className="space-y-6 mb-12">
-          {steps.map((step, idx) => (
+        {/* 5 Sequential Architecture Cards */}
+        <div className="space-y-6 mb-16">
+          {steps.map((step) => (
             <div
-              key={idx}
-              className="bg-white rounded-lg p-6 border border-paytm-border shadow-sm flex flex-col sm:flex-row items-start gap-5"
+              key={step.num}
+              className="p-6 sm:p-8 rounded-2xl border border-slate-200 bg-white hover:border-[#002970] hover:shadow-md transition-all"
             >
-              <div className="flex-shrink-0 flex items-center gap-3">
-                <span className="text-2xl font-mono font-extrabold text-gray-300">{step.num}</span>
-                <div className="p-3 bg-paytm-sky rounded-lg text-paytm-navy">{step.icon}</div>
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#002970] border border-blue-200 flex items-center justify-center font-mono font-bold text-sm">
+                    {step.num}
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#002970] font-bold block">
+                      {step.tag}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold text-neutral-950">
+                      {step.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <NextLink
+                  href={step.link}
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#002970] hover:text-[#001d52] group self-start sm:self-auto"
+                >
+                  <span>{step.linkText}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </NextLink>
               </div>
-              <div className="flex-grow">
-                <h3 className="text-lg font-bold text-paytm-navy mb-1.5">{step.title}</h3>
-                <p className="text-xs sm:text-sm text-paytm-muted leading-relaxed">{step.description}</p>
-              </div>
+
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-3xl pl-0 sm:pl-13">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
-
-        {/* Dual Engine Banner */}
-        <div className="bg-paytm-navy text-white rounded-lg p-6 sm:p-8 border-l-8 border-paytm-cyan shadow-md mb-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <span className="text-xs font-bold text-paytm-cyan uppercase tracking-wider block mb-1">
-                Venue Wi-Fi Immunity // Dual Engine Architecture
-              </span>
-              <h2 className="text-xl font-bold">Live Gemini 2.0 Multimodal + Offline Deterministic Shield</h2>
-              <p className="text-xs sm:text-sm text-blue-100 mt-2 max-w-2xl leading-relaxed">
-                LifeEvent AI connects directly to Google Gemini via the official <code className="text-paytm-cyan font-mono">google-genai</code> SDK for live policy reading. In the event of venue connectivity drops, our deterministic LangGraph fixture shield guarantees 100% uninterrupted judging demonstration.
-              </p>
-            </div>
-
-            <NextLink
-              href="/intake"
-              className="inline-flex items-center gap-2 bg-paytm-cyan text-paytm-navy font-bold px-5 py-3 rounded text-sm hover:brightness-105 transition-all flex-shrink-0 self-start md:self-center"
-            >
-              <span>Test Live Intake</span>
-              <ArrowRight className="w-4 h-4" />
-            </NextLink>
-          </div>
-        </div>
       </main>
-
-      <footer className="mt-auto py-6 bg-white border-t border-paytm-border text-center text-xs text-paytm-muted">
-        <div className="max-w-7xl mx-auto px-4">
-          <p>{t.disclaimer}</p>
-        </div>
-      </footer>
     </div>
   );
 }
-

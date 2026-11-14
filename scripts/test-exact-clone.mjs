@@ -33,3 +33,4 @@ async function testExactClone() {
 }
 
 testExactClone().catch(console.error);
+
