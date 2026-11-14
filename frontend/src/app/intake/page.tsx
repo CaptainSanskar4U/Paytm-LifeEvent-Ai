@@ -255,33 +255,33 @@ export default function IntakePage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
+    <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
       <Navbar currentLang={lang} onLanguageChange={setLang} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14 w-full flex-grow">
         {/* Editorial Section Header */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 mb-3 text-[11px] font-mono font-bold uppercase tracking-widest text-neutral-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-paytm-cyan animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-3 text-[11px] font-mono font-bold uppercase tracking-widest text-neutral-800">
+            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy animate-pulse" />
             <span>[ 01 // EMERGENCY INGESTION ENGINE ]</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.12]">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-[1.12]">
             Record Emergency Admission
           </h1>
-          <p className="text-sm sm:text-base text-neutral-400 mt-2 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-600 mt-2 max-w-2xl leading-relaxed">
             Provide patient details and upload photos of your health policy or hospital estimate. LifeEvent AI audits your coverage and computes your out-of-pocket range live with zero hallucination.
           </p>
 
           {/* Clinical Context Banner */}
-          <div className="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mt-6 border border-neutral-800 shadow-xl">
+          <div className="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mt-6 border border-neutral-200 shadow-sm">
             <Image
               src="/images/hospital-desk.jpg"
               alt="Hospital Admission Desk"
               fill
-              className="object-cover object-center opacity-85"
+              className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/80 to-neutral-950/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/70 to-transparent" />
             <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
               <span className="text-paytm-cyan font-mono text-[10px] font-bold uppercase tracking-widest">
                 VERHOEFF ENFORCED CLIENT-SIDE PRIVACY
@@ -297,17 +297,17 @@ export default function IntakePage() {
         </div>
 
         {/* Mode Selector Tabs */}
-        <div className="flex border border-neutral-800 mb-8 bg-neutral-900/60 rounded-xl p-1 gap-2">
+        <div className="flex border border-neutral-200 mb-8 bg-neutral-50 rounded-xl p-1 gap-2">
           <button
             type="button"
             onClick={() => setMode("live")}
             className={`flex-1 py-3 text-xs sm:text-sm font-bold font-mono uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2 ${
               mode === "live"
-                ? "bg-neutral-800 text-paytm-cyan border border-neutral-700 shadow-sm"
-                : "text-neutral-400 hover:text-white hover:bg-neutral-800/40"
+                ? "bg-[#002970] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white"
             }`}
           >
-            <Camera className="w-4 h-4 text-paytm-cyan" />
+            <Camera className="w-4 h-4 text-[#00baf2]" />
             <span>Live Patient Intake (Real Details)</span>
           </button>
 
@@ -319,34 +319,34 @@ export default function IntakePage() {
             }}
             className={`py-3 px-5 text-xs sm:text-sm font-bold font-mono uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2 ${
               mode === "demo"
-                ? "bg-neutral-800 text-paytm-cyan border border-neutral-700 shadow-sm"
-                : "text-neutral-400 hover:text-white hover:bg-neutral-800/40"
+                ? "bg-[#002970] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white"
             }`}
           >
-            <Sparkles className="w-4 h-4 text-paytm-cyan" />
+            <Sparkles className="w-4 h-4 text-[#00baf2]" />
             <span className="hidden sm:inline">Load Sample (Cardiac ₹4.2L)</span>
             <span className="sm:hidden">Sample Demo</span>
           </button>
         </div>
 
         {mode === "demo" && (
-          <div className="mb-8 bg-neutral-900/80 text-neutral-200 border border-neutral-800 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
-            <div className="flex items-center gap-2 text-paytm-cyan">
-              <Sparkles className="w-4 h-4 text-paytm-cyan flex-shrink-0" />
-              <span className="text-neutral-300">Sample emergency pre-loaded. Click below to inspect or submit.</span>
+          <div className="mb-8 bg-blue-50/70 text-slate-800 border border-blue-200/80 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex items-center gap-2 text-[#002970]">
+              <Sparkles className="w-4 h-4 text-[#002970] flex-shrink-0" />
+              <span>Sample emergency pre-loaded. Click below to inspect or submit.</span>
             </div>
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => handleLoadSample("cardiac")}
-                className="px-3 py-1.5 bg-neutral-950 border border-neutral-700 text-paytm-cyan font-bold rounded-lg hover:border-paytm-cyan transition-colors"
+                className="px-3 py-1.5 bg-white border border-blue-200 text-[#002970] font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-xs"
               >
                 Cardiac Case (₹4.2L)
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadSample("orthopedic")}
-                className="px-3 py-1.5 bg-neutral-950 border border-neutral-700 text-paytm-cyan font-bold rounded-lg hover:border-paytm-cyan transition-colors"
+                className="px-3 py-1.5 bg-white border border-blue-200 text-[#002970] font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-xs"
               >
                 Ortho Case (₹1.85L)
               </button>
@@ -356,16 +356,16 @@ export default function IntakePage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* SECTION 1: Patient & Admission Identity */}
-          <div className="bg-neutral-900/70 rounded-xl p-5 sm:p-6 border border-neutral-800 shadow-sm">
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+            <h2 className="text-sm font-bold text-paytm-navy uppercase tracking-wider mb-4 flex items-center gap-2">
               <User className="w-4 h-4 text-paytm-cyan" />
               <span>1. Patient & Hospital Identity</span>
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
               <div className="sm:col-span-2">
-                <label className="text-xs font-bold text-neutral-300 block mb-1">
-                  Patient Full Name <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700 block mb-1">
+                  Patient Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -373,16 +373,16 @@ export default function IntakePage() {
                   placeholder="e.g. Suresh Sharma"
                   value={patientName}
                   onChange={(e) => setPatientName(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan focus:ring-1 focus:ring-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan focus:ring-1 focus:ring-paytm-cyan"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Relation to Patient</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Relation to Patient</label>
                 <select
                   value={relation}
                   onChange={(e) => setRelation(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="father">Father</option>
                   <option value="mother">Mother</option>
@@ -396,22 +396,22 @@ export default function IntakePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Age</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Age</label>
                 <input
                   type="number"
                   placeholder="e.g. 56"
                   value={patientAge}
                   onChange={(e) => setPatientAge(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Gender</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Gender</label>
                 <select
                   value={patientGender}
                   onChange={(e) => setPatientGender(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -420,21 +420,21 @@ export default function IntakePage() {
               </div>
 
               <div className="col-span-2">
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Emergency Attendant Mobile</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Emergency Attendant Mobile</label>
                 <input
                   type="tel"
                   placeholder="e.g. +91 98220 12345"
                   value={emergencyContact}
                   onChange={(e) => setEmergencyContact(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="sm:col-span-2">
-                <label className="text-xs font-bold text-neutral-300 block mb-1">
-                  Hospital Name & Branch <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700 block mb-1">
+                  Hospital Name & Branch <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -442,33 +442,33 @@ export default function IntakePage() {
                   placeholder="e.g. Ruby Hall Clinic, Pune or Manipal Hospital"
                   value={hospitalName}
                   onChange={(e) => setHospitalName(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">City</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">City</label>
                 <input
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan"
                 />
               </div>
             </div>
           </div>
 
           {/* SECTION 2: Medical Condition, Room Type & Estimate */}
-          <div className="bg-neutral-900/70 rounded-xl p-5 sm:p-6 border border-neutral-800 shadow-sm">
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+            <h2 className="text-sm font-bold text-paytm-navy uppercase tracking-wider mb-4 flex items-center gap-2">
               <HeartPulse className="w-4 h-4 text-paytm-cyan" />
               <span>2. Clinical Condition & Hospital Room</span>
             </h2>
 
             {/* Voice Dictation Recorder */}
             <div className="mb-4">
-              <label className="text-xs font-bold text-neutral-300 block mb-1">
-                Medical Emergency / Doctor Diagnosis <span className="text-rose-400">*</span>
+              <label className="text-xs font-bold text-slate-700 block mb-1">
+                Medical Emergency / Doctor Diagnosis <span className="text-red-500">*</span>
               </label>
               <div className="mb-2">
                 <VoiceRecorder
@@ -484,14 +484,14 @@ export default function IntakePage() {
                 placeholder="Or type doctor's preliminary diagnosis (e.g. Acute severe chest pain, coronary angiography advised; or severe appendicitis surgery)."
                 value={condition}
                 onChange={(e) => setCondition(e.target.value)}
-                className="w-full text-xs p-3 rounded-lg bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-paytm-cyan leading-relaxed"
+                className="w-full text-xs p-3 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">
-                  Hospital Estimate (₹) <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-slate-700 block mb-1">
+                  Hospital Estimate (₹) <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="number"
@@ -499,32 +499,32 @@ export default function IntakePage() {
                   placeholder="e.g. 350000"
                   value={estimatedAmount}
                   onChange={(e) => setEstimatedAmount(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan font-mono"
                 />
-                <span className="text-[10px] text-neutral-400 mt-0.5 block">Estimated total admission bill</span>
+                <span className="text-[10px] text-slate-500 mt-0.5 block">Estimated total admission bill</span>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Room Category Chosen</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Room Category Chosen</label>
                 <select
                   value={roomCategory}
                   onChange={(e) => setRoomCategory(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="ICU">ICU (₹9,000/day)</option>
                   <option value="Single Private AC">Single Private AC (₹6,500/day)</option>
                   <option value="Twin Sharing">Twin Sharing (₹4,000/day)</option>
                   <option value="General Ward">General Ward (₹2,500/day)</option>
                 </select>
-                <span className="text-[10px] text-neutral-400 mt-0.5 block">Determines proportional deduction</span>
+                <span className="text-[10px] text-slate-500 mt-0.5 block">Determines proportional deduction</span>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Estimated Stay</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Estimated Stay</label>
                 <select
                   value={stayDays}
                   onChange={(e) => setStayDays(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="2">2 Days</option>
                   <option value="3">3 Days</option>
@@ -537,26 +537,26 @@ export default function IntakePage() {
           </div>
 
           {/* SECTION 3: Live Document Uploads (Policy Photo & Estimate Slip) */}
-          <div className="bg-neutral-900/70 rounded-xl p-5 sm:p-6 border border-neutral-800 shadow-sm">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-2">
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <h2 className="text-sm font-bold text-paytm-navy uppercase tracking-wider flex items-center gap-2">
                 <Camera className="w-4 h-4 text-paytm-cyan" />
                 <span>3. Live Upload: Policy Photo & Hospital Estimate</span>
               </h2>
-              <span className="text-[11px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-900/50 px-2 py-0.5 rounded">
+              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
                 Multimodal AI OCR Ready
               </span>
             </div>
-            <p className="text-xs text-neutral-400 mb-4">
+            <p className="text-xs text-slate-500 mb-4">
               Take a photo or upload PDF/images. Our multimodal engine extracts room rent sub-limits and doctor orders.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               {/* Policy Photo Upload Box */}
-              <div className="p-4 rounded-xl border-2 border-dashed border-neutral-800 hover:border-paytm-cyan/60 transition-colors bg-neutral-950/60 flex flex-col justify-between">
+              <div className="p-4 rounded-xl border-2 border-dashed border-slate-200 hover:border-paytm-cyan transition-colors bg-slate-50/50 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-neutral-200 flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                       <FileText className="w-4 h-4 text-paytm-cyan" />
                       <span>Health Policy Document / Photo</span>
                     </span>
@@ -564,36 +564,36 @@ export default function IntakePage() {
                       <button
                         type="button"
                         onClick={() => setPolicyPhoto(null)}
-                        className="text-neutral-400 hover:text-rose-400"
+                        className="text-slate-400 hover:text-red-500"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
                     )}
                   </div>
-                  <p className="text-[11px] text-neutral-400 mb-3">
+                  <p className="text-[11px] text-slate-500 mb-3">
                     Upload policy schedule page, e-card photo, or health insurance card.
                   </p>
 
                   {policyPhoto?.preview ? (
-                    <div className="mb-3 relative rounded-lg overflow-hidden border border-neutral-800 max-h-36">
+                    <div className="mb-3 relative rounded-lg overflow-hidden border border-slate-200 max-h-36">
                       <img
                         src={policyPhoto.preview}
                         alt="Policy Preview"
                         className="w-full h-36 object-cover"
                       />
-                      <div className="absolute bottom-0 inset-x-0 bg-black/80 text-white text-[10px] px-2 py-1 truncate">
+                      <div className="absolute bottom-0 inset-x-0 bg-slate-900/70 text-white text-[10px] px-2 py-1 truncate">
                         {policyPhoto.name} ({policyPhoto.size})
                       </div>
                     </div>
                   ) : policyPhoto ? (
-                    <div className="mb-3 p-2.5 rounded bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-300 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <div className="mb-3 p-2.5 rounded bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                       <span className="truncate">{policyPhoto.name} ({policyPhoto.size})</span>
                     </div>
                   ) : null}
                 </div>
 
-                <label className="w-full cursor-pointer bg-neutral-900 border border-neutral-700 hover:border-paytm-cyan text-neutral-200 font-bold text-xs py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                <label className="w-full cursor-pointer bg-white border border-slate-300 hover:border-paytm-cyan text-slate-700 font-bold text-xs py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-1.5 shadow-sm">
                   <UploadCloud className="w-4 h-4 text-paytm-cyan" />
                   <span>{policyPhoto ? "Replace Policy Photo" : "Upload Policy Photo / PDF"}</span>
                   <input
@@ -606,10 +606,10 @@ export default function IntakePage() {
               </div>
 
               {/* Hospital Estimate Upload Box */}
-              <div className="p-4 rounded-xl border-2 border-dashed border-neutral-800 hover:border-paytm-cyan/60 transition-colors bg-neutral-950/60 flex flex-col justify-between">
+              <div className="p-4 rounded-xl border-2 border-dashed border-slate-200 hover:border-paytm-cyan transition-colors bg-slate-50/50 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-neutral-200 flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                       <FileCheck className="w-4 h-4 text-paytm-cyan" />
                       <span>Hospital Pre-Auth Estimate / Doctor Note</span>
                     </span>
@@ -617,36 +617,36 @@ export default function IntakePage() {
                       <button
                         type="button"
                         onClick={() => setEstimatePhoto(null)}
-                        className="text-neutral-400 hover:text-rose-400"
+                        className="text-slate-400 hover:text-red-500"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
                     )}
                   </div>
-                  <p className="text-[11px] text-neutral-400 mb-3">
+                  <p className="text-[11px] text-slate-500 mb-3">
                     Upload doctor prescription, admission estimate slip, or clinical notes.
                   </p>
 
                   {estimatePhoto?.preview ? (
-                    <div className="mb-3 relative rounded-lg overflow-hidden border border-neutral-800 max-h-36">
+                    <div className="mb-3 relative rounded-lg overflow-hidden border border-slate-200 max-h-36">
                       <img
                         src={estimatePhoto.preview}
                         alt="Estimate Preview"
                         className="w-full h-36 object-cover"
                       />
-                      <div className="absolute bottom-0 inset-x-0 bg-black/80 text-white text-[10px] px-2 py-1 truncate">
+                      <div className="absolute bottom-0 inset-x-0 bg-slate-900/70 text-white text-[10px] px-2 py-1 truncate">
                         {estimatePhoto.name} ({estimatePhoto.size})
                       </div>
                     </div>
                   ) : estimatePhoto ? (
-                    <div className="mb-3 p-2.5 rounded bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-300 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <div className="mb-3 p-2.5 rounded bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                       <span className="truncate">{estimatePhoto.name} ({estimatePhoto.size})</span>
                     </div>
                   ) : null}
                 </div>
 
-                <label className="w-full cursor-pointer bg-neutral-900 border border-neutral-700 hover:border-paytm-cyan text-neutral-200 font-bold text-xs py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                <label className="w-full cursor-pointer bg-white border border-slate-300 hover:border-paytm-cyan text-slate-700 font-bold text-xs py-2 px-3 rounded-lg text-center transition-all flex items-center justify-center gap-1.5 shadow-sm">
                   <UploadCloud className="w-4 h-4 text-paytm-cyan" />
                   <span>{estimatePhoto ? "Replace Estimate Photo" : "Upload Estimate Photo / PDF"}</span>
                   <input
@@ -660,9 +660,9 @@ export default function IntakePage() {
             </div>
 
             {/* Aadhaar with Live Verhoeff Redaction */}
-            <div className="p-3.5 rounded-lg bg-neutral-950 border border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="p-3.5 rounded-lg bg-blue-50/50 border border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex-grow">
-                <label className="text-xs font-bold text-neutral-300 block mb-0.5">
+                <label className="text-xs font-bold text-paytm-navy block mb-0.5">
                   Patient Aadhaar Number (Zero-Knowledge Redaction)
                 </label>
                 <input
@@ -670,30 +670,30 @@ export default function IntakePage() {
                   placeholder="e.g. 2345 6789 0124 (Will be masked to XXXX-XXXX-0124)"
                   value={aadhaarInput}
                   onChange={(e) => setAadhaarInput(e.target.value)}
-                  className="w-full text-xs p-2 rounded bg-neutral-900 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2 rounded border border-blue-200 focus:outline-none focus:border-paytm-cyan font-mono"
                 />
               </div>
-              <div className="text-[11px] text-neutral-400 sm:max-w-xs leading-tight">
-                <Lock className="w-3.5 h-3.5 text-emerald-400 inline mr-1" />
+              <div className="text-[11px] text-slate-500 sm:max-w-xs leading-tight">
+                <Lock className="w-3.5 h-3.5 text-emerald-600 inline mr-1" />
                 <span>Masked automatically with Indian Verhoeff checksum algorithm before transmission.</span>
               </div>
             </div>
           </div>
 
           {/* SECTION 4: Policy Coverage Parameters (Crucial for Out-of-Pocket calculation) */}
-          <div className="bg-neutral-900/70 rounded-xl p-5 sm:p-6 border border-neutral-800 shadow-sm">
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm">
+            <h2 className="text-sm font-bold text-paytm-navy uppercase tracking-wider mb-4 flex items-center gap-2">
               <CreditCard className="w-4 h-4 text-paytm-cyan" />
               <span>4. Policy Entitlement Details</span>
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Health Insurance Company</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Health Insurance Company</label>
                 <select
                   value={knownInsurer}
                   onChange={(e) => setKnownInsurer(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="Star Health & Allied Insurance">Star Health & Allied Insurance</option>
                   <option value="HDFC ERGO General Insurance">HDFC ERGO General Insurance</option>
@@ -708,22 +708,22 @@ export default function IntakePage() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Policy / TPA Number</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Policy / TPA Number</label>
                 <input
                   type="text"
                   placeholder="e.g. P/211111/01/2024/004812"
                   value={policyNumber}
                   onChange={(e) => setPolicyNumber(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan font-mono"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Total Sum Insured (₹)</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Total Sum Insured (₹)</label>
                 <select
                   value={sumInsured}
                   onChange={(e) => setSumInsured(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan font-mono"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white font-mono"
                 >
                   <option value="300000">₹3,00,000</option>
                   <option value="500000">₹5,00,000</option>
@@ -737,34 +737,34 @@ export default function IntakePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Room Rent Entitlement Cap</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Room Rent Entitlement Cap</label>
                 <select
                   value={roomRentCapType}
                   onChange={(e) => setRoomRentCapType(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="1% of Sum Insured (₹5,000/day)">1% of Sum Insured (Standard ₹5,000/day)</option>
                   <option value="Single Private AC Eligible">Single Private AC Room Eligible (~₹6,500/day)</option>
                   <option value="No Room Rent Limit">No Room Rent Cap / Any Room</option>
                   <option value="2% of Sum Insured">2% of Sum Insured for ICU</option>
                 </select>
-                <span className="text-[10px] text-neutral-400 mt-0.5 block">
+                <span className="text-[10px] text-slate-500 mt-0.5 block">
                   Crucial: Occupying a room above this triggers proportional deduction across doctor and surgery fees.
                 </span>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-neutral-300 block mb-1">Policy Co-Payment Clause</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Policy Co-Payment Clause</label>
                 <select
                   value={copayPercent}
                   onChange={(e) => setCopayPercent(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-paytm-cyan"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-paytm-cyan bg-white"
                 >
                   <option value="0">0% (Zero Co-payment)</option>
                   <option value="10">10% Co-payment</option>
                   <option value="20">20% Senior Citizen Co-payment</option>
                 </select>
-                <span className="text-[10px] text-neutral-400 mt-0.5 block">
+                <span className="text-[10px] text-slate-500 mt-0.5 block">
                   Percentage the insured must pay out-of-pocket on approved claims.
                 </span>
               </div>
@@ -772,15 +772,15 @@ export default function IntakePage() {
           </div>
 
           {/* Submission Bar */}
-          <div className="bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-950 rounded-2xl p-6 sm:p-8 border-l-4 border-paytm-cyan border-y border-r border-neutral-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-gradient-to-r from-blue-50/70 via-white to-white rounded-2xl p-6 sm:p-8 border-l-4 border-[#002970] border-y border-r border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-xs font-mono font-bold text-paytm-cyan uppercase tracking-wider block">
+              <span className="text-xs font-mono font-bold text-[#002970] uppercase tracking-wider block">
                 04 // Launch Deterministic Analysis
               </span>
-              <h3 className="text-lg font-bold text-white mt-1">
+              <h3 className="text-lg font-bold text-slate-900 mt-1">
                 Ready to Process Patient Admission Journey
               </h3>
-              <p className="text-xs text-neutral-400 mt-1 max-w-md">
+              <p className="text-xs text-slate-500 mt-1 max-w-md">
                 Computes honest out-of-pocket range, flags room rent proportional penalties, verifies IRDAI clauses & activates Paytm caution bridge standby.
               </p>
             </div>
@@ -788,17 +788,17 @@ export default function IntakePage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-paytm-cyan text-paytm-navy font-black text-xs uppercase tracking-wider hover:bg-cyan-300 transition-all shadow-lg active:scale-98 flex items-center justify-center gap-2.5 flex-shrink-0 disabled:opacity-50"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#002970] text-white font-semibold text-xs uppercase tracking-wider hover:bg-[#001d52] transition-all shadow-xs active:scale-98 flex items-center justify-center gap-2.5 flex-shrink-0 disabled:opacity-50"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-paytm-navy" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#00baf2]" />
                   <span>Analyzing Policy & Generating Journey...</span>
                 </>
               ) : (
                 <>
                   <span>Start Live Financial Journey</span>
-                  <ArrowRight className="w-4 h-4 text-paytm-navy" />
+                  <ArrowRight className="w-4 h-4 text-[#00baf2]" />
                 </>
               )}
             </button>

@@ -308,19 +308,19 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
   const coveragePercent = Math.round((gap.likely_covered_total / (gap.estimated_total_cost || 1)) * 100);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
+    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 flex flex-col font-sans selection:bg-[#002970] selection:text-white">
       <Navbar currentLang={lang} onLanguageChange={setLang} />
 
-      {/* Reassuring Context Banner */}
-      <div className="bg-neutral-900/90 border-b border-neutral-800 shadow-sm">
+      {/* Luminous, Reassuring Context Banner */}
+      <div className="bg-white border-b border-slate-200/80 shadow-xs">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-bold text-white text-sm">{intake.patient_name}</span>
-            <span className="text-neutral-600">&bull;</span>
-            <span className="text-neutral-300">{intake.hospital_name}</span>
-            <span className="hidden sm:inline text-neutral-600">&bull;</span>
-            <span className="hidden sm:inline px-2 py-0.5 rounded-md bg-neutral-950 text-paytm-cyan font-mono font-semibold text-[11px] border border-neutral-800">
+            <span className="font-bold text-slate-900 text-sm">{intake.patient_name}</span>
+            <span className="text-slate-300">&bull;</span>
+            <span className="text-slate-600">{intake.hospital_name}</span>
+            <span className="hidden sm:inline text-slate-300">&bull;</span>
+            <span className="hidden sm:inline px-2 py-0.5 rounded-md bg-blue-50 text-[#002970] font-mono font-semibold text-[11px] border border-blue-100">
               ACUTE CORONARY CARE
             </span>
           </div>
@@ -328,7 +328,7 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
           <button
             onClick={handleSimulateReplan}
             disabled={isReplanning}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-neutral-900 hover:bg-neutral-800 text-paytm-cyan border border-neutral-700 shadow-xs transition-all disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-white hover:bg-slate-50 text-[#002970] border border-slate-200 shadow-xs transition-all disabled:opacity-50"
             title="Simulates insurer TPA raising a clarification query to re-plan the living timeline"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isReplanning ? "animate-spin" : ""}`} />
@@ -339,32 +339,32 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10 w-full flex-grow">
         {replanNotice && (
-          <div className="mb-6 bg-amber-950/30 border border-amber-900/60 p-4 rounded-xl text-xs font-mono text-amber-200 flex items-center gap-3 shadow-xs animate-in fade-in duration-200">
-            <Zap className="w-4 h-4 text-amber-400 flex-shrink-0" />
+          <div className="mb-6 bg-amber-50 border border-amber-200 p-4 rounded-xl text-xs font-mono text-amber-900 flex items-center gap-3 shadow-xs animate-in fade-in duration-200">
+            <Zap className="w-4 h-4 text-amber-600 flex-shrink-0" />
             <span className="font-semibold">{replanNotice}</span>
           </div>
         )}
 
-        {/* 1. Calm Financial Overview Card */}
-        <div className="bg-neutral-900/80 rounded-2xl p-6 sm:p-8 border border-neutral-800 shadow-2xl mb-8">
+        {/* 1. Calm, Luminous Financial Overview Card */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-[0_4px_24px_-4px_rgba(0,41,112,0.06)] mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <span className="text-[11px] font-mono font-bold text-paytm-cyan uppercase tracking-wider block">
+              <span className="text-[11px] font-mono font-bold text-[#002970] uppercase tracking-wider block">
                 Estimated Family Out-of-Pocket Liability
               </span>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white mt-1 tracking-tight">
+              <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 tracking-tight">
                 {formatINR(gap.gap_low)} &ndash; {formatINR(gap.gap_high)}
               </div>
-              <span className="text-xs text-neutral-400 mt-0.5 block">
+              <span className="text-xs text-slate-500 mt-0.5 block">
                 Deterministic IRDAI calculation based on room category & consumables
               </span>
             </div>
 
-            <div className="sm:text-right p-3.5 rounded-xl bg-amber-950/30 border border-amber-900/50">
-              <span className="text-[10px] font-mono text-amber-300 uppercase tracking-widest block font-semibold">
+            <div className="sm:text-right p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/70">
+              <span className="text-[10px] font-mono text-amber-800 uppercase tracking-widest block font-semibold">
                 Statistical Expected Gap
               </span>
-              <span className="text-xl sm:text-2xl font-black text-amber-300 font-mono">
+              <span className="text-xl sm:text-2xl font-black text-amber-900 font-mono">
                 ~{formatINR(gap.gap_expected)}
               </span>
             </div>
@@ -372,7 +372,7 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
 
           {/* Visual Split Bar */}
           <div className="space-y-2 mb-6">
-            <div className="h-3 w-full bg-neutral-950 rounded-full overflow-hidden flex border border-neutral-800">
+            <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden flex border border-slate-200">
               <div
                 style={{ width: `${coveragePercent}%` }}
                 className="bg-emerald-500 transition-all duration-500"
@@ -385,29 +385,29 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
               />
             </div>
 
-            <div className="flex items-center justify-between text-xs font-mono text-neutral-400">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-600">
               <span className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span>Insurance Covers: <strong className="text-white">{formatINR(gap.likely_covered_total)}</strong> ({coveragePercent}%)</span>
+                <span>Insurance Covers: <strong className="text-slate-900">{formatINR(gap.likely_covered_total)}</strong> ({coveragePercent}%)</span>
               </span>
-              <span className="flex items-center gap-2 text-amber-300">
+              <span className="flex items-center gap-2 text-amber-900">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                <span>Family Arranges: <strong className="text-white">~{formatINR(gap.gap_expected)}</strong></span>
+                <span>Family Arranges: <strong className="text-slate-900">~{formatINR(gap.gap_expected)}</strong></span>
               </span>
             </div>
           </div>
 
           {/* Why this range? */}
-          <div className="bg-neutral-950 rounded-xl p-4 text-xs font-mono text-neutral-300 border border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="bg-slate-50 rounded-xl p-4 text-xs font-mono text-slate-700 border border-slate-200/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <Info className="w-4 h-4 text-paytm-cyan flex-shrink-0" />
+              <Info className="w-4 h-4 text-[#002970] flex-shrink-0" />
               <span>
                 Based on Room Rent cap (₹5,000/day) & 10% non-payable hospital consumables (gloves, syringes).
               </span>
             </div>
             <button
               onClick={() => setActiveTab("breakdown")}
-              className="text-paytm-cyan font-bold hover:underline flex-shrink-0 flex items-center gap-1 text-xs"
+              className="text-[#002970] font-bold hover:underline flex-shrink-0 flex items-center gap-1 text-xs"
             >
               <span>See Clause Details</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -415,20 +415,20 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
           </div>
         </div>
 
-        {/* 2. Urgent Next Best Action (Clear Callout) */}
-        <div className="bg-neutral-900/80 rounded-2xl p-6 sm:p-7 shadow-xl mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-l-4 border-paytm-cyan border-y border-r border-neutral-800">
+        {/* 2. Urgent Next Best Action (Clear, Serene Callout) */}
+        <div className="bg-gradient-to-r from-blue-50/70 via-white to-white rounded-2xl p-6 sm:p-7 shadow-xs mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-l-4 border-[#002970] border-y border-r border-slate-200/80">
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-neutral-950 text-paytm-cyan border border-neutral-800 rounded-xl flex-shrink-0 mt-0.5 shadow-sm">
+            <div className="p-2.5 bg-white text-[#002970] border border-blue-200 rounded-xl flex-shrink-0 mt-0.5 shadow-xs">
               <Clock className="w-5 h-5 font-bold" />
             </div>
             <div>
-              <span className="text-[10px] font-mono font-bold text-paytm-cyan uppercase tracking-wider block">
+              <span className="text-[10px] font-mono font-bold text-[#002970] uppercase tracking-wider block">
                 Next Immediate Best Action
               </span>
-              <h3 className="text-base sm:text-lg font-bold text-white mt-1">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-1">
                 {journey.next_best_action || FALLBACK_JOURNEY.next_best_action}
               </h3>
-              <p className="text-xs text-neutral-400 mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Takes ~15 mins &bull; Required to secure cashless pre-authorization sanction from TPA
               </p>
             </div>
@@ -436,7 +436,7 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
 
           <NextLink
             href="/documents"
-            className="inline-flex items-center justify-center gap-2 bg-paytm-cyan text-paytm-navy px-5 py-3 rounded-xl text-xs font-bold hover:bg-white transition-all shadow-sm flex-shrink-0 self-start sm:self-auto active:scale-98"
+            className="inline-flex items-center justify-center gap-2 bg-[#002970] text-white px-5 py-3 rounded-xl text-xs font-semibold hover:bg-[#001d52] transition-all shadow-xs flex-shrink-0 self-start sm:self-auto active:scale-98"
           >
             <span>View Required IDs</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -444,18 +444,18 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
         </div>
 
         {/* 3. Three Focused Tabs: Journey, Breakdown, Funding */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 border border-neutral-800 mb-8 bg-neutral-900/60 rounded-xl p-1 gap-1.5 sm:gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 border border-slate-200 mb-8 bg-slate-100/70 rounded-xl p-1 gap-1.5 sm:gap-2">
           <button
             onClick={() => setActiveTab("journey")}
             className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
               activeTab === "journey"
-                ? "bg-neutral-950 text-paytm-cyan shadow-sm font-bold border border-neutral-800"
-                : "text-neutral-400 hover:text-white hover:bg-neutral-900"
+                ? "bg-white text-[#002970] shadow-xs font-bold"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
             }`}
           >
-            <Clock className="w-4 h-4 text-paytm-cyan" />
+            <Clock className="w-4 h-4 text-[#00baf2]" />
             <span>Living Journey & Tasks</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 font-mono border border-neutral-800">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-mono">
               {journey.checklist.filter((c) => c.status === "done" || c.status === "completed").length}/{journey.checklist.length}
             </span>
           </button>
@@ -464,13 +464,13 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
             onClick={() => setActiveTab("breakdown")}
             className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
               activeTab === "breakdown"
-                ? "bg-neutral-950 text-paytm-cyan shadow-sm font-bold border border-neutral-800"
-                : "text-neutral-400 hover:text-white hover:bg-neutral-900"
+                ? "bg-white text-[#002970] shadow-xs font-bold"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
             }`}
           >
-            <FileText className="w-4 h-4 text-paytm-cyan" />
+            <FileText className="w-4 h-4 text-[#00baf2]" />
             <span>Clause Evidence</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 font-mono border border-neutral-800">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-mono">
               {journey.coverage_findings.length}
             </span>
           </button>
@@ -479,13 +479,13 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
             onClick={() => setActiveTab("funding")}
             className={`flex-1 py-3 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
               activeTab === "funding"
-                ? "bg-neutral-950 text-paytm-cyan shadow-sm font-bold border border-neutral-800"
-                : "text-neutral-400 hover:text-white hover:bg-neutral-900"
+                ? "bg-white text-[#002970] shadow-xs font-bold"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
             }`}
           >
-            <CreditCard className="w-4 h-4 text-paytm-cyan" />
+            <CreditCard className="w-4 h-4 text-[#00baf2]" />
             <span>Payment & Deposit</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 font-mono font-bold border border-amber-900/60">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold">
               ₹50k Caution
             </span>
           </button>
@@ -494,14 +494,14 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
         {/* Tab 1: Journey Timeline & Checklist */}
         {activeTab === "journey" && (
           <div className="space-y-6">
-            <div className="bg-neutral-900/80 rounded-xl p-5 border border-neutral-800 shadow-xl">
-              <div className="flex items-center justify-between mb-4 pb-2 border-b border-neutral-800">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/80 shadow-xs">
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
                 <div>
-                  <h3 className="text-sm font-bold text-white">Timeline of Events & Approvals</h3>
-                  <p className="text-[11px] text-neutral-400">Live synchronization with hospital counter and TPA desk</p>
+                  <h3 className="text-sm font-bold text-slate-900">Timeline of Events & Approvals</h3>
+                  <p className="text-[11px] text-slate-500">Live synchronization with hospital counter and TPA desk</p>
                 </div>
-                <span className="text-[11px] bg-emerald-950/60 text-emerald-300 font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-800/60">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] bg-emerald-50 text-emerald-800 font-bold px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                   Live Sync
                 </span>
               </div>
@@ -513,16 +513,16 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
               />
             </div>
 
-            <div className="bg-neutral-900/80 rounded-xl p-5 border border-neutral-800 shadow-xl">
-              <h3 className="text-sm font-bold text-white mb-3">Family Admission Checklist</h3>
+            <div className="bg-white rounded-xl p-5 border border-slate-200/80 shadow-xs">
+              <h3 className="text-sm font-bold text-slate-900 mb-3">Family Admission Checklist</h3>
               <div className="space-y-2.5">
                 {journey.checklist.map((item, idx) => (
                   <div
                     key={item.id || idx}
                     className={`p-3.5 rounded-xl border text-xs flex items-start justify-between gap-3 ${
                       item.title.includes("URGENT")
-                        ? "bg-amber-950/30 border-amber-900/80 ring-1 ring-amber-500/30"
-                        : "bg-neutral-950 border-neutral-800"
+                        ? "bg-amber-50/80 border-amber-300 ring-1 ring-amber-300"
+                        : "bg-slate-50/70 border-slate-200"
                     }`}
                   >
                     <div className="flex items-start gap-2.5">
@@ -530,18 +530,18 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
                         type="checkbox"
                         checked={item.status === "done" || item.status === "completed"}
                         readOnly
-                        className="mt-0.5 rounded text-paytm-cyan focus:ring-0 bg-neutral-900 border-neutral-700"
+                        className="mt-0.5 rounded text-[#002970] focus:ring-0"
                       />
                       <div>
-                        <p className={`font-bold ${item.title.includes("URGENT") ? "text-amber-300" : "text-white"}`}>
+                        <p className={`font-bold ${item.title.includes("URGENT") ? "text-amber-900" : "text-slate-800"}`}>
                           {item.title}
                         </p>
-                        <p className="text-[11px] text-neutral-400 mt-0.5">
-                          Responsible: <span className="font-semibold text-neutral-300">{item.responsible_party}</span> &bull; Target: <span className="font-semibold text-neutral-300">{item.deadline_minutes} mins</span>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          Responsible: <span className="font-semibold text-slate-700">{item.responsible_party}</span> &bull; Target: <span className="font-semibold text-slate-700">{item.deadline_minutes} mins</span>
                         </p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-300 flex-shrink-0">
+                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600 flex-shrink-0">
                       {item.status}
                     </span>
                   </div>
@@ -554,9 +554,9 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
         {/* Tab 2: Clause Evidence */}
         {activeTab === "breakdown" && (
           <div className="space-y-6">
-            <div className="bg-neutral-900/80 rounded-xl p-5 border border-neutral-800 shadow-xl">
-              <h3 className="text-sm font-bold text-white mb-1">Clause-Verified Policy Coverage</h3>
-              <p className="text-xs text-neutral-400 mb-4">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/80 shadow-xs">
+              <h3 className="text-sm font-bold text-slate-900 mb-1">Clause-Verified Policy Coverage</h3>
+              <p className="text-xs text-slate-500 mb-4">
                 Click any line item to inspect the verbatim policy text extracted from your document.
               </p>
 
@@ -565,38 +565,38 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
                   <div
                     key={idx}
                     onClick={() => setSelectedClaim({ ...finding, is_verified: finding.verified_against_source })}
-                    className="p-4 rounded-xl border border-neutral-800 hover:border-paytm-cyan/60 transition-all cursor-pointer bg-neutral-950 hover:bg-neutral-900/60"
+                    className="p-4 rounded-xl border border-slate-200 hover:border-[#002970] transition-all cursor-pointer bg-slate-50/40 hover:bg-blue-50/30"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-xs text-white">{finding.category}</span>
+                        <span className="font-bold text-xs text-slate-900">{finding.category}</span>
                         {finding.verified_against_source ? (
-                          <span className="text-[10px] bg-emerald-950/60 text-emerald-300 font-bold px-2 py-0.5 rounded border border-emerald-800/60">
+                          <span className="text-[10px] bg-emerald-50 text-emerald-800 font-bold px-2 py-0.5 rounded border border-emerald-200">
                             Verified in Policy
                           </span>
                         ) : (
-                          <span className="text-[10px] bg-amber-950/60 text-amber-300 font-bold px-2 py-0.5 rounded border border-amber-800/60">
+                          <span className="text-[10px] bg-amber-50 text-amber-900 font-bold px-2 py-0.5 rounded border border-amber-200">
                             Needs TPA Confirmation
                           </span>
                         )}
                       </div>
-                      <span className="font-mono text-xs font-semibold text-neutral-400">
+                      <span className="font-mono text-xs font-semibold text-slate-500">
                         Clause {finding.clause_ref}
                       </span>
                     </div>
 
-                    <p className="text-xs text-neutral-300 italic border-l-2 border-paytm-cyan pl-2 mb-2 font-serif">
+                    <p className="text-xs text-slate-600 italic border-l-2 border-[#00baf2] pl-2 mb-2 font-serif">
                       &ldquo;{finding.evidence_passage}&rdquo;
                     </p>
 
-                    <div className="flex items-center justify-between text-xs pt-2 border-t border-neutral-800">
-                      <span className="text-neutral-400 font-mono text-[11px]">
+                    <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100">
+                      <span className="text-slate-500 font-mono text-[11px]">
                         {finding.evidence_doc} &bull; Page {finding.evidence_page}
                       </span>
-                      <span className="font-semibold text-neutral-200">
-                        Likely Covered: <strong className="text-emerald-400">{formatINR(finding.likely_covered)}</strong>
+                      <span className="font-semibold text-slate-800">
+                        Likely Covered: <strong className="text-emerald-700">{formatINR(finding.likely_covered)}</strong>
                         {finding.out_of_pocket > 0 && (
-                          <span className="ml-2 text-amber-300">(Gap: {formatINR(finding.out_of_pocket)})</span>
+                          <span className="ml-2 text-amber-900">(Gap: {formatINR(finding.out_of_pocket)})</span>
                         )}
                       </span>
                     </div>
@@ -610,39 +610,39 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
         {/* Tab 3: Emergency Funding & Payments */}
         {activeTab === "funding" && (
           <div className="space-y-6">
-            <div className="bg-neutral-900/80 rounded-xl p-5 border border-neutral-800 shadow-xl">
+            <div className="bg-white rounded-xl p-5 border border-slate-200/80 shadow-xs">
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h3 className="text-sm font-bold text-white">Hospital Caution Deposit (₹50,000)</h3>
-                  <p className="text-xs text-neutral-400">Required by hospital admission counter for ICU bed allocation</p>
+                  <h3 className="text-sm font-bold text-slate-900">Hospital Caution Deposit (₹50,000)</h3>
+                  <p className="text-xs text-slate-500">Required by hospital admission counter for ICU bed allocation</p>
                 </div>
-                <span className="text-xs font-bold text-rose-300 bg-rose-950/60 px-2.5 py-0.5 rounded-md border border-rose-800/60">
+                <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200">
                   Urgent Clearance
                 </span>
               </div>
 
               {depositPaid ? (
-                <div className="p-4 bg-emerald-950/40 border border-emerald-800/60 rounded-xl flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                  <div className="text-xs text-emerald-200">
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0" />
+                  <div className="text-xs text-emerald-900">
                     <span className="font-bold">₹50,000 Deposit Acknowledged! </span>
                     <span>Digital receipt generated (TXN-88492019) and auto-reconciled with Counter #4.</span>
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-neutral-950 rounded-xl border border-neutral-800">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-neutral-900 rounded-lg border border-neutral-800 flex items-center justify-center text-paytm-cyan font-mono text-xs shadow-xs">
-                      <QrCode className="w-7 h-7 text-paytm-cyan" />
+                    <div className="w-12 h-12 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-[#002970] font-mono text-xs shadow-xs">
+                      <QrCode className="w-7 h-7 text-[#002970]" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-white block">Pay via Paytm UPI</span>
-                      <span className="text-[11px] text-neutral-400 font-mono">Instant direct hospital settlement</span>
+                      <span className="text-xs font-bold text-slate-900 block">Pay via Paytm UPI</span>
+                      <span className="text-[11px] text-slate-500 font-mono">Instant direct hospital settlement</span>
                     </div>
                   </div>
                   <button
                     onClick={() => setDepositPaid(true)}
-                    className="w-full sm:w-auto bg-paytm-cyan text-paytm-navy font-bold px-4 py-2.5 rounded-lg text-xs hover:bg-white shadow-xs transition-colors"
+                    className="w-full sm:w-auto bg-[#002970] text-white font-semibold px-4 py-2.5 rounded-lg text-xs hover:bg-[#001d52] shadow-xs transition-colors"
                   >
                     Simulate UPI Pay (₹50,000)
                   </button>

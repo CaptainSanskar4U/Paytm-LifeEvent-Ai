@@ -159,20 +159,20 @@ export function CrisisQuestionsLedger() {
   const current = questions[activeTab];
 
   return (
-    <section className="relative w-full bg-neutral-950 py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-800/80">
+    <section className="relative w-full bg-white py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-paytm-cyan" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-cyan">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-navy">
               [ 01 // CRISIS RESPONSE ARCHITECTURE ]
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.12]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-[1.12]">
             When an emergency strikes, families face five terrifying questions in thirty seconds.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-neutral-400 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-neutral-600 leading-relaxed">
             At the hospital admission desk, panic and financial opacity collide. LifeEvent AI replaces confusion with mathematical certainty, verbatim regulatory citations, and instant liquidity.
           </p>
         </div>
@@ -190,15 +190,15 @@ export function CrisisQuestionsLedger() {
                   onClick={() => setActiveTab(idx)}
                   className={`w-full text-left p-4 sm:p-5 rounded-xl border transition-all duration-200 flex items-start gap-4 ${
                     isActive
-                      ? "bg-neutral-900 text-white border-paytm-cyan/60 shadow-lg ring-1 ring-paytm-cyan/20"
-                      : "bg-neutral-900/40 text-neutral-300 border-neutral-800/80 hover:border-neutral-700 hover:bg-neutral-900/80"
+                      ? "bg-[#002970] text-white border-[#002970] shadow-sm ring-1 ring-[#002970]/10"
+                      : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/80"
                   }`}
                 >
                   <span
                     className={`font-mono text-sm font-bold mt-0.5 px-2 py-0.5 rounded ${
                       isActive
-                        ? "bg-neutral-950 text-paytm-cyan border border-paytm-cyan/30"
-                        : "bg-neutral-950 text-neutral-400 border border-neutral-800"
+                        ? "bg-neutral-800 text-paytm-cyan"
+                        : "bg-neutral-100 text-neutral-500"
                     }`}
                   >
                     {q.num}
@@ -218,7 +218,7 @@ export function CrisisQuestionsLedger() {
                     </div>
                     <h3
                       className={`text-sm sm:text-base font-bold mt-1 leading-snug ${
-                        isActive ? "text-white" : "text-neutral-200"
+                        isActive ? "text-white" : "text-neutral-900"
                       }`}
                     >
                       {q.title}
@@ -230,26 +230,26 @@ export function CrisisQuestionsLedger() {
           </div>
 
           {/* Right Column: LifeEvent AI Resolution Terminal */}
-          <div className="lg:col-span-7 bg-neutral-900/70 rounded-2xl border border-neutral-800 p-6 sm:p-8 shadow-xl flex flex-col justify-between backdrop-blur-sm">
+          <div className="lg:col-span-7 bg-neutral-50 rounded-2xl border border-neutral-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
             <div>
               {/* Terminal Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-neutral-800 mb-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-neutral-200/80 mb-6">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-neutral-950 border border-neutral-800 text-paytm-cyan">
+                  <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-white border border-neutral-200 text-paytm-navy">
                     CASE STUDY: QUESTION {current.num} OF 05
                   </span>
-                  <span className="text-[11px] font-mono text-neutral-400">
+                  <span className="text-[11px] font-mono text-neutral-500">
                     STATUS: RESOLVED IN ENGINE
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-300 bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800/60">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Verified Deterministic</span>
                 </div>
               </div>
 
               {/* Authentic Clinical Context Photo */}
-              <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden mb-6 border border-neutral-800 shadow-md">
+              <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden mb-6 border border-neutral-200/80 shadow-sm">
                 <Image
                   src={
                     activeTab % 2 === 0
@@ -262,48 +262,48 @@ export function CrisisQuestionsLedger() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={activeTab === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono">
-                  <span className="bg-black/75 backdrop-blur-md px-2.5 py-1 rounded border border-white/20 font-bold">
+                  <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded border border-white/20 font-bold">
                     [ CLINICAL EVIDENCE: IPD-8941 &bull; CARDIAC ]
                   </span>
-                  <span className="bg-neutral-900/90 backdrop-blur-md text-paytm-cyan px-2.5 py-1 rounded border border-paytm-cyan/30 text-[10px] font-bold">
+                  <span className="bg-paytm-navy/90 backdrop-blur-md text-paytm-cyan px-2.5 py-1 rounded border border-paytm-cyan/30 text-[10px] font-bold">
                     AI COORDINATED
                   </span>
                 </div>
               </div>
 
               {/* The Crisis Trigger */}
-              <div className="mb-6 p-4 rounded-xl bg-amber-950/20 border border-amber-900/40">
-                <div className="flex items-center gap-2 text-xs font-bold text-amber-300 mb-1">
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+              <div className="mb-6 p-4 rounded-xl bg-amber-50/70 border border-amber-200/80">
+                <div className="flex items-center gap-2 text-xs font-bold text-amber-900 mb-1">
+                  <AlertTriangle className="w-4 h-4 text-amber-600" />
                   <span>THE HOSPITAL COUNTER PROBLEM:</span>
                 </div>
-                <p className="text-sm text-amber-200/90 leading-relaxed">
+                <p className="text-sm text-amber-950/80 leading-relaxed">
                   {current.problem}
                 </p>
               </div>
 
               {/* The LifeEvent Solution */}
               <div className="mb-6">
-                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                <h4 className="text-lg sm:text-xl font-bold text-neutral-900 mb-2">
                   {current.solutionTitle}
                 </h4>
-                <p className="text-sm text-neutral-300 leading-relaxed">
+                <p className="text-sm text-neutral-600 leading-relaxed">
                   {current.solutionSummary}
                 </p>
               </div>
 
-              {/* Verbatim Code / Regulatory Reference Box */}
-              <div className="p-4 rounded-xl bg-neutral-950/80 border border-neutral-800 font-mono text-xs mb-6">
+              {/* Verbatim Code / Regulatory Reference Box (Subtle Dark Obsidian Terminal) */}
+              <div className="p-4 rounded-xl bg-neutral-950 text-white border border-neutral-800 font-mono text-xs mb-6 shadow-sm">
                 <div className="flex items-center justify-between text-neutral-400 text-[10px] uppercase tracking-wider mb-1.5">
                   <span>{current.formulaOrClause.label}</span>
-                  <span className="text-paytm-cyan font-bold">ZERO HALLUCINATION</span>
+                  <span className="text-paytm-cyan font-bold">ZERO HALLUCINATION &bull; SHA-256</span>
                 </div>
-                <div className="text-white font-semibold mb-1">
+                <div className="text-paytm-cyan font-semibold mb-1 font-mono text-xs sm:text-sm">
                   {current.formulaOrClause.code}
                 </div>
-                <div className="text-neutral-400 text-[11px]">
+                <div className="text-neutral-300 text-[11px]">
                   &rarr; {current.formulaOrClause.impact}
                 </div>
               </div>
@@ -313,15 +313,15 @@ export function CrisisQuestionsLedger() {
                 {current.metrics.map((m, i) => (
                   <div
                     key={i}
-                    className="p-3.5 rounded-lg bg-neutral-950 border border-neutral-800/90"
+                    className="p-3.5 rounded-lg bg-white border border-neutral-200"
                   >
-                    <span className="block text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+                    <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
                       {m.label}
                     </span>
-                    <span className="block text-lg font-black text-white mt-0.5">
+                    <span className="block text-lg font-black text-neutral-900 mt-0.5">
                       {m.value}
                     </span>
-                    <span className="block text-[11px] text-neutral-400 mt-0.5">
+                    <span className="block text-[11px] text-neutral-500 mt-0.5">
                       {m.note}
                     </span>
                   </div>
@@ -330,13 +330,13 @@ export function CrisisQuestionsLedger() {
             </div>
 
             {/* Link to live system demo */}
-            <div className="pt-4 border-t border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <span className="text-xs text-neutral-400 font-mono">
+            <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <span className="text-xs text-neutral-500 font-mono">
                 Real-time execution available in live journey instance
               </span>
               <Link
                 href={current.routeLink}
-                className="inline-flex items-center gap-2 text-xs font-bold text-paytm-cyan hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold text-paytm-navy hover:text-paytm-cyan transition-colors"
               >
                 <span>{current.routeLabel}</span>
                 <ArrowRight className="w-3.5 h-3.5" />

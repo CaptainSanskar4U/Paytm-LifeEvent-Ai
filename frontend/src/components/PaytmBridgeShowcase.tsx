@@ -49,18 +49,18 @@ export function PaytmBridgeShowcase() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-neutral-800 bg-neutral-950">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200/80 bg-white">
       <div className="space-y-12">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-neutral-900 border border-neutral-800 text-[11px] font-mono uppercase text-paytm-cyan font-semibold mb-3">
-            <CreditCard className="w-3.5 h-3.5 text-paytm-cyan" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200/80 text-[11px] font-mono uppercase text-[#002970] font-semibold mb-3">
+            <CreditCard className="w-3.5 h-3.5 text-[#00baf2]" />
             <span>Paytm Emergency Liquidity Rail</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
             Instant Caution Deposit & Emergency Bridge
           </h2>
-          <p className="text-sm sm:text-base text-neutral-400 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             Hospitals routinely demand caution deposits before ICU bed allocation. LifeEvent AI integrates directly with Paytm UPI to bridge initial out-of-pocket liabilities in under 10 seconds.
           </p>
         </div>
@@ -77,20 +77,20 @@ export function PaytmBridgeShowcase() {
                   onClick={() => setActiveStep(idx)}
                   className={`p-5 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-neutral-900 border-paytm-cyan text-white shadow-lg ring-1 ring-paytm-cyan/30"
-                      : "bg-neutral-900/40 border-neutral-800 text-neutral-300 hover:border-neutral-700 hover:bg-neutral-900/70"
+                      ? "bg-white border-[#002970] shadow-sm ring-1 ring-[#002970]/10"
+                      : "bg-slate-50/70 border-slate-200/80 hover:border-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-1">
-                    <span className="text-paytm-cyan font-bold">{s.num} &bull; {s.time}</span>
-                    <span className="bg-neutral-950 border border-neutral-800 px-2 py-0.5 rounded text-neutral-300 font-semibold">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-1">
+                    <span className="text-[#002970] font-bold">{s.num} &bull; {s.time}</span>
+                    <span className="bg-slate-100 border border-slate-200/80 px-2 py-0.5 rounded text-slate-700 font-semibold">
                       {s.badge}
                     </span>
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-white mt-1">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 mt-1">
                     {s.title}
                   </h3>
-                  <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                     {s.desc}
                   </p>
                 </div>
@@ -99,70 +99,70 @@ export function PaytmBridgeShowcase() {
           </div>
 
           {/* Right Column: Luminous Paytm UPI Transaction Mockup */}
-          <div className="lg:col-span-6 bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-6 bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_24px_-4px_rgba(0,41,112,0.06)] p-6 sm:p-8 flex flex-col justify-between">
             <div>
               {/* Receipt Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-neutral-800 mb-6">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#002970] to-[#001744] flex items-center justify-center font-bold text-white text-xs shadow-xs border border-blue-500/30">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#002970] to-[#001744] flex items-center justify-center font-bold text-white text-xs shadow-xs">
                     P
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block">
+                    <span className="text-xs font-bold text-slate-900 block">
                       Paytm Emergency Caution Bridge
                     </span>
-                    <span className="text-[10px] font-mono text-neutral-400 block">
+                    <span className="text-[10px] font-mono text-slate-500 block">
                       TXN ID: PYTM-2026-9812-74
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800/60 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   <span>DISBURSED (8.2s)</span>
                 </div>
               </div>
 
               {/* Amount Display */}
-              <div className="p-5 rounded-xl bg-neutral-900/80 border border-neutral-800 text-center mb-6">
-                <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider block">
+              <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 text-center mb-6">
+                <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block">
                   DISBURSED EMERGENCY AMOUNT
                 </span>
-                <span className="text-3xl sm:text-4xl font-black text-white font-mono mt-1 block">
+                <span className="text-3xl sm:text-4xl font-black text-slate-900 font-mono mt-1 block">
                   ₹1,20,000.00
                 </span>
-                <span className="text-[11px] text-emerald-400 mt-1 block font-mono font-semibold">
+                <span className="text-[11px] text-emerald-700 mt-1 block font-mono font-semibold">
                   &bull; 0% Interest for 30 Days &bull; Backed by Verified Policy
                 </span>
               </div>
 
               {/* Breakdown Details */}
               <div className="space-y-2.5 text-xs font-mono mb-6">
-                <div className="flex items-center justify-between text-neutral-400 pb-2 border-b border-neutral-800/80">
+                <div className="flex items-center justify-between text-slate-600 pb-2 border-b border-slate-100">
                   <span>Beneficiary Hospital</span>
-                  <span className="text-white font-bold">Apollo Hospitals Main ER</span>
+                  <span className="text-slate-900 font-bold">Apollo Hospitals Main ER</span>
                 </div>
-                <div className="flex items-center justify-between text-neutral-400 pb-2 border-b border-neutral-800/80">
+                <div className="flex items-center justify-between text-slate-600 pb-2 border-b border-slate-100">
                   <span>Merchant UPI VPA</span>
-                  <span className="text-white font-mono">apollo.emergency@paytm</span>
+                  <span className="text-slate-900 font-mono">apollo.emergency@paytm</span>
                 </div>
-                <div className="flex items-center justify-between text-neutral-400 pb-2 border-b border-neutral-800/80">
+                <div className="flex items-center justify-between text-slate-600 pb-2 border-b border-slate-100">
                   <span>Patient Admission #</span>
-                  <span className="text-white">IPD-2026-CARD-084</span>
+                  <span className="text-slate-900">IPD-2026-CARD-084</span>
                 </div>
-                <div className="flex items-center justify-between text-neutral-400">
+                <div className="flex items-center justify-between text-slate-600">
                   <span>Reconciliation Policy</span>
-                  <span className="text-paytm-cyan font-bold">Auto-Return at TPA Final Clearance</span>
+                  <span className="text-[#002970] font-bold">Auto-Return at TPA Final Clearance</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-neutral-800 flex items-center justify-between">
-              <span className="text-[11px] font-mono text-neutral-400">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span className="text-[11px] font-mono text-slate-500">
                 Direct Integration via Paytm UPI Gateway
               </span>
               <Link
                 href="/journey/demo-journey-cardiac-01/funding"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-paytm-cyan hover:underline transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#002970] hover:underline transition-colors"
               >
                 <span>Simulate UPI Payment</span>
                 <ArrowRight className="w-3.5 h-3.5" />

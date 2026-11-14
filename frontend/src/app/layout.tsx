@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-neutral-950 text-white antialiased selection:bg-neutral-800 selection:text-white font-sans">
+      <body className="flex flex-col min-h-screen bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white font-sans">
         <main className="flex-grow">{children}</main>
         <WorldClassFooter />
       </body>

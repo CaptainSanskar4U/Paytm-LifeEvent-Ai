@@ -11,7 +11,7 @@ import { HackathonJudgeLaunchpad } from "@/components/HackathonJudgeLaunchpad";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-white flex flex-col antialiased selection:bg-neutral-800 selection:text-white">
+    <div className="min-h-screen bg-white text-neutral-900 flex flex-col antialiased selection:bg-neutral-900 selection:text-white">
       {/* 1. Locked Hero Section (UNTOUCHED & PRESERVED) */}
       <TopHeroSection />
 
