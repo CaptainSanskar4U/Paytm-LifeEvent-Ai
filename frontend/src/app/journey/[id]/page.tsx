@@ -25,7 +25,8 @@ import {
   ChevronRight,
   Trash2,
   SlidersHorizontal,
-  FileCheck
+  FileCheck,
+  Camera
 } from "lucide-react";
 
 interface JourneyData {
@@ -38,6 +39,12 @@ interface JourneyData {
     estimated_amount: number;
     known_insurer: string;
   };
+  documents?: Array<{
+    name: string;
+    type: string;
+    status?: string;
+    preview?: string | null;
+  }>;
   coverage_findings: Array<{
     category: string;
     estimated_cost: number;
@@ -534,7 +541,68 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
 
         {/* Tab 2: Clause Evidence & Policy Breakdown */}
         {activeTab === "breakdown" && (
-          <div className="space-y-4">
+          <div className="space-y-6">
+            {/* Uploaded Case Documents & Photos */}
+            {journey.documents && journey.documents.length > 0 && (
+              <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+                  <div>
+                    <h3 className="text-sm font-bold text-paytm-navy flex items-center gap-2">
+                      <Camera className="w-4 h-4 text-paytm-cyan" />
+                      <span>Uploaded Case Evidence & Policy Documents</span>
+                    </h3>
+                    <p className="text-[11px] text-slate-500">
+                      OCR extracted and verified against hospital and policy schedule
+                    </p>
+                  </div>
+                  <NextLink
+                    href="/documents"
+                    className="text-[11px] font-bold text-paytm-navy hover:underline flex items-center gap-1"
+                  >
+                    <span>Document Hub & Privacy Redactor</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </NextLink>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {journey.documents.map((doc, dIdx) => (
+                    <div
+                      key={dIdx}
+                      className="p-3 rounded-lg border border-slate-200 bg-slate-50/50 flex flex-col justify-between"
+                    >
+                      {doc.preview ? (
+                        <div className="mb-2 rounded overflow-hidden border border-slate-200 h-28 bg-white flex items-center justify-center">
+                          <img
+                            src={doc.preview}
+                            alt={doc.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="mb-2 rounded border border-slate-200 h-28 bg-white flex flex-col items-center justify-center text-slate-400">
+                          <FileText className="w-8 h-8 text-paytm-cyan mb-1" />
+                          <span className="text-[10px] uppercase font-mono font-bold text-slate-500">
+                            {doc.type}
+                          </span>
+                        </div>
+                      )}
+                      <div>
+                        <span className="text-xs font-bold text-slate-800 block truncate" title={doc.name}>
+                          {doc.name}
+                        </span>
+                        <div className="flex items-center justify-between mt-1 text-[10px]">
+                          <span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold border border-emerald-200">
+                            {doc.status || "Analyzed"}
+                          </span>
+                          <span className="text-slate-400 font-mono">Verified</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <h3 className="text-sm font-bold text-paytm-navy mb-1">Clause-Verified Policy Coverage</h3>
               <p className="text-xs text-slate-500 mb-4">

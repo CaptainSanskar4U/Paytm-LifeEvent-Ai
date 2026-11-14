@@ -21,6 +21,10 @@
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\Captain\\Desktop\\Pytm2"]
+    },
+    "rea": {
+      "command": "npx",
+      "args": ["-y", "rea-agents@6.9.0", "mcp"]
     }
   }
 }
