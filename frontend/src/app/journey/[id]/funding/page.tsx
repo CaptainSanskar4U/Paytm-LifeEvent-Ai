@@ -256,3 +256,4 @@ export default function FundingPaymentPage({ params }: { params: Promise<{ id: s
     </div>
   );
 }
+

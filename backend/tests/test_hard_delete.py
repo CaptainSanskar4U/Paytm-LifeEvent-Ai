@@ -25,3 +25,4 @@ def test_health_endpoint():
     data = res.json()
     assert data["status"] == "healthy"
     assert data["active_journeys"] >= 1
+

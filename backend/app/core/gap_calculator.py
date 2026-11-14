@@ -80,3 +80,4 @@ def calculate_gap_range(
         non_payable_consumables=non_payables,
         remaining_sum_insured=round(sum_insured_remaining, 2)
     )
+

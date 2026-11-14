@@ -48,3 +48,4 @@ def test_citation_fails_on_hallucinated_text():
     assert verified_count == 0
     assert audited[0].is_verified is False
     assert "Unverified" in audited[0].confidence
+

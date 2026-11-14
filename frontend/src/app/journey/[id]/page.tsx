@@ -707,3 +707,4 @@ export default function JourneyDashboardPage({ params }: { params: Promise<{ id:
     </div>
   );
 }
+

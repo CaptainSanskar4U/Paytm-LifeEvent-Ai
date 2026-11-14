@@ -133,3 +133,4 @@ export function EvidenceModal({ claim, onClose }: EvidenceModalProps) {
     </div>
   );
 }
+

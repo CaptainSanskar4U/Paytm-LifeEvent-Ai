@@ -44,3 +44,4 @@ def test_gap_with_copay():
     assert res.co_pay_amount > 0
     assert res.room_rent_proportional_deduction == 0.0
     assert res.gap_expected > res.co_pay_amount
+

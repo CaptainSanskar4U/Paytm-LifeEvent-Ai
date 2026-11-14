@@ -51,3 +51,4 @@ def test_langgraph_execution_cardiac_scenario():
     assert len(result["funding_options"]) >= 1
     assert result["gap"]["gap_expected"] > 0
     assert result["coverage_findings"][0]["is_verified"] is True
+

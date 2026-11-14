@@ -276,3 +276,4 @@ def submit_pilot_request(data: dict):
     data["created_at"] = datetime.now().isoformat()
     PILOT_REQUESTS.append(data)
     return {"status": "success", "message": "Pilot request received. Our team will contact you within 24 hours."}
+
