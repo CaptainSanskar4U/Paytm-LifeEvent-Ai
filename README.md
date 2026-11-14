@@ -194,3 +194,4 @@ backend\tests\test_hard_delete.py ..                                     [100%]
 - **Sanskar Thorat** &bull; Frontend & UX Engineer
 
 *Built with passion in Pune for the Paytm AI Hackathon (Build for India) 2024.*
+

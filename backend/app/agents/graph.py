@@ -89,12 +89,12 @@ def gap_node(state: JourneyState) -> Dict[str, Any]:
     intake = state.get("intake", {})
     estimate = float(intake.get("estimated_amount", 420000.0) or 420000.0)
     
-    # Read named policy and hospital parameters
-    sum_insured_remaining = 450000.0
-    allowed_room_rent = 5000.0
-    actual_room_rent = 8500.0
-    hospital_days = 4
-    co_pay = 0.0
+    # Read named policy and hospital parameters dynamically
+    sum_insured_remaining = float(intake.get("sum_insured", 500000.0) or 500000.0)
+    allowed_room_rent = float(intake.get("allowed_room_rent", 5000.0) or 5000.0)
+    actual_room_rent = float(intake.get("actual_room_rent", 8500.0) or 8500.0)
+    hospital_days = int(intake.get("stay_days", 4) or 4)
+    co_pay = float(intake.get("copay_percent", 0.0) or 0.0) / 100.0
 
     gap_breakdown = calculate_gap_range(
         total_estimate=estimate,

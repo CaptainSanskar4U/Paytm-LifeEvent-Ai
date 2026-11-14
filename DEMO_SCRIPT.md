@@ -82,3 +82,4 @@
 
 #### Q4: "Why do you show an estimated range instead of an exact out-of-pocket amount?"
 > **Answer**: *"In Indian health insurance, claiming an exact liability before final billing is medically and legally impossible because final bills depend on proportionate room-rent deductions, co-pay tiers, and fluctuating consumable charges. Showing an honest estimated range (e.g. ₹1.44L–₹1.76L) with transparent assumptions builds genuine trust with families and hospitals."*
+
