@@ -14,14 +14,18 @@ import {
   AlertTriangle,
   FileText,
   BadgeAlert,
-  MapPin
+  Clock,
+  Sparkles,
+  ChevronRight
 } from "lucide-react";
+import { SpotlightCard } from "./SpotlightCard";
 
 interface QuestionItem {
   id: string;
   num: string;
   title: string;
   timeContext: string;
+  timeMinutes: string;
   problem: string;
   solutionTitle: string;
   solutionSummary: string;
@@ -43,7 +47,8 @@ export function CrisisQuestionsLedger() {
       id: "coverage",
       num: "01",
       title: "What is actually covered right now?",
-      timeContext: "T+02 mins &bull; Hospital Admission Desk",
+      timeContext: "Hospital Admission Desk",
+      timeMinutes: "T+02m",
       problem:
         "The desk demands an immediate cashless card or a ₹1,50,000 cash deposit. You don't know your policy exclusions, sub-limits, or waiting periods.",
       solutionTitle: "Verbatim Policy Parsing & Instant Eligibility Breakdown",
@@ -51,7 +56,7 @@ export function CrisisQuestionsLedger() {
         "LifeEvent AI extracts your 42-page policy PDF in 4 seconds. It isolates the exact medical condition, validates sum insured, and flags pre-existing disease (PED) clauses before the hospital desk submits to the TPA.",
       formulaOrClause: {
         label: "REGULATORY REFERENCE",
-        code: "IRDAI/HLT/REG/2024/11 &bull; Clause 4.2.1",
+        code: "IRDAI/HLT/REG/2024/11 • Clause 4.2.1",
         impact: "Mandatory 30-day waiting period waiver for emergency acute coronary syndrome verified.",
       },
       metrics: [
@@ -66,7 +71,8 @@ export function CrisisQuestionsLedger() {
       id: "preauth",
       num: "02",
       title: "Why is cashless pre-authorization taking hours?",
-      timeContext: "T+15 mins &bull; Emergency Observation",
+      timeContext: "Emergency Observation",
+      timeMinutes: "T+15m",
       problem:
         "Pre-auth coordination typically takes 4 to 6 hours due to missing doctor signatures, incomplete diagnostic reports, and opaque TPA back-and-forth.",
       solutionTitle: "Document-Readiness Engine & Automated Form Coordination",
@@ -74,7 +80,7 @@ export function CrisisQuestionsLedger() {
         "Our system audits your hospital admission papers against TPA pre-auth requirements in real time. It highlights exactly what doctor signature or test report is missing before submission, avoiding query letters.",
       formulaOrClause: {
         label: "READINESS AUDIT",
-        code: "ABDM Pre-Auth Schema v2.1 &bull; Section C",
+        code: "ABDM Pre-Auth Schema v2.1 • Section C",
         impact: "Treating Cardiologist clinical summary attached. Zero rejection risk detected.",
       },
       metrics: [
@@ -89,7 +95,8 @@ export function CrisisQuestionsLedger() {
       id: "gap",
       num: "03",
       title: "What is our real out-of-pocket financial gap?",
-      timeContext: "T+25 mins &bull; TPA Initial Approval Arrives",
+      timeContext: "TPA Initial Approval Arrives",
+      timeMinutes: "T+25m",
       problem:
         "TPA approves ₹1,80,000 on a ₹3,50,000 hospital estimate. Families assume ₹1,70,000 is non-payable, but opaque room rent penalties secretly inflate deductions.",
       solutionTitle: "Deterministic Room-Rent Proportional Deduction Engine",
@@ -112,7 +119,8 @@ export function CrisisQuestionsLedger() {
       id: "funding",
       num: "04",
       title: "How do we pay the hospital caution deposit right now?",
-      timeContext: "T+30 mins &bull; Billing Counter Standoff",
+      timeContext: "Billing Counter Standoff",
+      timeMinutes: "T+30m",
       problem:
         "Hospitals refuse to wheel the patient into the cath lab without an upfront ₹1,00,000 caution deposit, even when a health policy exists.",
       solutionTitle: "Paytm Instant 1-Tap UPI Hospital Deposit Bridge",
@@ -120,7 +128,7 @@ export function CrisisQuestionsLedger() {
         "LifeEvent AI unlocks an instant Paytm emergency liquidity bridge based on your verified policy evidence. Funds are disbursed directly to the hospital billing merchant UPI VPA in 8 seconds, automatically reconciling on discharge.",
       formulaOrClause: {
         label: "SETTLEMENT PROTOCOL",
-        code: "Paytm UPI Merchant Bridge &bull; 8-Sec Payout",
+        code: "Paytm UPI Merchant Bridge • 8-Sec Payout",
         impact: "Zero delay at billing counter. Patient moved to OT without personal cash depletion.",
       },
       metrics: [
@@ -135,7 +143,8 @@ export function CrisisQuestionsLedger() {
       id: "replan",
       num: "05",
       title: "What happens when things change mid-treatment?",
-      timeContext: "T+18 hrs &bull; Post-Procedure ICU",
+      timeContext: "Post-Procedure ICU",
+      timeMinutes: "T+18h",
       problem:
         "An unexpected ICU day is added or the doctor prescribes non-formulary medication. Static hospital checklists break down completely.",
       solutionTitle: "Living Journey Line: Dynamic State Machine via SSE",
@@ -143,7 +152,7 @@ export function CrisisQuestionsLedger() {
         "As supplemental bills, TPA replies, and discharge summaries arrive, our state machine continuously recalculates your out-of-pocket gap and coordinates next steps across family and hospital counselors.",
       formulaOrClause: {
         label: "STATE RE-PLANNER",
-        code: "SSE Event Stream &bull; State: ICU_EXTENSION",
+        code: "SSE Event Stream • State: ICU_EXTENSION",
         impact: "Dynamic enhancement request of ₹60,000 auto-formatted for TPA review.",
       },
       metrics: [
@@ -159,13 +168,13 @@ export function CrisisQuestionsLedger() {
   const current = questions[activeTab];
 
   return (
-    <section className="relative w-full bg-white py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
+    <section className="relative w-full bg-white py-24 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-navy">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#002970]" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#002970]">
               [ 01 // CRISIS RESPONSE ARCHITECTURE ]
             </span>
           </div>
@@ -175,6 +184,48 @@ export function CrisisQuestionsLedger() {
           <p className="mt-4 text-base sm:text-lg text-neutral-600 leading-relaxed">
             At the hospital admission desk, panic and financial opacity collide. LifeEvent AI replaces confusion with mathematical certainty, verbatim regulatory citations, and instant liquidity.
           </p>
+        </div>
+
+        {/* Dynamic Crisis Timeline Bar */}
+        <div className="mb-10 p-4 sm:p-5 rounded-2xl bg-neutral-50/80 border border-neutral-200/90 shadow-2xs">
+          <div className="flex items-center justify-between mb-3 text-xs font-mono">
+            <span className="text-neutral-500 uppercase tracking-wider font-semibold">
+              Emergency Admission Standoff Timeline:
+            </span>
+            <span className="text-[#002970] font-bold flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-[#00baf2] animate-pulse" />
+              <span>Current Stage: {current.timeMinutes}</span>
+            </span>
+          </div>
+          <div className="grid grid-cols-5 gap-2 relative">
+            {questions.map((q, idx) => {
+              const isPastOrActive = idx <= activeTab;
+              const isCurrent = idx === activeTab;
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => setActiveTab(idx)}
+                  className={`group relative text-left py-2 px-2.5 rounded-lg border transition-all text-xs font-mono btn-tactile ${
+                    isCurrent
+                      ? "bg-[#002970] text-white border-[#002970] shadow-sm"
+                      : isPastOrActive
+                      ? "bg-blue-50/60 text-[#002970] border-blue-200 hover:bg-blue-100/60"
+                      : "bg-white text-neutral-500 border-neutral-200 hover:border-neutral-300"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-[11px]">{q.timeMinutes}</span>
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        isCurrent ? "bg-[#00baf2] animate-ping" : isPastOrActive ? "bg-[#002970]" : "bg-neutral-300"
+                      }`}
+                    />
+                  </div>
+                  <span className="block truncate text-[10px] mt-0.5 opacity-90">{q.timeContext}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Master-Detail Interactive Ledger */}
@@ -188,16 +239,16 @@ export function CrisisQuestionsLedger() {
                   key={q.id}
                   type="button"
                   onClick={() => setActiveTab(idx)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-xl border transition-all duration-200 flex items-start gap-4 ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all flex items-start gap-4 btn-tactile ${
                     isActive
-                      ? "bg-[#002970] text-white border-[#002970] shadow-sm ring-1 ring-[#002970]/10"
-                      : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/80"
+                      ? "bg-[#002970] text-white border-[#002970] shadow-md ring-2 ring-[#002970]/15 -translate-y-0.5"
+                      : "bg-white text-neutral-900 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50/90"
                   }`}
                 >
                   <span
-                    className={`font-mono text-sm font-bold mt-0.5 px-2 py-0.5 rounded ${
+                    className={`font-mono text-xs font-bold mt-0.5 px-2 py-0.5 rounded-md transition-colors ${
                       isActive
-                        ? "bg-neutral-800 text-paytm-cyan"
+                        ? "bg-white/15 text-[#00baf2]"
                         : "bg-neutral-100 text-neutral-500"
                     }`}
                   >
@@ -207,13 +258,13 @@ export function CrisisQuestionsLedger() {
                     <div className="flex items-center justify-between gap-2">
                       <span
                         className={`text-[10px] font-mono uppercase tracking-wider ${
-                          isActive ? "text-neutral-400" : "text-neutral-500"
+                          isActive ? "text-blue-200" : "text-neutral-500"
                         }`}
                       >
-                        {q.timeContext}
+                        {q.timeMinutes} &bull; {q.timeContext}
                       </span>
                       {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-paytm-cyan animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#00baf2] animate-pulse" />
                       )}
                     </div>
                     <h3
@@ -224,124 +275,131 @@ export function CrisisQuestionsLedger() {
                       {q.title}
                     </h3>
                   </div>
+                  <ChevronRight
+                    className={`w-4 h-4 mt-1 transition-transform ${
+                      isActive ? "text-[#00baf2] translate-x-1" : "text-neutral-300"
+                    }`}
+                  />
                 </button>
               );
             })}
           </div>
 
           {/* Right Column: LifeEvent AI Resolution Terminal */}
-          <div className="lg:col-span-7 bg-neutral-50 rounded-2xl border border-neutral-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
-            <div>
-              {/* Terminal Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-neutral-200/80 mb-6">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-white border border-neutral-200 text-paytm-navy">
-                    CASE STUDY: QUESTION {current.num} OF 05
-                  </span>
-                  <span className="text-[11px] font-mono text-neutral-500">
-                    STATUS: RESOLVED IN ENGINE
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Verified Deterministic</span>
-                </div>
-              </div>
-
-              {/* Authentic Clinical Context Photo */}
-              <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden mb-6 border border-neutral-200/80 shadow-sm">
-                <Image
-                  src={
-                    activeTab % 2 === 0
-                      ? "/images/doctor-consultation.jpg"
-                      : "/images/hospital-desk.jpg"
-                  }
-                  alt="Clinical Emergency Coordination"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority={activeTab === 0}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono">
-                  <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded border border-white/20 font-bold">
-                    [ CLINICAL EVIDENCE: IPD-8941 &bull; CARDIAC ]
-                  </span>
-                  <span className="bg-paytm-navy/90 backdrop-blur-md text-paytm-cyan px-2.5 py-1 rounded border border-paytm-cyan/30 text-[10px] font-bold">
-                    AI COORDINATED
-                  </span>
-                </div>
-              </div>
-
-              {/* The Crisis Trigger */}
-              <div className="mb-6 p-4 rounded-xl bg-amber-50/70 border border-amber-200/80">
-                <div className="flex items-center gap-2 text-xs font-bold text-amber-900 mb-1">
-                  <AlertTriangle className="w-4 h-4 text-amber-600" />
-                  <span>THE HOSPITAL COUNTER PROBLEM:</span>
-                </div>
-                <p className="text-sm text-amber-950/80 leading-relaxed">
-                  {current.problem}
-                </p>
-              </div>
-
-              {/* The LifeEvent Solution */}
-              <div className="mb-6">
-                <h4 className="text-lg sm:text-xl font-bold text-neutral-900 mb-2">
-                  {current.solutionTitle}
-                </h4>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  {current.solutionSummary}
-                </p>
-              </div>
-
-              {/* Verbatim Code / Regulatory Reference Box (Subtle Dark Obsidian Terminal) */}
-              <div className="p-4 rounded-xl bg-neutral-950 text-white border border-neutral-800 font-mono text-xs mb-6 shadow-sm">
-                <div className="flex items-center justify-between text-neutral-400 text-[10px] uppercase tracking-wider mb-1.5">
-                  <span>{current.formulaOrClause.label}</span>
-                  <span className="text-paytm-cyan font-bold">ZERO HALLUCINATION &bull; SHA-256</span>
-                </div>
-                <div className="text-paytm-cyan font-semibold mb-1 font-mono text-xs sm:text-sm">
-                  {current.formulaOrClause.code}
-                </div>
-                <div className="text-neutral-300 text-[11px]">
-                  &rarr; {current.formulaOrClause.impact}
-                </div>
-              </div>
-
-              {/* Real Metrics Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                {current.metrics.map((m, i) => (
-                  <div
-                    key={i}
-                    className="p-3.5 rounded-lg bg-white border border-neutral-200"
-                  >
-                    <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
-                      {m.label}
+          <div className="lg:col-span-7">
+            <SpotlightCard className="bg-neutral-50 rounded-2xl border border-neutral-200/90 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+              <div>
+                {/* Terminal Header */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-neutral-200/80 mb-6">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-white border border-neutral-200 text-[#002970] shadow-2xs">
+                      CASE STUDY: QUESTION {current.num} OF 05
                     </span>
-                    <span className="block text-lg font-black text-neutral-900 mt-0.5">
-                      {m.value}
-                    </span>
-                    <span className="block text-[11px] text-neutral-500 mt-0.5">
-                      {m.note}
+                    <span className="text-[11px] font-mono text-neutral-500">
+                      STAGE: {current.timeMinutes}
                     </span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div className="flex items-center gap-2 text-xs font-mono text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 shadow-2xs font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Verified Deterministic</span>
+                  </div>
+                </div>
 
-            {/* Link to live system demo */}
-            <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <span className="text-xs text-neutral-500 font-mono">
-                Real-time execution available in live journey instance
-              </span>
-              <Link
-                href={current.routeLink}
-                className="inline-flex items-center gap-2 text-xs font-bold text-paytm-navy hover:text-paytm-cyan transition-colors"
-              >
-                <span>{current.routeLabel}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+                {/* Authentic Clinical Context Photo */}
+                <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden mb-6 border border-neutral-200/80 shadow-xs">
+                  <Image
+                    src={
+                      activeTab % 2 === 0
+                        ? "/images/doctor-consultation.jpg"
+                        : "/images/hospital-desk.jpg"
+                    }
+                    alt="Clinical Emergency Coordination"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={activeTab === 0}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-mono">
+                    <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded border border-white/20 font-bold">
+                      [ CLINICAL EVIDENCE: IPD-8941 &bull; CARDIAC ]
+                    </span>
+                    <span className="bg-[#002970]/90 backdrop-blur-md text-[#00baf2] px-2.5 py-1 rounded border border-[#00baf2]/30 text-[10px] font-bold">
+                      AI COORDINATED
+                    </span>
+                  </div>
+                </div>
+
+                {/* The Crisis Trigger */}
+                <div className="mb-6 p-4 rounded-xl bg-amber-50/80 border border-amber-200/90 shadow-2xs">
+                  <div className="flex items-center gap-2 text-xs font-bold text-amber-900 mb-1">
+                    <AlertTriangle className="w-4 h-4 text-amber-600" />
+                    <span>THE HOSPITAL COUNTER PROBLEM:</span>
+                  </div>
+                  <p className="text-sm text-amber-950/90 leading-relaxed">
+                    {current.problem}
+                  </p>
+                </div>
+
+                {/* The LifeEvent Solution */}
+                <div className="mb-6">
+                  <h4 className="text-lg sm:text-xl font-bold text-neutral-900 mb-2">
+                    {current.solutionTitle}
+                  </h4>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    {current.solutionSummary}
+                  </p>
+                </div>
+
+                {/* Verbatim Code / Regulatory Reference Box (Subtle Dark Obsidian Terminal) */}
+                <div className="p-4 rounded-xl bg-neutral-950 text-white border border-neutral-800 font-mono text-xs mb-6 shadow-sm">
+                  <div className="flex items-center justify-between text-neutral-400 text-[10px] uppercase tracking-wider mb-1.5">
+                    <span>{current.formulaOrClause.label}</span>
+                    <span className="text-[#00baf2] font-bold">ZERO HALLUCINATION &bull; SHA-256</span>
+                  </div>
+                  <div className="text-[#00baf2] font-semibold mb-1 font-mono text-xs sm:text-sm">
+                    {current.formulaOrClause.code}
+                  </div>
+                  <div className="text-neutral-300 text-[11px]">
+                    &rarr; {current.formulaOrClause.impact}
+                  </div>
+                </div>
+
+                {/* Real Metrics Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                  {current.metrics.map((m, i) => (
+                    <div
+                      key={i}
+                      className="p-3.5 rounded-xl bg-white border border-neutral-200/90 shadow-2xs hover:border-neutral-300 transition-colors"
+                    >
+                      <span className="block text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+                        {m.label}
+                      </span>
+                      <span className="block text-lg font-black text-neutral-900 mt-0.5">
+                        {m.value}
+                      </span>
+                      <span className="block text-[11px] text-neutral-500 mt-0.5">
+                        {m.note}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Link to live system demo */}
+              <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <span className="text-xs text-neutral-500 font-mono">
+                  Real-time execution available in live journey instance
+                </span>
+                <Link
+                  href={current.routeLink}
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#002970] hover:text-[#00baf2] transition-colors btn-tactile"
+                >
+                  <span>{current.routeLabel}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </SpotlightCard>
           </div>
         </div>
       </div>

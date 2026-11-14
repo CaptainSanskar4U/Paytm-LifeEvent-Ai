@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,10 +12,15 @@ import {
   TrendingDown,
   ShieldCheck,
   FileCheck2,
-  Users
+  Users,
+  Activity,
+  Filter
 } from "lucide-react";
+import { SpotlightCard } from "./SpotlightCard";
 
 export function HospitalConsolePreview() {
+  const [filter, setFilter] = useState<"all" | "ready" | "action">("all");
+
   const patientQueue = [
     {
       id: "IPD-8941",
@@ -22,7 +28,8 @@ export function HospitalConsolePreview() {
       unit: "Cardiac Care / OT-2",
       readiness: "98%",
       status: "Ready for Cashless",
-      badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+      category: "ready",
+      badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
       action: "Doctor Form Signed",
     },
     {
@@ -31,7 +38,8 @@ export function HospitalConsolePreview() {
       unit: "Orthopedic / Daycare",
       readiness: "92%",
       status: "TPA Query Answered",
-      badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+      category: "ready",
+      badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
       action: "Pre-Auth Enhanced",
     },
     {
@@ -40,19 +48,26 @@ export function HospitalConsolePreview() {
       unit: "Neurology / Ward 4",
       readiness: "74%",
       status: "Missing Implant Invoice",
-      badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+      category: "action",
+      badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
       action: "Auto-Prompt Counselor",
     },
   ];
+
+  const filteredQueue = patientQueue.filter((p) => {
+    if (filter === "ready") return p.category === "ready";
+    if (filter === "action") return p.category === "action";
+    return true;
+  });
 
   return (
     <section className="relative w-full bg-white py-24 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-navy">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#002970]" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-[#002970]">
               [ 05 // INSTITUTIONAL SAAS COCKPIT ]
             </span>
           </div>
@@ -66,9 +81,9 @@ export function HospitalConsolePreview() {
 
         {/* 3 Metric Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <SpotlightCard className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 shadow-2xs">
             <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
-              <span>PRE-AUTH CYCLE TIME</span>
+              <span className="font-semibold uppercase tracking-wider">PRE-AUTH CYCLE TIME</span>
               <TrendingDown className="w-4 h-4 text-emerald-600" />
             </div>
             <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
@@ -77,11 +92,11 @@ export function HospitalConsolePreview() {
             <p className="text-xs text-neutral-600 mt-2">
               Down from industry average of 4.2 hours. Zero admission bottlenecks at billing desks.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <SpotlightCard className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 shadow-2xs">
             <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
-              <span>CLAIM DENIAL RATE</span>
+              <span className="font-semibold uppercase tracking-wider">CLAIM DENIAL RATE</span>
               <TrendingDown className="w-4 h-4 text-emerald-600" />
             </div>
             <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
@@ -90,12 +105,12 @@ export function HospitalConsolePreview() {
             <p className="text-xs text-neutral-600 mt-2">
               Reduced from 14.8% by automatically validating documentation against TPA checklists.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+          <SpotlightCard className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 shadow-2xs">
             <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
-              <span>DEPOSIT DISPUTES</span>
-              <CheckCircle2 className="w-4 h-4 text-paytm-navy" />
+              <span className="font-semibold uppercase tracking-wider">DEPOSIT DISPUTES</span>
+              <CheckCircle2 className="w-4 h-4 text-[#002970]" />
             </div>
             <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
               Zero
@@ -103,11 +118,11 @@ export function HospitalConsolePreview() {
             <p className="text-xs text-neutral-600 mt-2">
               Backed by instant 8-second Paytm UPI Caution Deposit liquidity bridges.
             </p>
-          </div>
+          </SpotlightCard>
         </div>
 
         {/* Live Counselor Dashboard Mockup */}
-        <div className="rounded-2xl border border-neutral-200 bg-neutral-900 text-white p-6 sm:p-8">
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-900 text-white p-6 sm:p-8 shadow-xl">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-neutral-800">
             <div>
               <div className="flex items-center gap-2">
@@ -117,16 +132,49 @@ export function HospitalConsolePreview() {
                 </span>
               </div>
               <p className="text-xs text-neutral-400 mt-0.5">
-                City Super Speciality Hospital &bull; Cashless Insurance Desk #03
+                City Super Speciality Hospital &bull; Cashless Insurance Desk #03 &bull; Latency: 12ms
               </p>
             </div>
-            <Link
-              href="/counselor"
-              className="px-4 py-2 rounded-lg bg-paytm-navy text-white text-xs font-bold hover:bg-white hover:text-neutral-900 transition-all flex items-center gap-2"
-            >
-              <Users className="w-3.5 h-3.5" />
-              <span>Open Counselor View</span>
-            </Link>
+            <div className="flex items-center gap-3">
+              {/* Interactive Filter Pills */}
+              <div className="flex items-center gap-1.5 p-1 rounded-lg bg-neutral-800 border border-neutral-700 text-xs font-mono">
+                <button
+                  type="button"
+                  onClick={() => setFilter("all")}
+                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                    filter === "all" ? "bg-white text-neutral-900 font-bold" : "text-neutral-400 hover:text-white"
+                  }`}
+                >
+                  All (3)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFilter("ready")}
+                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                    filter === "ready" ? "bg-emerald-500 text-neutral-950 font-bold" : "text-neutral-400 hover:text-white"
+                  }`}
+                >
+                  Ready (2)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFilter("action")}
+                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                    filter === "action" ? "bg-amber-400 text-neutral-950 font-bold" : "text-neutral-400 hover:text-white"
+                  }`}
+                >
+                  Action (1)
+                </button>
+              </div>
+
+              <Link
+                href="/counselor"
+                className="px-4 py-2 rounded-lg bg-[#002970] text-white text-xs font-bold hover:bg-white hover:text-neutral-900 transition-all flex items-center gap-2 btn-tactile"
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Open Full Counselor View</span>
+              </Link>
+            </div>
           </div>
 
           {/* Hospital Campus Visual Banner */}
@@ -135,12 +183,12 @@ export function HospitalConsolePreview() {
               src="/images/hospital-facility.jpg"
               alt="Hospital Cashless Empaneled Network"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, 80vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/65 to-transparent" />
             <div className="absolute inset-0 p-6 flex flex-col justify-end">
-              <span className="text-paytm-cyan font-mono text-[10px] font-bold uppercase tracking-widest">
+              <span className="text-[#00baf2] font-mono text-[10px] font-bold uppercase tracking-widest">
                 INTEGRATED HIMS & TPA GREEN CHANNEL
               </span>
               <h4 className="text-sm sm:text-base font-bold text-white mt-0.5">
@@ -158,43 +206,42 @@ export function HospitalConsolePreview() {
               <thead>
                 <tr className="text-neutral-400 border-b border-neutral-800 pb-2">
                   <th className="py-2.5 font-bold">IPD ID</th>
-                  <th className="py-2.5 font-bold">Patient Name</th>
-                  <th className="py-2.5 font-bold">Clinical Unit</th>
-                  <th className="py-2.5 font-bold">Readiness Score</th>
-                  <th className="py-2.5 font-bold">Status</th>
-                  <th className="py-2.5 font-bold text-right">Auto Next Action</th>
+                  <th className="py-2.5 font-bold">PATIENT</th>
+                  <th className="py-2.5 font-bold">UNIT / BED</th>
+                  <th className="py-2.5 font-bold">TPA READINESS</th>
+                  <th className="py-2.5 font-bold">STATUS</th>
+                  <th className="py-2.5 font-bold text-right">ACTION</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-neutral-800/60">
-                {patientQueue.map((p) => (
+              <tbody className="divide-y divide-neutral-800/80">
+                {filteredQueue.map((p) => (
                   <tr key={p.id} className="hover:bg-neutral-800/40 transition-colors">
-                    <td className="py-3.5 text-neutral-400">{p.id}</td>
-                    <td className="py-3.5 font-bold text-white font-sans">{p.patient}</td>
+                    <td className="py-3.5 font-bold text-white">{p.id}</td>
+                    <td className="py-3.5 font-sans font-semibold text-neutral-200">{p.patient}</td>
                     <td className="py-3.5 text-neutral-400">{p.unit}</td>
-                    <td className="py-3.5 font-bold text-emerald-400">{p.readiness}</td>
                     <td className="py-3.5">
-                      <span className="px-2 py-0.5 rounded bg-neutral-800 text-neutral-200 border border-neutral-700">
+                      <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/60 font-bold">
+                        {p.readiness}
+                      </span>
+                    </td>
+                    <td className="py-3.5">
+                      <span className={`px-2 py-0.5 rounded border text-[11px] font-semibold ${p.badgeColor}`}>
                         {p.status}
                       </span>
                     </td>
-                    <td className="py-3.5 text-right text-paytm-cyan font-bold">{p.action}</td>
+                    <td className="py-3.5 text-right">
+                      <Link
+                        href="/counselor"
+                        className="inline-flex items-center gap-1 text-[11px] text-[#00baf2] hover:text-white transition-colors"
+                      >
+                        <span>{p.action}</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-
-          <div className="pt-6 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <span className="text-[11px] font-mono text-neutral-400">
-              ABDM M1, M2, M3 Compliant &bull; HL7 FHIR Standard
-            </span>
-            <Link
-              href="/for-hospitals"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-paytm-cyan hover:text-white transition-colors"
-            >
-              <span>Explore Hospital Enterprise Pilot</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
         </div>
       </div>
