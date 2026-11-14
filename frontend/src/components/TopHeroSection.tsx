@@ -49,14 +49,14 @@ export function TopHeroSection() {
             <div className="section-fake-hero-top">
               <div className="div-block">
                 <div className="p-l">
-                  <span className="font-bold text-[#38bdf8] tracking-tight">Instant Cashless Intelligence.</span>
+                  <span className="font-bold text-slate-900 tracking-tight">Instant Cashless Intelligence.</span>
                   <br />
-                  <span className="text-slate-400 text-xs sm:text-sm font-normal">
+                  <span className="text-slate-600 text-xs sm:text-sm font-normal">
                     No family faces the hospital admission counter alone.
                   </span>
                 </div>
                 <div className="space-24"></div>
-                <Link href="/intake" className="btn black-blend border border-neutral-800">
+                <Link href="/intake" className="btn black-blend">
                   <span className="btn__text">
                     <p className="btn__text-p">START EMERGENCY INTAKE</p>
                   </span>
@@ -73,11 +73,11 @@ export function TopHeroSection() {
               <button
                 type="button"
                 onClick={() => setMenuOpen(true)}
-                className="menu-toggle flex items-center gap-2 text-slate-400 hover:text-white transition-opacity cursor-pointer group bg-transparent border-0"
+                className="menu-toggle flex items-center gap-2 hover:opacity-75 transition-opacity cursor-pointer group bg-transparent border-0"
                 aria-label="Open Navigation Menu"
               >
-                <span className="font-bold tracking-widest uppercase text-xs text-slate-300">MENU</span>
-                <span className="text-slate-400 font-mono text-sm tracking-tighter group-hover:rotate-90 transition-transform">
+                <span className="font-bold tracking-widest uppercase text-xs">MENU</span>
+                <span className="text-slate-900 font-mono text-sm tracking-tighter group-hover:rotate-90 transition-transform">
                   ::
                 </span>
               </button>
@@ -85,18 +85,19 @@ export function TopHeroSection() {
 
             <div className="section-fake-hero-bottom">
               <div className="link-hero-bottom-w">
-                <Link href="/journey/demo-journey-cardiac-01" className="h1 text-slate-400 hover:text-white transition-colors">
-                  Sample Case: Pune First Clinic &bull; ICU Cardiac Admission
+                <Link href="/journey/demo-journey-cardiac-01" className="h1 hover:text-slate-600 transition-colors">
+                  Sample Case: Ruby Hall Clinic &bull; ICU Cardiac Admission
                 </Link>
               </div>
-              <div className="hero-social-links text-slate-400 flex items-center gap-3">
-                <Link href="/intake" className="hover:text-white transition-colors">INTAKE</Link>
-                <span className="text-slate-600">/</span>
-                <Link href="/journey/demo-journey-cardiac-01" className="hover:text-white transition-colors">LIVE DEMO</Link>
-                <span className="text-slate-600">/</span>
-                <Link href="/demo-script" className="font-bold text-[#00baf2] hover:text-white transition-colors">BOOK A PITCH</Link>
-                <span className="text-neutral-500 text-sm">✦</span>
-                <span className="px-1.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-[11px] font-bold text-slate-300">EN</span>
+              <div className="hero-social-links">
+                <Link href="/intake">INTAKE</Link>
+                <span>/</span>
+                <Link href="/journey/demo-journey-cardiac-01">LIVE DEMO</Link>
+                <span>/</span>
+                <Link href="/documents">DOCS</Link>
+                <span>/</span>
+                <Link href="/demo-script" className="font-bold text-paytm-navy">PITCH</Link>
+                <span className="px-1.5 py-0.5 rounded bg-slate-100 text-[11px] font-bold text-slate-700">EN</span>
               </div>
             </div>
           </div>
