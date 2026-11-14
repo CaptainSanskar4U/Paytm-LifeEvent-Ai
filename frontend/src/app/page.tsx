@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Navbar } from "@/components/Navbar";
+import { MonumentalHero } from "@/components/MonumentalHero";
 import { Language, translations } from "@/lib/translations";
 import {
   ArrowRight,
@@ -62,51 +62,8 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col">
-      <Navbar currentLang={lang} onLanguageChange={setLang} />
-
-      {/* Hero Section: The Hospital Counter Moment */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-paytm-navy via-paytm-navyDark to-paytm-navy text-white pt-12 pb-20 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Hackathon Badge */}
-          <div className="inline-flex items-center gap-2 bg-paytm-cyan/15 border border-paytm-cyan/30 text-paytm-cyan px-3 py-1 rounded-full text-xs font-semibold mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Paytm AI Hackathon (Build for India) — PS-2: AI-Powered Financial Journeys</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 text-balance max-w-4xl mx-auto">
-            When a medical emergency strikes, your family shouldn't fight the paperwork alone.
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            One guided financial journey connecting <strong>insurance claims</strong>, <strong>honest out-of-pocket gap ranges</strong>, and <strong>emergency payments</strong> in one living timeline.
-          </p>
-
-          {/* Dual CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
-            <Link
-              href="/intake"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-paytm-cyan text-paytm-navy font-bold text-sm sm:text-base hover:bg-white transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
-            >
-              <span>Start Emergency Intake</span>
-              <ArrowRight className="w-4 h-4 text-paytm-navy" />
-            </Link>
-
-            <Link
-              href="/journey/demo-journey-cardiac-01"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-lg bg-white/10 text-white font-bold text-sm sm:text-base hover:bg-white/20 transition-all border border-white/20 flex items-center justify-center gap-2"
-            >
-              <span>Try Sample Emergency</span>
-            </Link>
-          </div>
-
-          <p className="text-xs text-slate-400 mt-4 flex items-center justify-center gap-1.5">
-            <Lock className="w-3.5 h-3.5 text-paytm-cyan" />
-            <span>Server-side Aadhaar masking & 100% offline demo mode enabled</span>
-          </p>
-        </div>
-      </section>
+      {/* Monumental Hero Section (Reverse-engineered high-impact design inspired by noth.in) */}
+      <MonumentalHero currentLang={lang} onLanguageChange={setLang} />
 
       {/* The 5 Urgent Questions Section */}
       <section className="py-16 px-4 sm:px-6 max-w-5xl mx-auto w-full">

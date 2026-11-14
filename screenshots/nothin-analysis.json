@@ -1,0 +1,522 @@
+{
+  "data": {
+    "title": "Nothin' | Accueil",
+    "frameworkInfo": {
+      "hasGSAP": true,
+      "hasLenis": false,
+      "hasScrollTrigger": false,
+      "nextData": null,
+      "bodyClass": ""
+    },
+    "bigTextMetrics": null,
+    "headings": [
+      {
+        "tag": "A",
+        "text": "projets",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "STUDIO",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "awards",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "méthode",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "contact",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "projets",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "normal",
+        "textTransform": "none"
+      },
+      {
+        "tag": "A",
+        "text": "studio",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "normal",
+        "textTransform": "none"
+      },
+      {
+        "tag": "A",
+        "text": "méthode",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "normal",
+        "textTransform": "none"
+      },
+      {
+        "tag": "A",
+        "text": "awards",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "normal",
+        "textTransform": "none"
+      },
+      {
+        "tag": "A",
+        "text": "On discute ?",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "P",
+        "text": "On discute ?",
+        "fontSize": "10.8px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "écrivez-nous@",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "P",
+        "text": "écrivez-nous",
+        "fontSize": "10.8px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "LKDN",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "Linkedin",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "/",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "Instagram",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "insta",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "ENG",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "0.5",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "FR",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "réserver un appel",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "0",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "P",
+        "text": "réserver un appel",
+        "fontSize": "10.8px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "1.12px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "H1",
+        "text": "Studio créatif à Paris",
+        "fontSize": "12.6px",
+        "fontWeight": "500",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "-0.126px",
+        "textTransform": "none"
+      },
+      {
+        "tag": "A",
+        "text": "LKDN",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "Linkedin",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "/",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "Instagram",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "insta",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "ENG",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "0.5",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      },
+      {
+        "tag": "A",
+        "text": "FR",
+        "fontSize": "10.8px",
+        "fontWeight": "700",
+        "fontFamily": "Ppneuemontreal, Arial, sans-serif",
+        "color": "rgb(0, 0, 0)",
+        "transform": "none",
+        "opacity": "1",
+        "letterSpacing": "0.324px",
+        "textTransform": "uppercase"
+      }
+    ],
+    "cssRules": [
+      "abbr[title] { border-bottom: 1px dotted; }",
+      "@keyframes spin { \n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}",
+      ".container.hero-studio { flex-flow: column; justify-content: flex-start; align-items: flex-start; height: 100%; padding-top: 6.25rem; padding-left: 15.625rem; display: flex; }",
+      ".container.hero-home { flex-flow: column; justify-content: center; align-items: center; height: 100%; display: flex; }",
+      ".section.hero-studio { background-color: var(--white); width: 100%; height: 100vh; color: var(--white); flex-flow: column; justify-content: space-between; align-items: center; display: flex; position: relative; }",
+      ".section.hero-home { background-color: var(--white); width: 100%; height: 100vh; position: relative; }",
+      ".nothin-hero-svg { width: 100%; }",
+      ".nothin-hero-svg.motion { color: var(--white); }",
+      ".nothin-hero-w { width: 100%; overflow: hidden; }",
+      ".video-hero-bg { z-index: 0; width: 100%; padding: 0px; display: block; position: absolute; }",
+      ".video-hero-bg.motion { background-color: var(--black); opacity: 0; }",
+      ".link-hero-w { gap: 0.875rem; justify-content: flex-start; align-items: center; display: flex; }",
+      ".link-hero-lang-w { gap: 1.375rem; justify-content: flex-start; align-items: center; display: flex; }",
+      ".link-hero-bottom-w { justify-content: space-between; align-items: center; width: 100%; display: flex; position: relative; }",
+      ".link-hero-bottom-w.studio { z-index: 1; justify-content: flex-end; align-items: center; padding-bottom: 2.125rem; padding-left: 1.25rem; padding-right: 1.25rem; }",
+      ".section-fake-hero { z-index: 2; width: 100%; height: 100vh; color: var(--white); mix-blend-mode: difference; flex-flow: column; justify-content: space-between; align-items: flex-start; margin-top: 100vh; padding: 1rem 1.25rem; display: flex; position: absolute; inset: 0% 0% auto; }",
+      ".title-work { color: rgb(142, 142, 142); letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 1rem; font-family: \"IBM Plex Mono\", sans-serif; font-size: 0.75rem; }",
+      ".footer.hero-home { background-color: var(--white); width: 100%; height: 100vh; position: relative; }",
+      ".section-footer.hero-home { background-color: var(--white); width: 100%; height: 100vh; position: relative; }",
+      ".faq-title-section { justify-content: space-between; align-items: center; font-size: 1.25rem; font-weight: 700; display: flex; }",
+      "@keyframes nwdot { \n  50% { opacity: 1; }\n}",
+      ".section-w .video-hero-bg { position: absolute; top: 50%; left: 0px; transform: translateY(-50%); width: 100%; height: auto; z-index: 0; }",
+      ".section-w .section.hero-home { background-color: rgb(255, 255, 255); position: relative; z-index: 0; }"
+    ],
+    "htmlStructure": "<div class=\"code-embed-css w-embed\"><style>\n/* ------------------------- Variables ------------------------------------------- */\n html { font-size: calc(0rem + 1vw); }\n  @media screen and (min-width:992px) { html { font-size: calc(0rem + 1vw); } }\n  @media screen and (max-width:991px) { html { font-size: 1rem; } }\n\n\n/* ------------------------- Hide Scrollbar -------------------------------------------------- */\n\nbody ::-webkit-scrollbar,\nbody::-webkit-scrollbar {display: none;} /* Chrome, Safari, Opera */\nbody {-ms-overflow-style: none;} /* IE & Edge */\nhtml {scrollbar-width: none;} /* Firefox */\n\n/* ------------------------- Reset -------------------------------------------------- */\n\n*,\n*:after,\n*:before {\n\tmargin: 0;\n  padding: 0;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n\n\nhtml,\nbody {\n  -webkit-font-smoothing: antialiased;\n  /*overflow-scroll:none;*/\nwidth: 100%;    \nheight: auto;\n}\n\ninput:focus,\nselect:focus,\ntextarea:focus,\nbutton:focus {\n    outline: none;\n}\n\n\n/* ------------------------- Link hover -------------------------------------------------- */\n\n\n  \n/*svg {\n  max-width: none;\n  height: auto;\n  box-sizing: border-box;\n  vertical-align: middle;\n}*/\n\na {\n  color: inherit;\n}\n\n/* Selection */\n::selection {\n  background-color: #121212;\n  color: white;\n  text-shadow: none;\n}\n\n::-moz-selection {\n  background-color: #121212;\n  color: white;\n  text-shadow: none;\n}\n\n  /* Selection dans .form_w */\n.form_w ::selection {\n  background-color: #2500AD;\n  color: #FFFFFF;\n  text-shadow: none;\n}\n.form_w ::-moz-selection {\n  background-color: #2500AD;\n  color: #FFFFFF;\n  text-shadow: none;\n}\n\n/* These classes are never overwritten */\n.hide {\n  display: none !important;\n}\n\n\nfigure{\nmargin:0 !important;\npadding: 0 !important;\n}\n\n/* Get rid of top margin on first element in any rich text element */\n.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {\n  margin-top: 0 !important;\n}\n\n/* Get rid of bottom margin on last element in any rich text element */\n.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {\n\tmargin-bottom: 0 !important;\n}\n</style></div><div class=\"w-embed\"><style>\n@media screen and (max-width: 991px) {\n    .hide, .hide-tablet {\n        display: none !important;\n    }\n}\n  @media screen and (max-width: 767px) {\n    .hide-landscape{\n      display: none !important;\n    }\n}\n  @media screen and (max-width: 479px) {\n    .hide-mobile{\n      display: none !important;\n    }\n}\n</style></div><nav delay=\"1.5\" opacity=\"\" no-scroll=\"\" class=\"nav-boiler\" data-reveal-init=\"1\" style=\"opacity: 0;\"><a href=\"/fr\" aria-current=\"page\" class=\"nav-logo-wrap w-inline-block w--current\" style=\"opacity: 0; visibility: hidden;\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 338 291\" fill=\"none\" class=\"nav-logo\"><defs><clipPath id=\"clip-nav-o\"><rect x=\"241\" y=\"0\" width=\"285\" height=\"291\"></rect></clipPath><clipPath id=\"clip-nav-t\"><rect x=\"520\" y=\"0\" width=\"183\" height=\"291\"></rect></clipPath><clipPath id=\"clip-nav-h\"><rect x=\"722\" y=\"0\" width=\"228\" height=\"291\"></rect></clipPath><clipPath id=\"clip-nav-i\"><rect x=\"968\" y=\"0\" width=\"72\" height=\"291\"></rect></clipPath><clipPath id=\"clip-nav-n-last\"><rect x=\"1058\" y=\"0\" width=\"230\" height=\"291\"></rect></clipPath></defs><path d=\"M224.949 7.33105C227.135 7.33105 228.228 8.42429 228.228 10.6108V280.703C228.228 282.89 227.135 283.983 224.949 283.983H168.808C167.522 283.983 166.622 283.533 166.107 282.633L72.3463 151.059C71.3174 149.773 70.0312 149.387 68.4878 149.901C66.9444 150.287 66.1727 151.316 66.1727 152.988L67.5232 280.511C67.5232 282.826 66.43 283.983 64.2435 283.983H3.47262C1.15754 283.983 0 282.89 0 280.703V10.6108C0 8.42429 1.15754 7.33105 3.47262 7.33105H58.8416C60.1278 7.33105 61.0924 7.84552 61.7355 8.87444L155.882 150.48C156.782 151.766 158.004 152.217 159.548 151.831C161.22 151.316 162.056 150.223 162.056 148.551L160.705 10.6108C160.705 8.42429 161.798 7.33105 163.985 7.33"
+  },
+  "networkAssets": [
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/css/nothin-preprod.webflow.shared.6a01a1b34.min.css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/css/nothin-preprod.webflow.6a0c501c42b9751b78a9d1a3.ce6f7cea6.opt.min.css",
+      "status": 200,
+      "type": "text/css"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/js/webflow.schunk.0fc84c59f0155ba1.js",
+      "status": 200,
+      "type": "text/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/js/webflow.751e0867.6551f58fa950fc60.js",
+      "status": 200,
+      "type": "text/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7%2F689e5ba67671442434f3ca35%2F6adfb3a1a7b90ee5ba671ade%2Fchatfr-1.0.1.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7%2F689e5ba67671442434f3ca35%2F6adfb63e61417b162801f7a9%2Ftogglelangues-1.1.0.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7%2F689e5ba67671442434f3ca35%2F6adfb193ff928009b213a916%2Fasklauncherlift-1.0.2.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6a0c501c42b9751b78a9d1a7",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js",
+      "status": 200,
+      "type": "text/javascript; charset=UTF-8"
+    },
+    {
+      "url": "https://www.noth.in/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/6a0c501c42b9751b78a9d1cc_PPNeueMontreal-Medium.woff2",
+      "status": 200,
+      "type": "font/woff2"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400",
+      "status": 200,
+      "type": "text/css; charset=utf-8"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/6a0c501c42b9751b78a9d1d4_PPNeueMontreal-Bold.woff2",
+      "status": 200,
+      "type": "font/woff2"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7%2F689e5ba67671442434f3ca35%2F6ad629fcd3431332ab8fe4bc%2Fnothinwebmcp-1.0.0.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/6a0c501c42b9751b78a9d1cf_PPNeueMontreal-Book.woff2",
+      "status": 200,
+      "type": "font/woff2"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/6a0c501c42b9751b78a9d1a7/6a0c501c42b9751b78a9d1cd_PPNeueMontreal-Regular.woff2",
+      "status": 200,
+      "type": "font/woff2"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TXXTT3WJ",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/ibmplexmono/v23/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2",
+      "status": 200,
+      "type": "font/woff2"
+    },
+    {
+      "url": "https://tools.noth.in/chat/widget-v4.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://tools.noth.in/webmcp/nothin-webmcp.js",
+      "status": 200,
+      "type": "application/javascript"
+    },
+    {
+      "url": "https://www.noth.in/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5a4b5f5fe40e15e",
+      "status": 302
+    },
+    {
+      "url": "https://www.noth.in/cdn-cgi/challenge-platform/h/b/scripts/jsd/f8df4d4a0cd6/main.js?ray=a5a4b5f5fe40e15e",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8"
+    },
+    {
+      "url": "https://tools.noth.in/webmcp/offres.json",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "url": "https://nothinv1.netlify.app/main.js",
+      "status": 200,
+      "type": "application/javascript; charset=UTF-8"
+    }
+  ]
+}
