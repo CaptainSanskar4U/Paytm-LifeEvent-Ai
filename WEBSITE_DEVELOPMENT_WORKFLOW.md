@@ -52,3 +52,4 @@ Examine screenshots side-by-side:
 2. Apply targeted code corrections.
 3. Re-capture and compare.
 4. Stop only when the interface passes the Awwwards / human art-direction benchmark.
+

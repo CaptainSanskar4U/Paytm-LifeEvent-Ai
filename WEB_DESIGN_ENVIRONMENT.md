@@ -171,3 +171,4 @@ npm run dev
 - **Node & npx Cache**: If any MCP server fails to launch, clear cache with `npx clear-npx-cache` or run `npm cache clean --force`.
 - **Port Conflicts**: If the dev server port (e.g., 5173 or 3000) is occupied, specify `--port 3001` in the launch command.
 - **MCP Reconnection**: In Antigravity, reload MCP tools via **Additional Options (...) > MCP Servers** or restart the session.
+

@@ -32,3 +32,4 @@ Execute visual captures across all 4 responsive tiers:
 - [ ] **Focus Visible**: All interactive elements display a clear, accessible keyboard focus indicator.
 - [ ] **Hover / Tap States**: Every clickable component has an immediate, unmistakable visual feedback state.
 - [ ] **Touch Targets**: All mobile buttons and links meet the minimum 44x44px touch target boundary.
+

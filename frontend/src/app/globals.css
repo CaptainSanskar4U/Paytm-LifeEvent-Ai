@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-navy: #002970;
+  --secondary-cyan: #00baf2;
+  --bg-sky: #f0f7ff;
+  --text-dark: #0d1b2a;
+}
+
+body {
+  background-color: var(--bg-sky);
+  color: var(--text-dark);
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Accessible focus visible outlines */
+*:focus-visible {
+  outline: 2px solid var(--secondary-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

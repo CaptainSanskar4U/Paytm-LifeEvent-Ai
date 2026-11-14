@@ -86,3 +86,4 @@ Activate on-demand skills from `.agents/skills/`:
 - **3D & Creative WebGL**: `threejs`, `webgl-landing-steering`, `webgl-3d-object`, `matterjs`, `shaders-cursor-ripples`
 - **Component Patterns**: `composition-patterns`, `react-best-practices`, `react-view-transitions`, `vercel-optimize`
 - **Quality Verification**: `audit-ai-design-slop`, `audit-reference-originality`, `workflow-progress-screenshots`, `iterate-until-verified`, `performance-profiling`
+

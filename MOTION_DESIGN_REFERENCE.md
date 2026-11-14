@@ -53,3 +53,4 @@ export const springDrawer = { type: "spring", stiffness: 180, damping: 22 };
 - **Always animate composite triggers**: `transform: translate3d(...) scale(...)`, `opacity`.
 - **Layer Promotion**: Use `will-change: transform` only during active animation cycles; remove on complete to save VRAM.
 - **Respect Accessibility**: Always enforce `@media (prefers-reduced-motion: reduce)`.
+

@@ -64,3 +64,4 @@ Strict 8pt/4pt mathematical cadence:
 - **Primary Button**: High visual weight, solid surface, optical padding (e.g. `py-3 px-6`), subtle border contrast.
 - **Secondary Button**: Ghost/subtle outline with crisp hover state (surface shift, not garish glow).
 - **Active State**: 0.98 scale micro-compression on `:active` with smooth spring recovery.
+

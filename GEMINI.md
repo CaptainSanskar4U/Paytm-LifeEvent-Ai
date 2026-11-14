@@ -7,3 +7,4 @@ Refer to [AGENTS.md](./AGENTS.md) for full design directives, anti-AI-slop rules
 2. **Consult Design Skills**: Run `python .agents/skills/ui-ux-pro-max/scripts/search.py` for design systems and palettes before building.
 3. **Verify Visually**: Never claim completion without running browser automation and checking rendered screenshots across viewports (1440px, 1280px, 768px, 390px).
 4. **Motion Discipline**: Ensure all transitions are purposeful, high-performance (transform/opacity only), and respect `prefers-reduced-motion`.
+
