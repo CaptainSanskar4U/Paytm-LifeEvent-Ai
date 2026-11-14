@@ -102,8 +102,8 @@ export default function PrivacyCharterPage() {
 
           <div className="p-6 rounded-2xl border border-neutral-200 bg-neutral-50/50 hover:border-neutral-950 transition-all">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-800 border border-purple-200 flex items-center justify-center">
-                <Database className="w-4 h-4 text-purple-600" />
+              <div className="w-8 h-8 rounded-lg bg-neutral-100 text-neutral-800 border border-neutral-300 flex items-center justify-center">
+                <Database className="w-4 h-4 text-neutral-900" />
               </div>
               <h3 className="text-sm sm:text-base font-bold text-neutral-950">
                 3. Ephemeral In-Memory State Machine

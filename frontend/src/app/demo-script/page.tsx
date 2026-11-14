@@ -75,7 +75,7 @@ export default function DemoScriptPage() {
         "Real emergencies are living workflows. When the TPA insurer queries for a baseline ECG strip, watch the Financial Journey Graph mutate dynamically: the urgent task 'Collect Casualty Admission ECG Strip' is prepended to the top of the checklist, and the Next Best Action updates in real time on mobile.",
       actionLabel: "Trigger TPA Re-plan",
       actionHref: "/journey/demo-journey-cardiac-01",
-      icon: <RefreshCw className="w-5 h-5 text-purple-600" />,
+      icon: <RefreshCw className="w-5 h-5 text-neutral-900" />,
       tag: "State Machine Graph",
     },
     {

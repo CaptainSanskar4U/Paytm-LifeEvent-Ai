@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import "lenis/dist/lenis.css";
 import "./globals.css";
 import { WorldClassFooter } from "@/components/WorldClassFooter";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "LifeEvent AI — Financial Journeys in Medical Emergencies",
@@ -18,10 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white font-sans">
-        <SmoothScrollProvider>
-          <main className="flex-grow">{children}</main>
-          <WorldClassFooter />
-        </SmoothScrollProvider>
+        <main className="flex-grow">{children}</main>
+        <WorldClassFooter />
       </body>
     </html>
   );

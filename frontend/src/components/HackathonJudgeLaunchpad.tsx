@@ -13,7 +13,6 @@ import {
   Activity,
   Sparkles
 } from "lucide-react";
-import { SpotlightCard } from "./SpotlightCard";
 
 export function HackathonJudgeLaunchpad() {
   const matrix = [
@@ -69,13 +68,13 @@ export function HackathonJudgeLaunchpad() {
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200/80 mb-3 shadow-2xs">
-            <Trophy className="w-3.5 h-3.5 text-[#00baf2]" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#002970]">
-              Paytm AI Hackathon Differentiation
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-navy">
+              [ 06 // HACKATHON DIFFERENTIATION MATRIX ]
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-[1.12]">
             Why LifeEvent AI is fundamentally different.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
@@ -83,8 +82,8 @@ export function HackathonJudgeLaunchpad() {
           </p>
         </div>
 
-        {/* Technical Differentiation Matrix Table wrapped in SpotlightCard */}
-        <SpotlightCard className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 mb-12 overflow-x-auto shadow-2xs">
+        {/* Technical Differentiation Matrix Table */}
+        <div className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 mb-12 overflow-x-auto shadow-xs">
           <table className="w-full text-left text-xs font-mono min-w-[700px]">
             <thead>
               <tr className="border-b border-slate-200 pb-3 text-slate-500">
@@ -96,7 +95,7 @@ export function HackathonJudgeLaunchpad() {
             </thead>
             <tbody className="divide-y divide-slate-100 font-sans">
               {matrix.map((row, idx) => (
-                <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
                   <td className="py-4 font-bold text-slate-900 font-mono text-xs pr-4">
                     {row.feature}
                   </td>
@@ -122,13 +121,13 @@ export function HackathonJudgeLaunchpad() {
               ))}
             </tbody>
           </table>
-        </SpotlightCard>
+        </div>
 
-        {/* Signature Dark Contrast Launchpad */}
-        <div className="rounded-3xl bg-gradient-to-br from-[#001744] via-[#001030] to-neutral-950 text-white border border-blue-900/50 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#00baf2]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Signature Dark Contrast Launchpad: Bold Obsidian Technical Card */}
+        <div className="rounded-3xl bg-neutral-950 text-white border border-neutral-800 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
           <div className="max-w-xl relative z-10">
-            <span className="text-[11px] font-mono text-[#00baf2] uppercase tracking-widest block font-bold mb-1">
+            <span className="text-[11px] font-mono text-paytm-cyan uppercase tracking-widest block font-bold mb-1">
               3-MINUTE DEMO RUNBOOK &bull; BUILD FOR INDIA
             </span>
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mt-1 tracking-tight">
@@ -142,17 +141,17 @@ export function HackathonJudgeLaunchpad() {
           <div className="flex flex-wrap items-center gap-3 relative z-10 flex-shrink-0">
             <Link
               href="/demo-script"
-              className="px-6 py-3.5 rounded-xl bg-[#00baf2] text-[#002970] font-black text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg btn-tactile flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-paytm-cyan text-paytm-navy font-black text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg active:scale-98 flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-[#002970]" />
+              <Sparkles className="w-4 h-4 text-paytm-navy" />
               <span>Launch 3-Min Judge Script</span>
             </Link>
             <Link
               href="/intake"
-              className="px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all border border-white/20 flex items-center gap-2 shadow-xs btn-tactile"
+              className="px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all border border-white/20 flex items-center gap-2 shadow-xs"
             >
               <span>Emergency Voice Intake</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#00baf2]" />
+              <ArrowRight className="w-3.5 h-3.5 text-paytm-cyan" />
             </Link>
           </div>
         </div>

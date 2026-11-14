@@ -31,46 +31,6 @@ body {
   outline-offset: 2px;
 }
 
-/* Luxury Easing Tokens */
-:root {
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-/* Tactile Physical Button Micro-interaction */
-.btn-tactile {
-  transition: transform 180ms var(--ease-out-expo), box-shadow 180ms ease-out, background-color 180ms ease-out;
-  will-change: transform;
-}
-.btn-tactile:active {
-  transform: scale(0.975);
-}
-
-/* Masked Kinetic Reveals */
-.overflow-mask {
-  overflow: hidden;
-}
-
-/* Holographic Laser Scan for Paytm Bridge QR */
-@keyframes laser-scan {
-  0% {
-    top: 6%;
-    opacity: 0.3;
-  }
-  50% {
-    top: 86%;
-    opacity: 0.95;
-  }
-  100% {
-    top: 6%;
-    opacity: 0.3;
-  }
-}
-
-.animate-laser-scan {
-  animation: laser-scan 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
 /* Infinite Marquee Keyframes & Utilities */
 @keyframes marquee {
   0% {

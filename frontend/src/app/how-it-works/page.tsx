@@ -52,7 +52,7 @@ export default function HowItWorksPage() {
     },
     {
       num: "04",
-      icon: <FileSearch className="w-5 h-5 text-purple-400" />,
+      icon: <FileSearch className="w-5 h-5 text-neutral-800" />,
       title: "Anti-Hallucination Citation Grounding Gate",
       tag: "Verification Protocol",
       description:
