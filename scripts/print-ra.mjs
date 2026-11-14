@@ -8,3 +8,4 @@ if (idx !== -1) {
   console.log('=== FULL rA SHADER ===');
   console.log(code.substring(idx + 4, endIdx));
 }
+

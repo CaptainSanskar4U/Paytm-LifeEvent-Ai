@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { NothinExactCloneHero } from "@/components/NothinExactCloneHero";
 import { MonumentalHero } from "@/components/MonumentalHero";
 import { Language, translations } from "@/lib/translations";
 import {
@@ -62,8 +63,8 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-paytm-sky text-paytm-text flex flex-col">
-      {/* Monumental Hero Section (Reverse-engineered high-impact design inspired by noth.in) */}
-      <MonumentalHero currentLang={lang} onLanguageChange={setLang} />
+      {/* 1-to-1 Exact Clone of noth.in hero section with full fluid canvas, video & preloader */}
+      <NothinExactCloneHero />
 
       {/* The 5 Urgent Questions Section */}
       <section className="py-16 px-4 sm:px-6 max-w-5xl mx-auto w-full">

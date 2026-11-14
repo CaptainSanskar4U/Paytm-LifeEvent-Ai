@@ -346,10 +346,14 @@ def get_counselor_journeys():
             "patient_name": intake.get("patient_name", "Unknown"),
             "relation": intake.get("relation"),
             "hospital_name": intake.get("hospital_name"),
-            "urgency": intake.get("urgency"),
-            "total_estimate": gap.get("total_estimate", 0.0),
-            "gap_expected": gap.get("gap_expected", 0.0),
+            "urgency": intake.get("urgency", "urgent"),
+            "total_estimate": float(gap.get("total_estimate", 0.0) or 0.0),
+            "estimated_cost": float(gap.get("total_estimate", 0.0) or 0.0),
+            "gap_expected": float(gap.get("gap_expected", 0.0) or 0.0),
             "confidence": gap.get("confidence", "Needs TPA Confirmation"),
+            "current_stage": j.get("current_stage", "preauth_pending"),
+            "tasks_done": completed_tasks,
+            "tasks_total": len(checklist),
             "readiness_score": f"{completed_tasks}/{len(checklist)} tasks ready",
             "next_action": j.get("next_best_action")
         })

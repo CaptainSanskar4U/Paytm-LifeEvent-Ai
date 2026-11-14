@@ -11,3 +11,4 @@ if (startPos !== -1) {
 } else {
   console.log('class cA not found');
 }
+

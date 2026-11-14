@@ -20,7 +20,8 @@ async function runE2E() {
   try {
     // 1. Visit Homepage
     console.log('[1/5] Visiting Homepage (http://localhost:3000)...');
-    await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:3000', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
     console.log('✓ Homepage loaded successfully');
 
     // 2. Navigate to Intake

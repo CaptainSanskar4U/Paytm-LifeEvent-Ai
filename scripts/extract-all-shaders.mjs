@@ -29,3 +29,4 @@ console.log('Saved all fluid shaders:');
 for (const [k, v] of Object.entries(shaders)) {
   console.log(k + ': ' + (v ? v.length + ' chars' : 'NOT FOUND'));
 }
+
