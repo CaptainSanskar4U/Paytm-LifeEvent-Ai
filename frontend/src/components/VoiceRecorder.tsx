@@ -92,14 +92,14 @@ export function VoiceRecorder({
   return (
     <div className="space-y-4">
       {/* Big Thumb-Accessible Voice Button (360px mobile ready) */}
-      <div className="flex flex-col items-center justify-center p-6 bg-paytm-sky rounded-xl border border-blue-100 text-center">
+      <div className="flex flex-col items-center justify-center p-6 bg-neutral-950 rounded-xl border border-neutral-800 text-center">
         <button
           type="button"
           onClick={toggleListening}
           className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center transition-all shadow-lg active:scale-90 ${
             isListening
-              ? "bg-red-500 text-white animate-pulse ring-8 ring-red-100"
-              : "bg-paytm-navy text-white hover:bg-paytm-navyDark ring-4 ring-blue-100"
+              ? "bg-rose-600 text-white animate-pulse ring-8 ring-rose-950/60"
+              : "bg-neutral-900 text-white hover:bg-neutral-850 ring-4 ring-neutral-800 border border-neutral-700"
           }`}
           aria-label={isListening ? t.stopListening : t.startListening}
         >
@@ -108,16 +108,16 @@ export function VoiceRecorder({
           ) : (
             <Mic className="w-8 h-8 sm:w-9 sm:h-9 text-paytm-cyan" />
           )}
-          <span className="text-[10px] font-bold mt-1 uppercase tracking-tight">
+          <span className="text-[10px] font-bold mt-1 uppercase tracking-tight text-neutral-200">
             {isListening ? "Listening" : "Tap to Speak"}
           </span>
         </button>
 
-        <p className="text-xs sm:text-sm font-semibold text-slate-700 mt-3">
+        <p className="text-xs sm:text-sm font-semibold text-neutral-300 mt-3">
           {isListening ? t.listening : "Tap the mic and describe your situation in plain words"}
         </p>
 
-        <div className="flex items-center gap-2 mt-2 text-[11px] text-slate-500">
+        <div className="flex items-center gap-2 mt-2 text-[11px] text-neutral-400">
           <Volume2 className="w-3.5 h-3.5 text-paytm-cyan" />
           <span>Supports English, हिंदी, and मराठी</span>
         </div>
@@ -125,10 +125,10 @@ export function VoiceRecorder({
 
       {/* Real-time Transcript Editor */}
       <div>
-        <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+        <label className="block text-xs font-bold text-neutral-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
           <span>What the AI Understood (You can edit this)</span>
           {transcript && (
-            <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+            <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
               <Sparkles className="w-3 h-3" /> Transcribed
             </span>
           )}
@@ -141,7 +141,7 @@ export function VoiceRecorder({
             onTranscriptChange(e.target.value);
           }}
           placeholder={t.speakPlaceholder}
-          className="w-full p-3.5 text-sm rounded-lg border border-slate-300 focus:border-paytm-cyan focus:ring-1 focus:ring-paytm-cyan bg-white text-slate-900 leading-relaxed placeholder:text-slate-400"
+          className="w-full p-3.5 text-sm rounded-lg border border-neutral-800 focus:border-paytm-cyan focus:ring-1 focus:ring-paytm-cyan bg-neutral-950 text-white leading-relaxed placeholder:text-neutral-600"
         />
       </div>
     </div>

@@ -46,68 +46,68 @@ export function HospitalConsolePreview() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-24 px-4 sm:px-6 lg:px-8 border-b border-neutral-200">
+    <section className="relative w-full bg-neutral-950 py-24 px-4 sm:px-6 lg:px-8 border-b border-neutral-800/80">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-paytm-navy" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-navy">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-paytm-cyan" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-widest text-paytm-cyan">
               [ 05 // INSTITUTIONAL SAAS COCKPIT ]
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-[1.12]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.12]">
             For Hospitals: Slash admission delays and pre-auth rejections.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-neutral-600 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-neutral-400 leading-relaxed">
             Hospital billing desks spend 65% of their time chasing missing clinical summaries and defending against arbitrary insurer query letters. LifeEvent AI provides an automated document readiness queue.
           </p>
         </div>
 
         {/* 3 Metric Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
-            <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
+          <div className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800">
+            <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
               <span>PRE-AUTH CYCLE TIME</span>
-              <TrendingDown className="w-4 h-4 text-emerald-600" />
+              <TrendingDown className="w-4 h-4 text-emerald-400" />
             </div>
-            <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
+            <div className="text-3xl sm:text-4xl font-black text-white font-mono">
               18 mins
             </div>
-            <p className="text-xs text-neutral-600 mt-2">
+            <p className="text-xs text-neutral-400 mt-2">
               Down from industry average of 4.2 hours. Zero admission bottlenecks at billing desks.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
-            <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
+          <div className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800">
+            <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
               <span>CLAIM DENIAL RATE</span>
-              <TrendingDown className="w-4 h-4 text-emerald-600" />
+              <TrendingDown className="w-4 h-4 text-emerald-400" />
             </div>
-            <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
+            <div className="text-3xl sm:text-4xl font-black text-white font-mono">
               0.6%
             </div>
-            <p className="text-xs text-neutral-600 mt-2">
+            <p className="text-xs text-neutral-400 mt-2">
               Reduced from 14.8% by automatically validating documentation against TPA checklists.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200">
-            <div className="flex items-center justify-between text-xs font-mono text-neutral-500 mb-2">
+          <div className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800">
+            <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
               <span>DEPOSIT DISPUTES</span>
-              <CheckCircle2 className="w-4 h-4 text-paytm-navy" />
+              <CheckCircle2 className="w-4 h-4 text-paytm-cyan" />
             </div>
-            <div className="text-3xl sm:text-4xl font-black text-neutral-900 font-mono">
+            <div className="text-3xl sm:text-4xl font-black text-white font-mono">
               Zero
             </div>
-            <p className="text-xs text-neutral-600 mt-2">
+            <p className="text-xs text-neutral-400 mt-2">
               Backed by instant 8-second Paytm UPI Caution Deposit liquidity bridges.
             </p>
           </div>
         </div>
 
         {/* Live Counselor Dashboard Mockup */}
-        <div className="rounded-2xl border border-neutral-200 bg-neutral-900 text-white p-6 sm:p-8">
+        <div className="rounded-2xl border border-neutral-800 bg-neutral-900 text-white p-6 sm:p-8 shadow-2xl">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-neutral-800">
             <div>
               <div className="flex items-center gap-2">
@@ -122,7 +122,7 @@ export function HospitalConsolePreview() {
             </div>
             <Link
               href="/counselor"
-              className="px-4 py-2 rounded-lg bg-paytm-navy text-white text-xs font-bold hover:bg-white hover:text-neutral-900 transition-all flex items-center gap-2"
+              className="px-4 py-2 rounded-lg bg-neutral-800 text-paytm-cyan border border-neutral-700 text-xs font-bold hover:bg-neutral-700 hover:text-white transition-all flex items-center gap-2"
             >
               <Users className="w-3.5 h-3.5" />
               <span>Open Counselor View</span>

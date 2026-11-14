@@ -32,43 +32,43 @@ export function InfiniteMarquee() {
   const doubleGuarantees = [...guarantees, ...guarantees];
 
   return (
-    <section className="relative w-full bg-white border-y-2 border-neutral-200 overflow-hidden py-8 sm:py-10 select-none">
+    <section className="relative w-full bg-neutral-950 border-y border-neutral-800/80 overflow-hidden py-8 sm:py-10 select-none">
       {/* Top micro telemetry bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-5 flex flex-wrap items-center justify-between text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-neutral-600">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-5 flex flex-wrap items-center justify-between text-xs sm:text-sm font-mono uppercase tracking-[0.2em] text-neutral-400">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
-          <span className="text-neutral-950 font-black">LIVE INTEGRATION MESH</span>
-          <span className="text-neutral-300">|</span>
-          <span className="hidden sm:inline text-neutral-600 font-semibold">Tier-1 Hospital HIMS & TPA Gateways</span>
+          <span className="text-white font-black">LIVE INTEGRATION MESH</span>
+          <span className="text-neutral-700">|</span>
+          <span className="hidden sm:inline text-neutral-400 font-semibold">Tier-1 Hospital HIMS & TPA Gateways</span>
         </div>
-        <div className="hidden md:flex items-center gap-4 text-neutral-500 font-semibold">
+        <div className="hidden md:flex items-center gap-4 text-neutral-400 font-semibold">
           <span>LATENCY: &lt;140ms</span>
           <span>&bull;</span>
           <span>UPTIME: 99.98%</span>
           <span>&bull;</span>
-          <span className="text-paytm-navy font-black tracking-widest bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+          <span className="text-paytm-cyan font-black tracking-widest bg-neutral-900 px-2.5 py-0.5 rounded border border-neutral-800">
             PAYTM UPI ENGINE READY
           </span>
         </div>
       </div>
 
-      {/* Track 1: Networks & TPAs (Leftwards Infinite - Large & Prominent) */}
+      {/* Track 1: Networks & TPAs (Leftwards Infinite - Deep Obsidian Cards) */}
       <div className="marquee-mask relative overflow-hidden py-2.5">
         <div className="animate-marquee gap-5 flex items-center">
           {doubleNetworks.map((item, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center gap-4 px-6 py-3.5 rounded-2xl bg-white border-2 border-neutral-200 shadow-sm hover:border-paytm-navy hover:shadow-md transition-all cursor-default"
+              className="inline-flex items-center gap-4 px-6 py-3.5 rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-sm hover:border-paytm-cyan/50 hover:bg-neutral-900 transition-all cursor-default"
             >
               <span
                 className={`w-3 h-3 rounded-full flex-shrink-0 ${
-                  item.type === "hospital" ? "bg-paytm-navy" : "bg-paytm-cyan"
+                  item.type === "hospital" ? "bg-paytm-navy border border-blue-400/30" : "bg-paytm-cyan"
                 }`}
               />
-              <span className="text-base sm:text-lg font-black text-neutral-900 whitespace-nowrap tracking-tight">
+              <span className="text-base sm:text-lg font-black text-white whitespace-nowrap tracking-tight">
                 {item.name}
               </span>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 bg-neutral-100 px-3 py-1 rounded-full border border-neutral-200 whitespace-nowrap">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-neutral-300 bg-neutral-950 px-3 py-1 rounded-full border border-neutral-800 whitespace-nowrap">
                 {item.tag}
               </span>
             </div>
@@ -76,7 +76,7 @@ export function InfiniteMarquee() {
         </div>
       </div>
 
-      {/* Track 2: Guarantees & Engine Specs (Rightwards Infinite - Dark Luxury Contrast) */}
+      {/* Track 2: Guarantees & Engine Specs (Rightwards Infinite - Premium Glass Contrast) */}
       <div className="marquee-mask relative overflow-hidden pt-4 pb-2">
         <div className="animate-marquee-reverse gap-5 flex items-center">
           {doubleGuarantees.map((item, idx) => {
@@ -84,13 +84,13 @@ export function InfiniteMarquee() {
             return (
               <div
                 key={idx}
-                className="inline-flex items-center gap-3.5 px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-200 hover:border-[#002970] shadow-xs transition-all cursor-default"
+                className="inline-flex items-center gap-3.5 px-6 py-3.5 rounded-2xl bg-neutral-900/50 text-neutral-200 border border-neutral-800/80 hover:border-neutral-700 shadow-xs transition-all cursor-default"
               >
-                <Icon className="w-4 h-4 text-[#002970] flex-shrink-0" />
-                <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#002970]">
+                <Icon className="w-4 h-4 text-paytm-cyan flex-shrink-0" />
+                <span className="text-xs font-mono font-bold tracking-wider uppercase text-paytm-cyan">
                   {item.label}
                 </span>
-                <span className="text-xs sm:text-sm font-medium text-slate-700 whitespace-nowrap">
+                <span className="text-xs sm:text-sm font-medium text-neutral-300 whitespace-nowrap">
                   {item.text}
                 </span>
               </div>

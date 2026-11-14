@@ -73,28 +73,28 @@ export default function HowItWorksPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 flex flex-col font-sans selection:bg-[#002970] selection:text-white">
+    <div className="min-h-screen bg-neutral-950 text-white flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
       <Navbar />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
         {/* Navigation Breadcrumb */}
         <div className="mb-8">
           <NextLink
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500 hover:text-[#002970] transition-colors group mb-4"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-paytm-cyan transition-colors group mb-4"
           >
             <ArrowRight className="w-3.5 h-3.5 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
             <span>Return to Overview</span>
           </NextLink>
 
-          <div className="pb-6 border-b border-neutral-200">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#002970]/5 border border-[#002970]/20 text-[11px] font-mono uppercase text-[#002970] font-semibold mb-2">
-              <Cpu className="w-3.5 h-3.5 text-[#00baf2]" />
+          <div className="pb-6 border-b border-neutral-800">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800 text-[11px] font-mono uppercase text-paytm-cyan font-semibold mb-2">
+              <Cpu className="w-3.5 h-3.5 text-paytm-cyan" />
               <span>Architecture Specification // PS-2 Cross-Domain Engine</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
               How LifeEvent AI Connects the Financial Dots
             </h1>
-            <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mt-2 leading-relaxed">
               From panic-driven hospital emergency intake to verified cashless discharge:
               Explore the five architectural pillars powering our zero-hallucination healthcare financial engine.
             </p>
@@ -106,18 +106,18 @@ export default function HowItWorksPage() {
           {steps.map((step) => (
             <div
               key={step.num}
-              className="p-6 sm:p-8 rounded-2xl border border-slate-200 bg-white hover:border-[#002970] hover:shadow-md transition-all"
+              className="p-6 sm:p-8 rounded-2xl border border-neutral-800 bg-neutral-900/70 hover:border-neutral-700 hover:bg-neutral-900 transition-all"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#002970] border border-blue-200 flex items-center justify-center font-mono font-bold text-sm">
+                  <div className="w-10 h-10 rounded-xl bg-neutral-950 text-paytm-cyan border border-neutral-800 flex items-center justify-center font-mono font-bold text-sm">
                     {step.num}
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#002970] font-bold block">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-paytm-cyan font-bold block">
                       {step.tag}
                     </span>
-                    <h3 className="text-lg sm:text-xl font-bold text-neutral-950">
+                    <h3 className="text-lg sm:text-xl font-bold text-white">
                       {step.title}
                     </h3>
                   </div>
@@ -125,14 +125,14 @@ export default function HowItWorksPage() {
 
                 <NextLink
                   href={step.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#002970] hover:text-[#001d52] group self-start sm:self-auto"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-paytm-cyan hover:text-cyan-300 group self-start sm:self-auto"
                 >
                   <span>{step.linkText}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </NextLink>
               </div>
 
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-3xl pl-0 sm:pl-13">
+              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed max-w-3xl pl-0 sm:pl-13">
                 {step.description}
               </p>
             </div>

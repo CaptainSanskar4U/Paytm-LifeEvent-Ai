@@ -91,7 +91,7 @@ export default function CounselorConsolePage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 flex flex-col font-sans selection:bg-[#002970] selection:text-white">
+    <div className="min-h-screen bg-neutral-950 text-white flex flex-col font-sans selection:bg-neutral-800 selection:text-white">
       <Navbar />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
         {/* Navigation Breadcrumb & Header */}
@@ -99,28 +99,28 @@ export default function CounselorConsolePage() {
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <NextLink
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500 hover:text-[#002970] transition-colors group"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-400 hover:text-paytm-cyan transition-colors group"
             >
               <ArrowRight className="w-3.5 h-3.5 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
               <span>Back to Overview</span>
             </NextLink>
 
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-neutral-100 border border-neutral-200 text-[11px] font-mono text-neutral-700">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-neutral-900 border border-neutral-800 text-[11px] font-mono text-neutral-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>COUNTER #4 TPA TELEMETRY LIVE</span>
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-800">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#002970]/5 border border-[#002970]/20 text-[11px] font-mono uppercase text-[#002970] font-semibold mb-2">
-                <Building2 className="w-3.5 h-3.5 text-[#00baf2]" />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800 text-[11px] font-mono uppercase text-paytm-cyan font-semibold mb-2">
+                <Building2 className="w-3.5 h-3.5 text-paytm-cyan" />
                 <span>Hospital TPA & Nursing Counselor Mission Control</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-neutral-950">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
                 Institutional Emergency Counselor Cockpit
               </h1>
-              <p className="text-sm text-neutral-600 max-w-2xl mt-1.5 leading-relaxed">
+              <p className="text-sm text-neutral-400 max-w-2xl mt-1.5 leading-relaxed">
                 Real-time visibility into incoming patient triage, document completeness, and pre-authorization cycle times.
                 Empowers hospital billing desks to eliminate family disputes before admission.
               </p>
@@ -129,13 +129,13 @@ export default function CounselorConsolePage() {
             <div className="flex items-center gap-3">
               <NextLink
                 href="/for-hospitals"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold border border-neutral-300 text-neutral-800 hover:border-neutral-950 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-semibold border border-neutral-800 bg-neutral-900/60 text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
               >
                 <span>Pilot Details</span>
               </NextLink>
               <NextLink
                 href="/intake"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-[#002970] text-white hover:bg-[#001d52] transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-paytm-cyan text-paytm-navy hover:bg-cyan-300 transition-colors shadow-sm"
               >
                 <span>+ New Intake</span>
               </NextLink>
@@ -145,28 +145,28 @@ export default function CounselorConsolePage() {
 
         {/* Operational Statistics Ribbon */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="p-4 rounded-xl border border-neutral-200 bg-neutral-50/50">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Active Triage Cases</span>
-            <span className="text-2xl sm:text-3xl font-black text-neutral-950 mt-1 block">{journeys.length}</span>
-            <span className="text-[10px] text-neutral-500 font-mono mt-1 block">Live admissions in progress</span>
+          <div className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/70">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block">Active Triage Cases</span>
+            <span className="text-2xl sm:text-3xl font-black text-white mt-1 block">{journeys.length}</span>
+            <span className="text-[10px] text-neutral-400 font-mono mt-1 block">Live admissions in progress</span>
           </div>
 
-          <div className="p-4 rounded-xl border border-rose-200 bg-rose-50/30">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-rose-800 block">Critical Triage (ICU)</span>
-            <span className="text-2xl sm:text-3xl font-black text-rose-700 mt-1 block">1</span>
-            <span className="text-[10px] text-rose-700 font-mono mt-1 block">Requires instant caution clearance</span>
+          <div className="p-4 rounded-xl border border-rose-900/60 bg-rose-950/30">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-rose-400 block">Critical Triage (ICU)</span>
+            <span className="text-2xl sm:text-3xl font-black text-rose-300 mt-1 block">1</span>
+            <span className="text-[10px] text-rose-400 font-mono mt-1 block">Requires instant caution clearance</span>
           </div>
 
-          <div className="p-4 rounded-xl border border-neutral-200 bg-neutral-50/50">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Average Approval Time</span>
-            <span className="text-2xl sm:text-3xl font-black text-[#002970] mt-1 block">38 min</span>
-            <span className="text-[10px] text-emerald-700 font-mono mt-1 block">vs 4.5h national avg</span>
+          <div className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/70">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block">Average Approval Time</span>
+            <span className="text-2xl sm:text-3xl font-black text-paytm-cyan mt-1 block">38 min</span>
+            <span className="text-[10px] text-emerald-400 font-mono mt-1 block">vs 4.5h national avg</span>
           </div>
 
-          <div className="p-4 rounded-xl border border-blue-200 bg-blue-50/50">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#002970] block font-semibold">Verhoeff Redaction</span>
-            <span className="text-2xl sm:text-3xl font-black text-[#002970] mt-1 block">100%</span>
-            <span className="text-[10px] text-slate-500 font-mono mt-1 block">Zero PII persisted</span>
+          <div className="p-4 rounded-xl border border-neutral-800 bg-neutral-900/70">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-paytm-cyan block font-semibold">Verhoeff Redaction</span>
+            <span className="text-2xl sm:text-3xl font-black text-paytm-cyan mt-1 block">100%</span>
+            <span className="text-[10px] text-neutral-400 font-mono mt-1 block">Zero PII persisted</span>
           </div>
         </div>
 
@@ -179,15 +179,15 @@ export default function CounselorConsolePage() {
               placeholder="Search by patient, hospital, or task..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-neutral-300 bg-white text-xs font-mono text-neutral-900 focus:outline-none focus:ring-2 focus:ring-[#002970] focus:border-transparent transition-all"
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-950 text-xs font-mono text-white placeholder:text-neutral-600 focus:outline-none focus:ring-1 focus:ring-paytm-cyan focus:border-paytm-cyan transition-all"
             />
           </div>
 
-          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-neutral-100 border border-neutral-200 text-xs font-mono self-start sm:self-auto">
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-mono self-start sm:self-auto">
             <button
               onClick={() => setFilterUrgency("all")}
               className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
-                filterUrgency === "all" ? "bg-[#002970] text-white shadow-xs" : "text-slate-600 hover:text-slate-950"
+                filterUrgency === "all" ? "bg-neutral-800 text-paytm-cyan border border-neutral-700 shadow-xs" : "text-neutral-400 hover:text-white"
               }`}
             >
               All Urgencies
@@ -195,7 +195,7 @@ export default function CounselorConsolePage() {
             <button
               onClick={() => setFilterUrgency("critical")}
               className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
-                filterUrgency === "critical" ? "bg-rose-700 text-white shadow-sm" : "text-neutral-600 hover:text-rose-700"
+                filterUrgency === "critical" ? "bg-rose-950/60 text-rose-300 border border-rose-800 shadow-sm" : "text-neutral-400 hover:text-rose-300"
               }`}
             >
               Critical ICU
@@ -203,7 +203,7 @@ export default function CounselorConsolePage() {
             <button
               onClick={() => setFilterUrgency("urgent")}
               className={`px-3 py-1.5 rounded-md font-semibold transition-all ${
-                filterUrgency === "urgent" ? "bg-amber-700 text-white shadow-sm" : "text-neutral-600 hover:text-amber-700"
+                filterUrgency === "urgent" ? "bg-amber-950/60 text-amber-300 border border-amber-800 shadow-sm" : "text-neutral-400 hover:text-amber-300"
               }`}
             >
               Urgent
@@ -216,68 +216,68 @@ export default function CounselorConsolePage() {
           {filtered.map((j) => (
             <div
               key={j.id}
-              className="p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-950 transition-all shadow-sm group"
+              className="p-6 rounded-2xl border border-neutral-800 bg-neutral-900/70 hover:border-neutral-700 transition-all shadow-sm group"
             >
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
                 <div className="space-y-3 flex-grow">
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <h3 className="text-lg font-bold text-neutral-950 group-hover:text-[#002970] transition-colors">
+                    <h3 className="text-lg font-bold text-white group-hover:text-paytm-cyan transition-colors">
                       {j.patient_name}
                     </h3>
 
                     {j.urgency === "critical" ? (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-rose-50 text-rose-800 border border-rose-200">
-                        <span className="w-1.5 h-1.5 rounded-full bg-rose-600 animate-ping" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-rose-950/50 text-rose-300 border border-rose-800/60">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping" />
                         <span>CRITICAL // CATH LAB</span>
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold bg-amber-950/50 text-amber-300 border border-amber-800/60">
                         <span>URGENT // ELECTIVE OT</span>
                       </span>
                     )}
 
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 border border-neutral-200">
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-950 text-neutral-300 border border-neutral-800">
                       ID: {j.id}
                     </span>
                   </div>
 
-                  <p className="text-xs font-mono text-neutral-500 flex items-center gap-2">
+                  <p className="text-xs font-mono text-neutral-400 flex items-center gap-2">
                     <Building2 className="w-3.5 h-3.5 text-neutral-400" />
                     <span>{j.hospital_name}</span>
                   </p>
 
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200/80">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">
+                  <div className="p-3.5 rounded-xl bg-neutral-950 border border-neutral-800">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block mb-1">
                       Next Best Action Required:
                     </span>
-                    <p className="text-xs sm:text-sm font-semibold text-neutral-900 leading-relaxed">
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-200 leading-relaxed">
                       {j.next_action}
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-500 pt-1">
-                    <span>Tasks: <strong className="text-neutral-900">{j.tasks_done}/{j.tasks_total} Completed</strong></span>
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-400 pt-1">
+                    <span>Tasks: <strong className="text-white">{j.tasks_done}/{j.tasks_total} Completed</strong></span>
                     <span>&bull;</span>
-                    <span>Stage: <code className="bg-neutral-100 px-1 py-0.5 rounded text-neutral-800">{j.current_stage}</code></span>
+                    <span>Stage: <code className="bg-neutral-950 border border-neutral-800 px-1 py-0.5 rounded text-neutral-300">{j.current_stage}</code></span>
                   </div>
                 </div>
 
                 {/* Financial figures & Action Link */}
-                <div className="flex lg:flex-col items-end justify-between lg:justify-center border-t lg:border-t-0 lg:border-l border-neutral-100 pt-4 lg:pt-0 lg:pl-6 min-w-[220px] flex-shrink-0 bg-neutral-50/50 lg:bg-transparent p-4 lg:p-0 rounded-xl lg:rounded-none">
+                <div className="flex lg:flex-col items-end justify-between lg:justify-center border-t lg:border-t-0 lg:border-l border-neutral-800 pt-4 lg:pt-0 lg:pl-6 min-w-[220px] flex-shrink-0 bg-neutral-950/50 lg:bg-transparent p-4 lg:p-0 rounded-xl lg:rounded-none">
                   <div className="text-left lg:text-right">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">Total Est. Bill</span>
-                    <span className="text-base font-bold text-neutral-900">{formatINR(j.estimated_cost)}</span>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block">Total Est. Bill</span>
+                    <span className="text-base font-bold text-white">{formatINR(j.estimated_cost)}</span>
                   </div>
 
                   <div className="text-left lg:text-right mt-0 lg:mt-2">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-rose-800 block">Family Gap Exposure</span>
-                    <span className="text-base font-extrabold text-rose-700">{formatINR(j.gap_expected)}</span>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-rose-400 block">Family Gap Exposure</span>
+                    <span className="text-base font-extrabold text-rose-300">{formatINR(j.gap_expected)}</span>
                   </div>
 
                   <div className="mt-3 lg:mt-4 w-full text-right">
                     <NextLink
                       href={`/journey/${j.id}`}
-                      className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-[#002970] text-white hover:bg-[#001d52] transition-colors shadow-xs"
+                      className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg text-xs font-mono uppercase tracking-wider font-bold bg-paytm-cyan text-paytm-navy hover:bg-cyan-300 transition-colors shadow-xs"
                     >
                       <span>Open Console</span>
                       <ArrowRight className="w-3.5 h-3.5" />
