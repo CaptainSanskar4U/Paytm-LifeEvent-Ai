@@ -68,19 +68,6 @@ export function TopHeroSection() {
                   </span>
                 </Link>
               </div>
-
-              {/* Working Menu Toggle */}
-              <button
-                type="button"
-                onClick={() => setMenuOpen(true)}
-                className="menu-toggle flex items-center gap-2 hover:opacity-75 transition-opacity cursor-pointer group bg-transparent border-0"
-                aria-label="Open Navigation Menu"
-              >
-                <span className="font-bold tracking-widest uppercase text-xs">MENU</span>
-                <span className="text-slate-900 font-mono text-sm tracking-tighter group-hover:rotate-90 transition-transform">
-                  ::
-                </span>
-              </button>
             </div>
 
             <div className="section-fake-hero-bottom">
